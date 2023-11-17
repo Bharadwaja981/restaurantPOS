@@ -120,19 +120,41 @@
         // Create buttons using the DOM API
         var tableButtonsContainer = document.getElementById("leftContentContainer");
 
-        for (let i = 1; i <= 22; i++) {
-            var button = document.createElement("button");
-            button.id = "button" + i;  // Set a unique ID for each button
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "15.375rem";
-            button.style.height = "9.375rem";
-            button.textContent = "Table " + i;
-            button.onclick = function () {
-                reserveTable(i);
-            };
 
-            tableButtonsContainer.appendChild(button);
+        function arrange_table(limit){
+            for (let i = 1; i <= limit; i++) {
+                var button = document.createElement("button");
+                button.id = "button" + i;  // Set a unique ID for each button
+                button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
+                button.style.width = "15.375rem";
+                button.style.height = "9.375rem";
+                button.textContent = "Table " + i;
+                button.onclick = function () {
+                    reserveTable(i);
+                };
+
+                tableButtonsContainer.appendChild(button);
+            }
+
         }
+
+
+        function fetchData() {
+            fetch('http://localhost:5000/get_Table_limit')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    arrange_table(data.data);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+        document.addEventListener('DOMContentLoaded', fetchData);
     </script>
 </body>
 </html>
