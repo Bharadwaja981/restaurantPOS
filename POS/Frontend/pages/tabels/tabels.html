@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Rectangle Example</title>
+    <!-- Google Material Icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Tabels/tabels.css">
+    <script src="path/to/includeHTML.js"></script>
+</head>
+<body>
+    <div class="main-con">
+        <div class="top-header">
+            <!-- Content for top header -->
+        </div>
+        <div class="bottom-con">
+            <div class="left-content" id="leftContentContainer">
+                <!-- Iframe will be dynamically added here -->
+            </div>
+            <div class="right-content">
+                <div class="right-info" id="selectedTableInfo">
+                    <!-- Selected table info will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="customerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <label for="customerName">Enter customer name:</label>
+            <input type="text" id="customerName">
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="submitCustomerName()">Submit</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Material Design Lite JS -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Variable to store the customer name temporarily
+        var currentCustomerName = '';
+
+        function openModal(callback) {
+            var modal = document.getElementById('customerModal');
+            modal.style.display = 'block';
+
+            // Set the callback function for submitting customer name
+            submitCustomerName.callback = callback;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('customerModal');
+            modal.style.display = 'none';
+        }
+
+        function submitCustomerName() {
+            var customerNameInput = document.getElementById('customerName');
+            currentCustomerName = customerNameInput.value;
+
+            if (currentCustomerName !== null && currentCustomerName !== "") {
+                closeModal();
+
+                // Call the callback function with the entered customer name
+                if (submitCustomerName.callback) {
+                    submitCustomerName.callback(currentCustomerName);
+                }
+            } else {
+                alert('Customer name cannot be empty.');
+            }
+        }
+
+        function reserveTable(tableNumber) {
+            openModal(function (customerName) {
+                // Use the customerName in your reservation logic
+                console.log('Customer Name:', customerName);
+
+                // Validate and assign the table based on the entered customer name
+                if (customerName === currentCustomerName) {
+                    // Reservation logic...
+                    console.log('Table reserved for', customerName, 'at Table', tableNumber);
+                    var selectedTableInfo = document.getElementById("selectedTableInfo");
+                    selectedTableInfo.innerHTML = '<h1 class="order-text"><b>Table : ' + tableNumber + '</b></h1>' +
+                                                '<h1 class="order-text">Customer Name: ' + customerName + '</h1>';
+
+                    // Change the color of the selected table button to red
+                    var selectedButton = document.getElementById("button" + tableNumber);
+                    if (selectedButton) {
+                        selectedButton.style.backgroundColor = 'red';
+                    }
+
+                    // Create an iframe element
+                    var iframe = document.createElement("iframe");
+                    iframe.src = '../products/category/category.html';
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    iframe.style.border = 'none';
+
+                    // Replace the left-content with the iframe
+                    var leftContentContainer = document.getElementById("leftContentContainer");
+                    leftContentContainer.innerHTML = ''; // Clear previous content
+                    leftContentContainer.appendChild(iframe);
+                } else {
+                    alert('Invalid customer name for table reservation.');
+                }
+            });
+        }
+
+        // Create buttons using the DOM API
+        var tableButtonsContainer = document.getElementById("leftContentContainer");
+
+        for (let i = 1; i <= 22; i++) {
+            var button = document.createElement("button");
+            button.id = "button" + i;  // Set a unique ID for each button
+            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
+            button.style.width = "15.375rem";
+            button.style.height = "9.375rem";
+            button.textContent = "Table " + i;
+            button.onclick = function () {
+                reserveTable(i);
+            };
+
+            tableButtonsContainer.appendChild(button);
+        }
+    </script>
+</body>
+</html>

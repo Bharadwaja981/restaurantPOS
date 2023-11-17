@@ -1,0 +1,165 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main-con {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+
+
+}
+
+.top-header {
+    height: 100px;
+    background-color: #1e8729;
+    border: 0.2px solid rgb(56, 56, 56);
+
+}
+
+.item-box {
+    height: 110px;
+    width: 240px;
+    background-color: lightblue;
+}
+
+.left-content {
+    background-color: #070c19;
+    padding: 20px;
+    border: 0.1px solid rgb(56, 56, 56);
+    width: 80vw;
+    overflow: auto;
+    gap: 4.5rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.btn-position {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Adjust the spacing between buttons as needed */
+    margin-top: 20px; /* Adjust the top margin as needed */
+}
+
+.btn-position .mdl-button {
+    width: 9.375rem;
+    height: 9.375rem;
+}
+
+.bottom-con {
+    display: flex;
+    height: 100%;
+}
+
+
+.right-content {
+    width: 20vw;
+    background-color: #7b86c3;
+    padding: 10px;
+    border: 0.1px solid rgb(56, 56, 56);
+    overflow: auto;
+    flex-wrap: wrap;
+
+}
+
+
+.custom-button {
+    background-color: #8a9dad; /* Default background color */
+    color: #fff; /* Default text color */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+/* Change color on hover */
+.custom-button:hover {
+    background-color: #7F167F; /* Change this to the desired hover color */
+}
+
+.right-info{
+    margin-top: 5px;
+}
+
+.order-text{
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #070c19;
+}
+
+ /* Modal styles */
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(212, 207, 207, 0.623);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+label{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    color: #070c19;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.modbtn {
+    background-color: #070c19;
+    color: white;
+    padding: 15px 20px; /* Adjust padding to increase button size */
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 200px; /* Adjust width to increase button size */
+    height: 75px; /* Add height to adjust button height */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.modbtn:hover{
+    background-color: #12399e;
+}
+/* Add a new class for spacing between buttons */
+.button-container {
+    display: flex;
+    gap: 10px; /* Adjust the gap as needed */
+}

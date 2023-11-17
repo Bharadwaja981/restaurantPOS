@@ -1,0 +1,10 @@
+ #EB6440  for table in use :
+
+ #4C0033  for table bill printed: 
+
+ #8a9dad  for table empty:
+
+ #7F167F  forges/index.html Hover Tableems
+ .html
+ #070c19 for Background color
+ tems

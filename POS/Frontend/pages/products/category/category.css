@@ -1,0 +1,39 @@
+/* ../Products/items.css */
+.custom-button.mdl-button--raised.mdl-js-ripple-effect {
+    /* Custom button color */
+    background-color: #EB6440;
+    color: #ffffff;
+
+    /* Custom hover effect */
+    transition: background-color 0.3s ease;
+}
+
+.custom-button.mdl-button--raised.mdl-js-ripple-effect:hover {
+    background-color: #2980b9;
+}
+
+.category {
+    background-color: #070d20; 
+    padding: 10px;/* Set your desired background color */
+}
+
+.orange-bar {
+    background-color: orange;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.orange-text {
+    color: 070d20; /* Set the text color to white or another contrasting color */
+    font-size: 25px;
+    font-weight: bold; /* Set the desired font size */
+}
+
+.orange-button {
+    background-color: #070d20;
+    color: white; /* Set the button text color to white or another contrasting color */
+    font-size: 24px; /* Set the desired font size */
+}

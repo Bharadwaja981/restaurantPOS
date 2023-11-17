@@ -1,0 +1,50 @@
+<!-- category.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegstarter items Page</title>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="../category/category.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div id="newContent">
+        <!-- Content for the new left-content -->
+        <!-- Category div with buttons -->
+        <div class="category" id="vegstartercontainer">
+            <!-- Buttons will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Create buttons using the DOM API
+        var categoryButtonsContainer = document.getElementById("vegstartercontainer");
+
+        var categories = [
+            "Chilli Potato",
+            "Chilli Mashroom"
+        ];
+
+        for (let i = 0; i < categories.length; i++) {
+            var button = document.createElement("button");
+            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
+            button.style.width = "15.375rem";
+            button.style.height = "9.375rem";
+            button.textContent = categories[i];
+
+            // Manually control the spacing between buttons
+            button.style.marginRight = "10px";
+            button.style.marginBottom = "10px";
+
+            categoryButtonsContainer.appendChild(button);
+            
+        }
+
+    </script>
+
+    <!-- Include MDL JS -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
