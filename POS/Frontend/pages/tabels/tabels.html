@@ -46,61 +46,16 @@
             <!-- Add an iframe to include the virtual keyboard -->
             <iframe src="keyboard.html" height="260px"></iframe>
 
-            <!-- Your existing modal script and other content here -->
-
-
-
             <div class="tab-order-list">
                 <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn" onclick="openExistingOrder()">
-                        <h1>Naveen</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Barry</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Barry</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Barry</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Barry</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Barry</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Barry</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
+                    <div id="ordersContainer"></div>
                 </div>
             </div>
+
+
+
+
+            <!-- Your existing modal script and other content here -->
         </div>
     </div>
 
@@ -112,6 +67,7 @@
     <script>
         // Variable to store the customer name temporarily
         var currentCustomerName = '';
+        var selectedTable;
 
         function openModal(callback) {
             var modal = document.getElementById('customerModal');
@@ -119,7 +75,9 @@
 
             // Set the callback function for submitting customer name
             submitCustomerName.callback = callback;
-             // Show the on-screen keyboard
+            fetchOrders();
+
+            // Show the on-screen keyboard
              var keyboardContainer = document.getElementById('keyboardContainer');
             keyboardContainer.innerHTML = ''; // Clear previous content
             fetch('keyboard.html')
@@ -175,20 +133,57 @@
         function openExistingOrder(){
             
         }
+
+
+        function create_order(){
+            const data = {
+                CustomerName: currentCustomerName,
+                OrderType: 'Online',
+                TableNumber: selectedTable,
+                Price: 0,
+                employeename: 'Employee1',
+                status: 'Open'
+            };
+            fetch('http://127.0.0.1:5000/create_order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
+        }
+
+
         function reserveTable(tableNumber) {
+            selectedTable = tableNumber;
             openModal(function (customerName) {
                 // Validate and assign the table based on the entered customer name
                 if (customerName === currentCustomerName) {
                     // Table allocation logic...
                     var selectedTableInfo = document.getElementById("selectedTableInfo");
-                    selectedTableInfo.innerHTML = '<h1 class="order-text"><b>Table : ' + tableNumber + '</b></h1>' +
-                        '<h1 class="order-text">Customer Name: ' + customerName + '</h1>'; // Use customerName
+                    selectedTableInfo.innerHTML = '<h1 class="order-text"><b>Table : ' + selectedTable + '</b></h1>' +
+                        '<h1 class="order-text">Customer Name: ' + currentCustomerName + '</h1>'; // Use customerName
+                    create_order();
 
                     // Change the color of the selected table button to red
                     var selectedButton = document.getElementById("button" + tableNumber);
                     if (selectedButton) {
                         selectedButton.style.backgroundColor = 'red';
                     }
+
 
                     // Create an iframe element
                     var iframe = document.createElement("iframe");
@@ -246,6 +241,55 @@
                 });
         }
         document.addEventListener('DOMContentLoaded', fetchData);
+
+
+        async function fetchOrders() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/get_orders_for_day'); // Replace with your API URL
+                const orders = await response.json();
+                populateOrderList(orders);
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+            }
+        }
+
+        // Function to dynamically create and display orders
+        function createOrderButton(customerName, tableName, totalPrice) {
+            var button = document.createElement("button");
+            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn ";
+            button.onclick = function () {
+                openExistingOrder(customerName, tableName, totalPrice);
+            };
+
+            var h1Name = document.createElement("h1");
+            h1Name.textContent = customerName;
+
+            var h3Table = document.createElement("h3");
+            h3Table.textContent = tableName;
+
+            var h2Price = document.createElement("h2");
+            h2Price.textContent = "£" + totalPrice.toFixed(2); // Format price to two decimal places
+
+            button.appendChild(h1Name);
+            button.appendChild(h3Table);
+            button.appendChild(h2Price);
+
+            return button;
+        }
+
+        function populateOrderList(currentordersintable) {
+            var tabOrderList = document.querySelector(".tab-order-list");
+
+            // Clear existing content
+            tabOrderList.innerHTML = "";
+            for (var i = 0; i < currentordersintable.length; i++) {
+                var order = currentordersintable[i];
+                var button = createOrderButton(order.customerName, order.tableName, order.totalPrice);
+                tabOrderList.appendChild(button);
+            }
+        }
+
+
     </script>
 </body>
 </html>
