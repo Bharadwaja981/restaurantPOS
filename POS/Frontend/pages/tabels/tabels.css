@@ -107,8 +107,8 @@
     background-color: #fefefe;
     margin: 15px auto; /* Adjust margin */
     padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
+    border: 1px solid #380000;
+    width: 75%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
@@ -122,7 +122,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     background-color:#070c19;
-    border-radius: 1.5%;
+    border-radius: 0.1%;
 }
 
 .tab-existing-order-list{

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dine In</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="dine-in.css">
+</head>
+<body>
+
+    <div class="top-div"></div>
+    <div class="bottom-div">
+        <!-- Material Design buttons container -->
+        <div class="buttons-wrapper" id="buttons-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // JavaScript for dynamically creating buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttonsContainer = document.getElementById('buttons-container');
+
+            // Number of buttons you want to create
+            var numberOfButtons = 22;
+
+            // Create buttons dynamically using a for loop
+            for (var i = 1; i <= numberOfButtons; i++) {
+                var button = document.createElement('a');
+                button.classList.add('waves-effect', 'waves-light', 'btn');
+                button.innerHTML = '<i class="material-icons left">table_chart</i>Table ' + i;
+
+                // Add the button to the container
+                buttonsContainer.appendChild(button);
+            }
+        });
+    </script>
+</body>
+</html>

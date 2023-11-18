@@ -1,0 +1,42 @@
+/* dine-in.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.top-div {
+    height: 120px;
+    width: 100vw;
+    background-color: green;
+}
+
+.bottom-div {
+    height: calc(100vh - 120px);
+    width: 100vw;
+    background-color: blue;
+}
+
+.buttons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.buttons-wrapper a {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15.375rem;
+    height: 9.375rem;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+}
