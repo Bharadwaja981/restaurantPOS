@@ -35,18 +35,27 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <label for="customerName">Enter customer name:</label>
-            <input type="text" id="customerName">
+            <input type="text" id="customerName" inputmode="text">
             <div class="button-container">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="submitCustomerName()">Submit</button>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
             </div>
 
+            <!-- Your existing modal code here -->
+
+            <!-- Add an iframe to include the virtual keyboard -->
+            <iframe src="keyboard.html" height="260px"></iframe>
+
+            <!-- Your existing modal script and other content here -->
+
+
+
             <div class="tab-order-list">
                 <div class="tab-new-order">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-new-order-btn"> Add New Order</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-new-order-btn" onclick="addNewOrder()"> Add New Order</button>
                 </div>
                 <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn" onclick="openExistingOrder()">
                         <h1>Naveen</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
@@ -54,63 +63,42 @@
                 </div>
                 <div class="tab-existing-order-list">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
+                        <h1>Barry</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
                     </button>
                 </div>
                 <div class="tab-existing-order-list">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
+                        <h1>Barry</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
                     </button>
                 </div>
                 <div class="tab-existing-order-list">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
+                        <h1>Barry</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
                     </button>
                 </div>
                 <div class="tab-existing-order-list">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
+                        <h1>Barry</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
                     </button>
                 </div>
                 <div class="tab-existing-order-list">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
+                        <h1>Barry</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
                     </button>
                 </div>
                 <div class="tab-existing-order-list">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
-                        <h3>Table 1</h3>
-                        <h2>£45.50</h2>
-                    </button>
-                </div>
-                <div class="tab-existing-order-list">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn">
-                        <h1>Naveen</h1>
+                        <h1>Barry</h1>
                         <h3>Table 1</h3>
                         <h2>£45.50</h2>
                     </button>
@@ -134,6 +122,17 @@
 
             // Set the callback function for submitting customer name
             submitCustomerName.callback = callback;
+             // Show the on-screen keyboard
+             var keyboardContainer = document.getElementById('keyboardContainer');
+            keyboardContainer.innerHTML = ''; // Clear previous content
+            fetch('keyboard.html')
+                .then(response => response.text())
+                .then(data => {
+                    keyboardContainer.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading keyboard:', error);
+                });
         }
 
         function closeModal() {
@@ -149,7 +148,7 @@
                 closeModal();
 
                 // Call the callback function with the entered customer name
-                if (submitCustomerName.callback) {
+                if (typeof submitCustomerName.callback === 'function') {
                     submitCustomerName.callback(currentCustomerName);
                 }
             } else {
@@ -157,18 +156,36 @@
             }
         }
 
+        function openKeyboard() {
+            var keyboard = document.getElementById('virtualKeyboard');
+            keyboard.style.display = 'block';
+        }
+
+        function appendToInput(value) {
+            var customerNameInput = document.getElementById('customerName');
+            customerNameInput.value += value;
+        }
+
+        function addNewOrder() {
+            // Pass the reserveTable function as the callback
+            submitCustomerName.callback = reserveTable;
+
+            // Open the modal and enable the input field when the "Add New Order" button is clicked
+            openModal(submitCustomerName.callback);
+
+            openKeyboard();
+        }
+        function openExistingOrder(){
+            
+        }
         function reserveTable(tableNumber) {
             openModal(function (customerName) {
-                // Use the customerName in your reservation logic
-                console.log('Customer Name:', customerName);
-
                 // Validate and assign the table based on the entered customer name
                 if (customerName === currentCustomerName) {
-                    // Reservation logic...
-                    console.log('Table reserved for', customerName, 'at Table', tableNumber);
+                    // Table allocation logic...
                     var selectedTableInfo = document.getElementById("selectedTableInfo");
                     selectedTableInfo.innerHTML = '<h1 class="order-text"><b>Table : ' + tableNumber + '</b></h1>' +
-                                                '<h1 class="order-text">Customer Name: ' + customerName + '</h1>';
+                        '<h1 class="order-text">Customer Name: ' + customerName + '</h1>'; // Use customerName
 
                     // Change the color of the selected table button to red
                     var selectedButton = document.getElementById("button" + tableNumber);
@@ -192,6 +209,7 @@
                 }
             });
         }
+
 
         // Create buttons using the DOM API
         var tableButtonsContainer = document.getElementById("leftContentContainer");

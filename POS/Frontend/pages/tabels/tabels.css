@@ -114,8 +114,8 @@
 }
 
 .tab-order-list{
-   margin: 10px;
-    height: 650px;
+    margin-top: 10px;
+    height: 450px;
     width: 100%;
     overflow: auto;
     display: flex;
@@ -149,6 +149,10 @@
 .tab-new-order-btn{
     height: 250px;
     width: 190px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #faf5f5;
+    box-shadow: ;
 }
 
 .close {
@@ -183,13 +187,14 @@ input {
     color: white;
     padding: 15px 20px; /* Adjust padding to increase button size */
     margin-top: 5px;
-    border: none;
     border-radius: 5px;
     width: 200px; /* Adjust width to increase button size */
     height: 75px; /* Add height to adjust button height */
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-inline: 50px;
 }
 
 .modbtn:hover{
@@ -197,6 +202,8 @@ input {
 }
 /* Add a new class for spacing between buttons */
 .button-container {
+    align-items: center;    
+    justify-content: center;
     display: flex;
     gap: 10px; /* Adjust the gap as needed */
 }
