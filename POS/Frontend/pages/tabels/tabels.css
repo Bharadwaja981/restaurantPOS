@@ -91,27 +91,64 @@
     color: #070c19;
 }
 
- /* Modal styles */
- .modal {
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(212, 207, 207, 0.623);
+    background-color: rgba(3, 3, 3, 0.623);
+    justify-content: flex-start; /* Align content at the top */
+    padding-top: 5px; /* Add padding at the top */
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 15px auto; /* Adjust margin */
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+}
+
+.tab-order-list{
+   margin: 10px;
+    height: 650px;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color:#070c19;
+    border-radius: 1.5%;
+}
+
+.tab-existing-order-list{
+    margin: 10px;
+    box-sizing: border-box; /* Adjust width and margin as needed */
+    background-color:#aaa;
+    height: 250px;
+    width: 190px;
+}
+
+.tab-existing-order-list-btn{
+    height: 250px;
+    width: 190px;
+}
+
+.tab-new-order{
+    order: -1; /* Move this div to the beginning */
+    margin: 10px; /* Push it to the right */
+    background-color:rgb(224, 125, 125);
+    height: 250px;
+    width: 190px;
+}
+
+.tab-new-order-btn{
+    height: 250px;
+    width: 190px;
 }
 
 .close {

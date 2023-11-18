@@ -19,7 +19,7 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="navigateToTables()">
                  Dine-In
             </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="navigateToTakeaway()">
                 Takeaway
             </button>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;">
@@ -38,7 +38,10 @@
 
     <script>
         function navigateToTables() {
-            window.location.href = "../Frontend/Pages/Tabels/tabels.html";
+            window.location.href = "../Frontend/pages/tabels/tabels.html";
+        }
+        function navigateToTakeaway(){
+            window.location.href = "../Frontend/pages/takeaway/takeaway.html";
         }
     </script>
 
