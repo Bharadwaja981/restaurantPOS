@@ -61,38 +61,3 @@
     color: #070c19;
 }
 
-/* Style for the modal background overlay */
-.modal-backdrop {
-    background-color: rgba(255, 255, 255, 0.986);
-}
-
-/* Style for the modal content */
-.modal-content {
-    background-color: #8f1d1d;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Style for the modal header */
-.modal-header {
-    background-color: #030e1a;
-    color: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px 8px 0 0;
-}
-
-/* Style for the modal title */
-.modal-title {
-    font-size: 1.25rem;
-}
-
-/* Style for the modal body */
-.modal-body {
-    padding: 15px;
-}
-
-/* Style for the form inside the modal */
-form {
-    margin-bottom: 0;
-}
