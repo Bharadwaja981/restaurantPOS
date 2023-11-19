@@ -20,6 +20,9 @@
     <div class="main-con">
         <div class="top-header">
             <!-- Content for top header -->
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../../Index.html" style="color: aliceblue;">
+                <span class="material-icons">arrow_back</span> Back
+            </a>
         </div>
         <div class="bottom-con">
             <div class="left-content" id="leftContentContainer">
@@ -39,6 +42,7 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <label for="customerName">Enter customer name:</label>
             <input type="text" id="customerName" inputmode="text" autocomplete="off">
+            <label id="errorMessage" style="color: red;"></label>
             <div class="button-container">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="submitCustomerName()">Submit</button>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
@@ -54,7 +58,6 @@
                     
                 </div>
             </div>
-
 
 
 
@@ -100,6 +103,7 @@
         function submitCustomerName() {
             var customerNameInput = document.getElementById('customerName');
             currentCustomerName = customerNameInput.value;
+            var errorMessageLabel = document.getElementById('errorMessage');
 
             if (currentCustomerName !== null && currentCustomerName !== "") {
                 closeModal();
@@ -109,7 +113,9 @@
                     submitCustomerName.callback(currentCustomerName);
                 }
             } else {
-                alert('Customer name cannot be empty.');
+                // Show error message and make the label red
+                errorMessageLabel.textContent = 'Please provide customer name.';
+                errorMessageLabel.style.color = 'red';
             }
         }
 
@@ -257,7 +263,7 @@
 
         function createOrderButton(order) {
             var button = document.createElement("button");
-            button.className = "tab-existing-order-list-btn";
+            button.className = " tab-existing-order-list-btn";
             button.onclick = function () {
                 openExistingOrder(order.CustomerName, order.TableNumber, order.Price);
             };

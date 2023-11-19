@@ -182,12 +182,12 @@ input {
 
 .modbtn {
     background-color: #070c19;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 15px 20px; /* Adjust padding to increase button size */
     margin-top: 5px;
     border-radius: 5px;
     width: 200px; /* Adjust width to increase button size */
-    height: 75px; /* Add height to adjust button height */
+    height: 75px !important; /* Add height to adjust button height */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -209,17 +209,16 @@ input {
 .tab-existing-order-list-btn {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     height: 250px;
     width: 190px;
     padding: 10px;
     margin: 10px;
-    text-align: center;
     background-color: #d35151;  /* Set the background color */
     color: #fff;  /* Set the text color */
     border: none;
-    cursor: pointer;
-    font-size: 1rem;  /* Set the font size */
+    cursor: pointer;  /* Set the font size */
 }
 
 .tab-existing-order-list-btn:hover {
@@ -230,8 +229,20 @@ input {
     background-color: #d35151;  /* Set the active background color */
 }
 
-.tab-existing-order-list-btn h1,h2,h3{
-    font-size: 18px;
-    margin-bottom: 10px;
-        
+.tab-existing-order-list-btn h1 {
+    font-size: 24px; /* Set the font size for h1 */
+    margin: 0px;
+    color: #000;      
+}
+
+.tab-existing-order-list-btn h2 {
+    font-size: 18px; /* Set the font size for h2 */
+    margin: 0px;
+    color: #000;  
+}
+
+.tab-existing-order-list-btn h3 {
+    font-size: 14px; /* Set the font size for h3 */
+    margin: 0px;
+    color: #000;  
 }
