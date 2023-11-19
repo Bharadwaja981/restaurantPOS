@@ -1,0 +1,98 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main-con {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+
+
+}
+
+.top-header {
+    height: 100px;
+    background-color: #1e8729;
+    border: 0.2px solid rgb(56, 56, 56);
+
+}
+
+.left-content {
+    background-color: #070c19;
+    padding: 20px;
+    border: 0.1px solid rgb(56, 56, 56);
+    width: 80vw;
+    overflow: auto;
+    gap: 4.5rem;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.bottom-con {
+    display: flex;
+    height: 100%;
+}
+
+
+.right-content {
+    width: 20vw;
+    background-color: #7b86c3;
+    padding: 10px;
+    border: 0.1px solid rgb(56, 56, 56);
+    overflow: auto;
+    flex-wrap: wrap;
+
+}
+
+.right-info{
+    margin-top: 5px;
+}
+
+.order-text{
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #070c19;
+}
+
+/* Style for the modal background overlay */
+.modal-backdrop {
+    background-color: rgba(255, 255, 255, 0.986);
+}
+
+/* Style for the modal content */
+.modal-content {
+    background-color: #8f1d1d;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the modal header */
+.modal-header {
+    background-color: #030e1a;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Style for the modal title */
+.modal-title {
+    font-size: 1.25rem;
+}
+
+/* Style for the modal body */
+.modal-body {
+    padding: 15px;
+}
+
+/* Style for the form inside the modal */
+form {
+    margin-bottom: 0;
+}

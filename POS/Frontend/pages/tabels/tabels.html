@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resizable Rectangle Example</title>
+    <title>RestaurantPOS</title>
     <!-- Google Material Icons CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Google Material Design Lite CSS -->
@@ -14,7 +14,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../Tabels/tabels.css">
-    <script src="path/to/includeHTML.js"></script>
 </head>
 <body>
     <div class="main-con">
@@ -71,6 +70,35 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+         // Add event listeners to buttons for ripple effect
+        const rippleButtons = document.querySelectorAll('.tab-existing-order-list-btn');
+
+        rippleButtons.forEach(button => {
+            button.addEventListener('mousedown', (e) => {
+                // Create a ripple element
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                button.appendChild(ripple);
+
+                // Get the button's position and dimensions
+                const rect = button.getBoundingClientRect();
+
+                // Calculate the ripple position relative to the button and mouse click
+                const x = e.clientX - rect.left - ripple.offsetWidth / 2;
+                const y = e.clientY - rect.top - ripple.offsetHeight / 2;
+
+                // Apply styles to the ripple element
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+
+                // Remove the ripple element after a short delay
+                setTimeout(() => {
+                    ripple.remove();
+                }, 400); // Adjust the delay as needed
+            });
+        });
+
+
         // Variable to store the customer name temporarily
         var currentCustomerName = '';
         var selectedTable;
@@ -154,7 +182,6 @@
 
         }
 
-
         function reserveTable(tableNumber) {
             selectedTable = tableNumber;
             openModal(function (customerName) {
@@ -171,7 +198,6 @@
                     if (selectedButton) {
                         selectedButton.style.backgroundColor = 'red';
                     }
-
 
                     // Create an iframe element
                     var iframe = document.createElement("iframe");
@@ -199,7 +225,7 @@
             for (let i = 1; i <= limit; i++) {
                 var button = document.createElement("button");
                 button.id = "button" + i;  // Set a unique ID for each button
-                button.className = "custom-button";
+                button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect custom-button ";
                 button.style.width = "15.375rem";
                 button.style.height = "9.375rem";
                 button.textContent = "Table " + i;
@@ -243,7 +269,7 @@
 
         function createOrderButton(order) {
             var button = document.createElement("button");
-            button.className = " tab-existing-order-list-btn";
+            button.className = " tab-existing-order-list-btn ";
             button.onclick = function () {
                 openExistingOrder(order.CustomerName, order.TableNumber, order.Price);
             };
