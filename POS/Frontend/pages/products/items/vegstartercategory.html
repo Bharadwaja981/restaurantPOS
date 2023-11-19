@@ -10,44 +10,66 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <div id="itemModal" class="modal" >
+        <div class="modal-content" >
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div style="justify-content: center; margin-top: 30px;">
+                <div id="item-details" class="item-prop">
+                    <label id="itemName" class="cname">Item Name: </label>
+                </div>
+                <div id="quantityControls" class="quantity-controls">
+                    <label> Add Quantity:</label>
+                    <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+                    <span id="quantityValue">01</span>
+                    <button class="quantity-btn" onclick="decrementQuantity()">-</button>
+                </div>
+                <div>
+                    <div class="container-group">
+                        <div class="spicy-level-container">
+                            <!-- Spicy Level -->
+                            <label class="spicy-level">Select Spicy Level:</label>
+                            <select id="spicyLevel" class="mdl-textfield__input" onchange="updateSelectColor()">
+                                <option value="select" class="spicy-level-option" selected>Select</option>
+                                <option value="mild" class="spicy-level-option">Mild</option>
+                                <option value="medium" class="spicy-level-option">Medium</option>
+                                <option value="spicy" class="spicy-level-option">Spicy</option>
+                                <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
+                            </select>
+                        </div>
+                        <div class="portion-container">
+                            <!-- Portion -->
+                            <label class="portion">Select Portion:</label>
+                            <select id="portion" class="mdl-textfield__input" onchange="updateSelectColor()">
+                                <option value="select" class="spicy-level-option" selected>Select</option>
+                                <option value="regular" class="spicy-level-option">Regular</option>
+                                <option value="large" class="spicy-level-option">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-area-container">
+                    <label> Add customer note here :</label>
+                    <textarea id="notes" class="notes" name=" " rows="4" cols="50"></textarea>
+                </div>
+                
+                <div class="button-container">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
+                </div>
+                <div id="keyboard-container">
+                    <!-- Link the keyboard iframe to the textarea by passing its id as a query parameter -->
+                    <iframe id="keyboard-iframe" src="../../tabels/keyboard.html?target=notes" frameborder="0"></iframe>
+                </div>
+    
+            </div>
+            <!-- Your existing modal script and other content here -->
+        </div>
+    </div>
     <div id="newContent">
         <!-- Content for the new left-content -->
         <!-- Category div with buttons -->
         <div class="category" id="vegstartercontainer">
             <!-- Buttons will be dynamically added here -->
-        </div>
-    </div>
-    <div id="itemModal" class="modal" >
-        <div class="modal-content" >
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="item-details">
-                <label id="itemName" class="cname">Item Name: </label>
-            </div>
-            <div id="quantityControls">
-                <label class="cname"> Add Quantity:</label>
-                <button class="quantity-btn" onclick="incrementQuantity()">+</button>
-                <span id="quantityValue">01</span>
-                <button class="quantity-btn" onclick="decrementQuantity()">-</button>
-            </div>
-             <!-- Spicy Level -->
-            <label class="spicy-level">Select Spicy Level:</label>
-            <select id="spicyLevel" class="mdl-textfield__input" onchange="updateSelectColor()">
-                <option value="select" class="spicy-level-option" selected>Select</option>
-                <option value="mild" class="spicy-level-option">Mild</option>
-                <option value="medium" class="spicy-level-option" >Medium</option>
-                <option value="spicy" class="spicy-level-option">Spicy</option>
-                <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
-            </select>
-           
-            <div class="button-container">
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
-            </div>
-            <div id="keyboard-container">
-                <iframe id="keyboard-iframe" src="../../tabels/keyboard.html" frameborder="0"></iframe>
-            </div>
-
-            <!-- Your existing modal script and other content here -->
         </div>
     </div>
 
