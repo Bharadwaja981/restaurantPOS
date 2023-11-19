@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vegstarter items Page</title>
+    <title>Veg Starter items Page</title>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <link rel="stylesheet" href="../category/category.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -17,12 +17,89 @@
             <!-- Buttons will be dynamically added here -->
         </div>
     </div>
+    <div id="itemModal" class="modal" >
+        <div class="modal-content" >
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="item-details">
+                <label id="itemName" class="cname">Item Name: </label>
+            </div>
+            <div id="quantityControls">
+                <label class="cname"> Add Quantity:</label>
+                <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+                <span id="quantityValue">01</span>
+                <button class="quantity-btn" onclick="decrementQuantity()">-</button>
+            </div>
+             <!-- Spicy Level -->
+            <label class="spicy-level">Select Spicy Level:</label>
+            <select id="spicyLevel" class="mdl-textfield__input" onchange="updateSelectColor()">
+                <option value="select" class="spicy-level-option" selected>Select</option>
+                <option value="mild" class="spicy-level-option">Mild</option>
+                <option value="medium" class="spicy-level-option" >Medium</option>
+                <option value="spicy" class="spicy-level-option">Spicy</option>
+                <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
+            </select>
+           
+            <div class="button-container">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
+            </div>
+            <div id="keyboard-container">
+                <iframe id="keyboard-iframe" src="../../tabels/keyboard.html" frameborder="0"></iframe>
+            </div>
+
+            <!-- Your existing modal script and other content here -->
+        </div>
+    </div>
 
     <script>
+        
+        function updateSelectColor() {
+            var select = document.getElementById("spicyLevel");
+            var selectedOption = select.options[select.selectedIndex];
+            select.style.backgroundColor = window.getComputedStyle(selectedOption).backgroundColor;
+        }
+        
+        function openModal(itemName) {
+            var modal = document.getElementById('itemModal');
+            modal.style.display = 'block';
+
+            // Set the item name label based on the passed item name
+            var itemNameLabel = document.getElementById('itemName');
+
+            if (itemNameLabel) {
+                itemNameLabel.innerHTML = 'Item Name: ' + itemName;
+            } else {
+                console.error('Item name label not found.');
+            }
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('itemModal');
+            modal.style.display = 'none';
+        }
+
+        var quantityValue = 1; // Initial quantity value
+
+        function incrementQuantity() {
+            quantityValue++;
+            updateQuantityDisplay();
+        }
+
+        function decrementQuantity() {
+            if (quantityValue > 1) {
+                quantityValue--;
+                updateQuantityDisplay();
+            }
+        }
+
+        function updateQuantityDisplay() {
+            var quantityDisplay = document.getElementById('quantityValue');
+            quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
+        }
         // Create buttons using the DOM API
         var categoryButtonsContainer = document.getElementById("vegstartercontainer");
 
-        var categories = [
+        var items = [
             "Chilli Potato",
             "Chilli Mashroom",
             "Onion Bhajia",
@@ -40,16 +117,19 @@
             "Vegetable Tikka"
         ];
 
-        for (let i = 0; i < categories.length; i++) {
+        for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
             button.style.width = "10.375rem";
             button.style.height = "5.375rem";
-            button.textContent = categories[i];
+            button.textContent = items[i];
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
+            button.onclick = function () {
+                    openModal(items[i]);
+                };
 
             categoryButtonsContainer.appendChild(button);
             
