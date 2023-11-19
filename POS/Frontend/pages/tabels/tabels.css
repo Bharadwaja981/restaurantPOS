@@ -123,6 +123,7 @@
     justify-content: flex-start;
     background-color:#070c19;
     border-radius: 0.1%;
+    font-size: 10px;
 }
 
 .tab-existing-order-list{
@@ -133,10 +134,7 @@
     width: 190px;
 }
 
-.tab-existing-order-list-btn{
-    height: 250px;
-    width: 190px;
-}
+
 
 .tab-new-order{
     order: -1; /* Move this div to the beginning */
@@ -206,4 +204,34 @@ input {
     justify-content: center;
     display: flex;
     gap: 10px; /* Adjust the gap as needed */
+}
+
+.tab-existing-order-list-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 250px;
+    width: 190px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    background-color: #d35151;  /* Set the background color */
+    color: #fff;  /* Set the text color */
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;  /* Set the font size */
+}
+
+.tab-existing-order-list-btn:hover {
+    background-color: #384694;  /* Set the hover background color */
+}
+
+.tab-existing-order-list-btn:active{
+    background-color: #d35151;  /* Set the active background color */
+}
+
+.tab-existing-order-list-btn h1,h2,h3{
+    font-size: 18px;
+    margin-bottom: 10px;
+        
 }

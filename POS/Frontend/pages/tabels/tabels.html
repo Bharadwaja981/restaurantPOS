@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Google Material Design Lite CSS -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Google Material Design Lite JS -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../Tabels/tabels.css">
@@ -42,13 +45,13 @@
             </div>
 
             <!-- Your existing modal code here -->
-
+            <div id="keyboardContainer">
             <!-- Add an iframe to include the virtual keyboard -->
-            <iframe src="keyboard.html" height="260px"></iframe>
-
+                 <iframe src="keyboard.html" height="260px"></iframe>
+             </div>
             <div class="tab-order-list">
                 <div class="tab-existing-order-list">
-                    <div id="ordersContainer"></div>
+                    
                 </div>
             </div>
 
@@ -79,7 +82,6 @@
 
             // Show the on-screen keyboard
              var keyboardContainer = document.getElementById('keyboardContainer');
-            keyboardContainer.innerHTML = ''; // Clear previous content
             fetch('keyboard.html')
                 .then(response => response.text())
                 .then(data => {
@@ -211,7 +213,7 @@
             for (let i = 1; i <= limit; i++) {
                 var button = document.createElement("button");
                 button.id = "button" + i;  // Set a unique ID for each button
-                button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
+                button.className = "custom-button";
                 button.style.width = "15.375rem";
                 button.style.height = "9.375rem";
                 button.textContent = "Table " + i;
@@ -253,22 +255,21 @@
             }
         }
 
-        // Function to dynamically create and display orders
-        function createOrderButton(customerName, tableName, totalPrice) {
+        function createOrderButton(order) {
             var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 tab-existing-order-list-btn ";
+            button.className = "tab-existing-order-list-btn";
             button.onclick = function () {
-                openExistingOrder(customerName, tableName, totalPrice);
+                openExistingOrder(order.CustomerName, order.TableNumber, order.Price);
             };
 
             var h1Name = document.createElement("h1");
-            h1Name.textContent = customerName;
+            h1Name.textContent = order.CustomerName;
 
             var h3Table = document.createElement("h3");
-            h3Table.textContent = tableName;
+            h3Table.textContent = "Table " + order.TableNumber;
 
             var h2Price = document.createElement("h2");
-            h2Price.textContent = "£" + totalPrice.toFixed(2); // Format price to two decimal places
+            h2Price.textContent = "£" + order.Price.toFixed(2);
 
             button.appendChild(h1Name);
             button.appendChild(h3Table);
@@ -277,16 +278,24 @@
             return button;
         }
 
+
         function populateOrderList(currentordersintable) {
-            var tabOrderList = document.querySelector(".tab-order-list");
+            var tabOrderListContainer = document.querySelector(".tab-order-list");
 
             // Clear existing content
-            tabOrderList.innerHTML = "";
+            tabOrderListContainer.innerHTML = "";
+
             for (var i = 0; i < currentordersintable.length; i++) {
                 var order = currentordersintable[i];
-                var button = createOrderButton(order.customerName, order.tableName, order.totalPrice);
-                tabOrderList.appendChild(button);
+
+                // Create button
+                var button = createOrderButton(order);
+
+                // Append button directly to the main container
+                tabOrderListContainer.appendChild(button);
             }
+
+            console.log("Number of buttons appended:", currentordersintable.length);
         }
 
 

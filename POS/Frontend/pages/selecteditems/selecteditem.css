@@ -1,0 +1,18 @@
+.selecteditem{
+    margin-top: 3px;
+    background-color: rgb(53, 14, 90);
+}
+
+.item-property{
+    margin-top: 2px;;
+    background-color:rgb(91, 26, 151);
+}
+
+.itm-name{
+    padding-left: 3px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    overflow: hidden;
+}
