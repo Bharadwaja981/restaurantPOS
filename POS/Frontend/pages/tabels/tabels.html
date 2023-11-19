@@ -109,7 +109,7 @@
 
             // Set the callback function for submitting customer name
             submitCustomerName.callback = callback;
-            fetchOrders();
+            fetchOrders(selectedTable);
         }
 
         function closeModal() {
@@ -257,11 +257,30 @@
         document.addEventListener('DOMContentLoaded', fetchData);
 
 
-        async function fetchOrders() {
+        async function fetchOrders(tableId) {
             try {
-                const response = await fetch('http://127.0.0.1:5000/get_orders_for_day'); // Replace with your API URL
-                const orders = await response.json();
-                populateOrderList(orders);
+
+                const params = {'tableNumber' : tableId};
+                fetch('http://127.0.0.1:5000/get_orders_for_day', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(params)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        populateOrderList(data);
+                        console.log('Success:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             } catch (error) {
                 console.error('Error fetching orders:', error);
             }

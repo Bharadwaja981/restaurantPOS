@@ -40,24 +40,21 @@ def get_Table_limit():
     except psycopg2.Error as e:
         return jsonify({'error': str(e)})
 
-@app.route('/get_orders_for_day', methods=['GET'])
+@app.route('/get_orders_for_day', methods=['POST'])
 def get_orders_for_today():
     conn = create_connection()
     cursor = conn.cursor()
-
-    today = datetime.now().date()
-
+    data = request.get_json()
     query = """
         SELECT * FROM public.orders
-        WHERE "OrderDate"::date = %s
+        WHERE LOWER(status) = 'open' and "TableNumber" = %s
     """
 
-    cursor.execute(query, (today,))
+    cursor.execute(query,(data['tableNumber'],))
     orders = cursor.fetchall()
 
     cursor.close()
     conn.close()
-
     # Convert orders to a list of dictionaries for JSON serialization
     orders_list = []
     for order in orders:
@@ -69,10 +66,10 @@ def get_orders_for_today():
             "OrderDate": order[4].isoformat(),
             "Price": order[5],
             "PaymentType": order[6],
-            "employeename": order[7]
+            "employeename": order[7],
+            "status": order[8]
         }
         orders_list.append(order_dict)
-
     return jsonify(orders_list)
 
 
