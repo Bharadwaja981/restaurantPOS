@@ -51,7 +51,24 @@
             var leftContentContainer = document.getElementById("product-names");
             leftContentContainer.innerHTML = ''; // Clear previous content
             leftContentContainer.appendChild(iframe);
+
+            var modal = createModal();
+            document.body.appendChild(modal);
+
+            // Display the modal
+            modal.style.display = 'block';
+        }
+
+        function createModal() {
+            var modal = document.createElement('div');
+            modal.id = 'itemModal'; // Replace with the actual ID of your modal element
+            modal.className = 'modal';
+            
+            // Your modal content and styling go here
+
+            return modal;
         }     
+        
         let div = document.getElementById("itemlist")      
         div.onload = function(){
             div.style.height = div.contentWindow.document.body.scrollHeight + 'px';
