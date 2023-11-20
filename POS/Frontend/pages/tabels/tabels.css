@@ -150,20 +150,20 @@
     font-size: 30px;
     font-weight: bold;
     color: #faf5f5;
-    box-shadow: ;
 }
 
 .close {
-    color: #aaa;
+    color: #000000;
     float: right;
-    font-size: 28px;
+    font-size: 38px;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 .close:hover,
 .close:focus {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
+    color: rgb(66, 3, 3);
+    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -247,14 +247,63 @@ input {
     color: #000;  
 }
 
-/* Add any additional styles here */
+/* this is the keyboard css */
+
 #keyboard-container {
+    display: flex;
+    justify-content: center;
+    background-color: #8f8b8b00;
+    border-radius: 8px;
+    padding: 0px;
     width: 100%;
-    height: 300px; /* Adjust the height as needed */
 }
 
-#keyboard-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+#keyboard, #numpad {
+    display: flex;
+    flex-direction: column;
+    margin: 5px auto;
+    overflow: visible;
 }
+
+.key, .numkey {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #610d0d;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+.space-key {
+    width: 150px; /* Adjust the width as needed */
+}
+
+#keyboard .row, #numpad .row {
+    display: flex;
+}
+
+input[type="text"] {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+.keybtn{
+    background-color: #7d8d6f; /* Default background color */
+    color: #000000; /* Default text color */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.keybtn:hover{
+    background-color: #7b86c3; /* Hover background color */
+    color: #5a0404; /* Hover text color */
+}
+
+/* till here*/

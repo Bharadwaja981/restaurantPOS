@@ -124,45 +124,9 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Google Material Design Lite JS -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
-    <script>
-        // Function to handle key clicks
-        function handleKeyClick(key) {
-            // Get the target input field from the parent document
-            const inputField = window.parent.document.getElementById('notes');
     
-            if (key === 'Backspace') {
-                // Handle Backspace key
-                const cursorPosition = inputField.selectionStart;
-                const textBeforeCursor = inputField.value.slice(0, cursorPosition - 1);
-                const textAfterCursor = inputField.value.slice(cursorPosition);
-                inputField.value = textBeforeCursor + textAfterCursor;
-    
-                // Move the cursor back by one position
-                inputField.selectionStart = inputField.selectionEnd = cursorPosition - 1;
-            } else {
-                // Append the clicked key to the input field
-                const cursorPosition = inputField.selectionStart;
-                const textBeforeCursor = inputField.value.slice(0, cursorPosition);
-                const textAfterCursor = inputField.value.slice(cursorPosition);
-                inputField.value = textBeforeCursor + key + textAfterCursor;
-    
-                // Move the cursor forward by one position
-                inputField.selectionStart = inputField.selectionEnd = cursorPosition + 1;
-            }
-        }
-    
-        // Add event listeners to keys
-        const keys = document.querySelectorAll('.key, .numkey');
-        keys.forEach(key => {
-            key.addEventListener('click', () => {
-                const keyValue = key.dataset.key;
-                handleKeyClick(keyValue);
-            });
-        });
-    </script>
 </body>
 </html>

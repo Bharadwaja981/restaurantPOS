@@ -14,11 +14,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../Tabels/tabels.css">
+    
 </head>
 <body>
     <div class="main-con">
         <div class="top-header">
-            <!-- Content for top header -->
+            <!-- Content for the top header -->
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../../Index.html" style="color: aliceblue;">
                 <span class="material-icons">arrow_back</span> Back
             </a>
@@ -48,17 +49,73 @@
             </div>
 
             <div id="keyboard-container">
-                <iframe id="keyboard-iframe" src="./keyboard.html?target=customerName" frameborder="0"></iframe>
+                <div id="keyboard">
+                    <div class="row">
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="Q">Q</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="W">W</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="E">E</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="R">R</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="T">T</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="Y">Y</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="U">U</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="I">I</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="O">O</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="P">P</button>
+                    </div>
+                    <div class="row">
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="A">A</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="S">S</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="D">D</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="F">F</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="G">G</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="H">H</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="J">J</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="K">K</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="L">L</button>
+                    </div>
+                    <div class="row">
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="Z">Z</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="X">X</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="C">C</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="V">V</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="B">B</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="N">N</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="M">M</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn space-key" data-key="Backspace">Backspace</button>
+                    </div>
+                    <div class="row">
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn space-key" data-key=" ">Space bar</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key=",">,</button>
+                        <button class="key mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key=".">.</button>
+                    </div>
+                </div>
+                <div id="numpad" style="margin-left: 35px;">
+                    <div class="row">
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="7">7</button>
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="8">8</button>
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="9">9</button>
+                    </div>
+                    <div class="row">
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="4">4</button>
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="5">5</button>
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="6">6</button>
+                    </div>
+                    <div class="row">
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="1">1</button>
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="2">2</button>
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="3">3</button>
+                    </div>
+                    <div class="row">
+                        <button class="numkey mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect keybtn" data-key="0">0</button>
+                    </div>
+                </div>
             </div>
 
-            </div>
             <div class="tab-order-list">
                 <div class="tab-existing-order-list">
                     
                 </div>
             </div>
-
-
 
             <!-- Your existing modal script and other content here -->
         </div>
@@ -68,11 +125,11 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    
+    <!-- Your main script -->
     <script>
-         // Add event listeners to buttons for ripple effect
+        // Add event listeners to buttons for ripple effect
         const rippleButtons = document.querySelectorAll('.tab-existing-order-list-btn');
-
         rippleButtons.forEach(button => {
             button.addEventListener('mousedown', (e) => {
                 // Create a ripple element
@@ -97,7 +154,6 @@
                 }, 400); // Adjust the delay as needed
             });
         });
-
 
         // Variable to store the customer name temporarily
         var currentCustomerName = '';
@@ -135,8 +191,6 @@
                 errorMessageLabel.style.color = 'red';
             }
         }
-        
-
 
         function addNewOrder() {
             // Pass the reserveTable function as the callback
@@ -144,12 +198,11 @@
 
             // Open the modal and enable the input field when the "Add New Order" button is clicked
             openModal(submitCustomerName.callback);
-
         }
+
         function openExistingOrder(){
-            
+            // Add code for opening existing orders if needed
         }
-
 
         function create_order(){
             const data = {
@@ -179,7 +232,6 @@
                 .catch(error => {
                     console.error('Error:', error);
                 });
-
         }
 
         function reserveTable(tableNumber) {
@@ -216,10 +268,8 @@
             });
         }
 
-
         // Create buttons using the DOM API
         var tableButtonsContainer = document.getElementById("leftContentContainer");
-
 
         function arrange_table(limit){
             for (let i = 1; i <= limit; i++) {
@@ -235,9 +285,7 @@
 
                 tableButtonsContainer.appendChild(button);
             }
-
         }
-
 
         function fetchData() {
             fetch('http://localhost:5000/get_Table_limit')
@@ -256,10 +304,8 @@
         }
         document.addEventListener('DOMContentLoaded', fetchData);
 
-
         async function fetchOrders(tableId) {
             try {
-
                 const params = {'tableNumber' : tableId};
                 fetch('http://127.0.0.1:5000/get_orders_for_day', {
                     method: 'POST',
@@ -309,7 +355,6 @@
             return button;
         }
 
-
         function populateOrderList(currentordersintable) {
             var tabOrderListContainer = document.querySelector(".tab-order-list");
 
@@ -327,7 +372,63 @@
             }
         }
 
+/* from here , these are keyboard functions*/
+        let targetInputField;
 
+        // Function to handle key clicks
+        function handleKeyClick(key) {
+            if (!targetInputField) {
+                console.error('Target input field is not set.');
+                return;
+            }
+
+            const cursorPosition = targetInputField.selectionStart;
+
+            if (key === 'Backspace') {
+                // Handle Backspace key
+                const textBeforeCursor = targetInputField.value.slice(0, cursorPosition - 1);
+                const textAfterCursor = targetInputField.value.slice(cursorPosition);
+                targetInputField.value = textBeforeCursor + textAfterCursor;
+
+                // Move the cursor back by one position
+                targetInputField.selectionStart = targetInputField.selectionEnd = cursorPosition - 1;
+            } else {
+                // Append the clicked key to the input field
+                const textBeforeCursor = targetInputField.value.slice(0, cursorPosition);
+                const textAfterCursor = targetInputField.value.slice(cursorPosition);
+                targetInputField.value = textBeforeCursor + key + textAfterCursor;
+
+                // Move the cursor forward by one position
+                targetInputField.selectionStart = targetInputField.selectionEnd = cursorPosition + 1;
+            }
+        }
+
+        // Add event listeners to keys
+        const keys = document.querySelectorAll('.key, .numkey');
+        keys.forEach(key => {
+            key.addEventListener('click', () => {
+                const keyValue = key.dataset.key;
+                handleKeyClick(keyValue);
+            });
+        });
+
+        // Function to set the target input field
+        function setTargetInputField(inputFieldId) {
+            targetInputField = document.getElementById(inputFieldId);
+        }
+
+        // Expose functions and variables needed for external use
+        window.keyboard = {
+            setTargetInputField,
+            handleKeyClick
+        };
+
+        // Set the target input field when the iframe is fully loaded
+        window.onload = function () {
+            // Assuming the input field has an ID of 'myInputField'
+            window.parent.keyboard.setTargetInputField('customerName');
+        };
     </script>
+<!-- from here , these are keyboard functions -->
 </body>
 </html>
