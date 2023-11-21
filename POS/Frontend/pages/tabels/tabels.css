@@ -16,7 +16,7 @@
 }
 
 .top-header {
-    height: 100px;
+    height: 50px;
     background-color: #1e8729;
     border: 0.2px solid rgb(56, 56, 56);
 
@@ -30,7 +30,6 @@
 
 .left-content {
     background-color: #070c19;
-    padding: 20px;
     border: 0.1px solid rgb(56, 56, 56);
     width: 80vw;
     overflow: auto;
@@ -108,7 +107,7 @@
     margin: 15px auto; /* Adjust margin */
     padding: 20px;
     border: 1px solid #380000;
-    width: 75%;
+    width: 55%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }

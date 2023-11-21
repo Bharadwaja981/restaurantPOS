@@ -9,32 +9,34 @@
     <link rel="stylesheet" href="../category/category.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body class="item-container">
     <div id="newContent">
-        <!-- Back button -->
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
-            <span class="material-icons">arrow_back</span> Back
-        </a>
-        
-        <!-- Content for the new left-content -->
-        <!-- Category div with buttons -->
-        <div class="category" id="categoryButtonsContainer">
-            <!-- Buttons will be dynamically added here -->
-        </div>
-
         <!-- Item div -->
         <div class="item" id="itemContainer">
             <!-- Content for the item div -->
             <div class="orange-bar">
-                <span class="orange-text">Items</span>
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
+                    <span class="material-icons">arrow_back</span> Back
+                </a><span class="orange-text">Items</span>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
                     <span class="material-icons orange-icon">add</span>
                 </button>
             </div>
-            <br>
-            <div id="product-names" >
+            <div id="product-names" class="product-names">
                 <iframe src="" id="itemlist"></iframe>
             </div>
+        </div>
+        
+        <!-- Content for the new left-content -->
+        <!-- Category div with buttons -->
+        <div class="cont-bar">
+            <span class="orange-text">Category</span>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
+                <span class="material-icons orange-icon">add</span>
+            </button>
+        </div>
+        <div class="category" id="categoryButtonsContainer">
+            <!-- Buttons will be dynamically added here -->
         </div>
     </div>
 

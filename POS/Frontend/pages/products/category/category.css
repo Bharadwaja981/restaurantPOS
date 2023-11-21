@@ -12,9 +12,23 @@
     background-color: #2980b9;
 }
 
+.items, .product-names{
+    background-color: #091a4d; 
+    padding-bottom: 0px;/* Set your desired background color */
+    margin-top: 1px;
+    padding-left: 5px;
+    height: 60vh;
+}
+
+.item-container{
+    background-color:#091a4d;
+}
+
 .category {
-    background-color: #070d20; 
-    padding: 10px;/* Set your desired background color */
+    background-color: #091a4d; 
+    padding-bottom: 0px;
+    padding-top: 5px;
+    padding-left: 5px;/* Set your desired background color */
 }
 
 .orange-bar {
@@ -25,11 +39,20 @@
     align-items: center;
 }
 
+.cont-bar{
+    background-color: orange;
+    display: flex;
+    padding: 2px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 .orange-text {
-    color: 070d20; /* Set the text color to white or another contrasting color */
+    color: #000000; /* Set the text color to white or another contrasting color */
     font-size: 25px;
-    font-weight: bold; /* Set the desired font size */
+    font-weight: bold;
+    padding-left: 0px;
 }
 
 .orange-button {
@@ -53,8 +76,10 @@
     background-color: #c6d1c3;
     margin: 15px auto; /* Adjust margin */
     padding: 20px;
+    margin-top: 0px;
     border: 1px solid #380000;
     width: 75%;
+    height: 550px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     display: flex;
@@ -175,6 +200,7 @@
 
 .notes {
     width: 100%;
+    height: 57px;
     font-size: 25px;
     background-color:#c6d1c3;
 }
@@ -236,63 +262,3 @@ input {
     display: flex;
     gap: 10px; /* Adjust the gap as needed */
 }
-
-/* this is the keyboard css */
-
-#keyboard-container {
-    display: flex;
-    justify-content: center;
-    background-color: #8f8b8b00;
-    border-radius: 8px;
-    padding: 0px;
-    width: 100%;
-}
-
-#keyboard, #numpad {
-    display: flex;
-    flex-direction: column;
-    margin: 5px auto;
-    overflow: visible;
-}
-
-.key, .numkey {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    border: 1px solid #610d0d;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 3px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.space-key {
-    width: 150px; /* Adjust the width as needed */
-}
-
-#keyboard .row, #numpad .row {
-    display: flex;
-}
-
-input[type="text"] {
-    margin-top: 10px;
-    padding: 5px;
-    font-size: 16px;
-    width: 100%;
-}
-.keybtn{
-    background-color: #7d8d6f; /* Default background color */
-    color: #000000; /* Default text color */
-    transition: background-color 0.3s ease; /* Add a smooth transition effect */
-}
-
-.keybtn:hover{
-    background-color: #7b86c3; /* Hover background color */
-    color: #5a0404; /* Hover text color */
-}
-
-/* till here*/
