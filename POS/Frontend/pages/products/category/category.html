@@ -41,7 +41,23 @@
     </div>
 
     <script>
-        let iframe_pages = [ "../items/vegstartercategory.html", "../items/nonvegstartercategory.html", "../items/seafoodstartercategory.html"]
+        let iframe_pages = [ "../items/vegstartercategory.html",
+                             "../items/nonvegstartercategory.html",
+                             "../items/seafoodstartercategory.html",
+                             "../items/vegetablemaincategory.html",
+                             "../items/chickenmaincategory.html",
+                             "../items/lambmaincategory copy.html",
+                             "../items/seafoodmainscategory.html",
+                             "../items/chefsspecialcategory.html",
+                             "../items/classicdishescategory.html",
+                             "../items/ricecategory.html",
+                             "../items/naancategory copy.html",
+                             "../items/extrascategory.html",
+                             "../items/noodlescategory.html",
+                             "../items/dessertscategory.html",
+                             "../items/currysaucecategory.html",
+                             "../items/curryadongategory.html" 
+                            ]
         function openCategory(category) {
             var iframe = document.getElementById("itemlist");
             iframe.setAttribute("src", iframe_pages[category]);
@@ -83,12 +99,18 @@
             "Non-Veg Starter",
             "Seafood Starter",
             "Vegetable Mains",
-            "Chicken & Lamb Mains",
             "Seafood Mains",
+            "Chicken Mains",
+            "Lamb Mains",
             "Chefs Specials",
             "Classic Dishes",
-            "Rice & Naan",
-            "Extras"
+            "Rice",
+            "Naan",
+            "Extras",
+            "Noodles",
+            "Desserts",
+            "Curry Sauce",
+            "Curry-Add On"
         ];
 
         for (let i = 0; i < categories.length; i++) {

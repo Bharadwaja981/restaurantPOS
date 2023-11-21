@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seafood Starter Page</title>
+    <title>Extras Page</title>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <link rel="stylesheet" href="../category/category.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -51,12 +51,10 @@
                     <label class="txt"> Add customer note here :</label>
                     <textarea id="notes" class="notes" name=" " rows="4" cols="50"></textarea>
                 </div>
-                
                 <div class="button-container">
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
-                </div>
-    
+                </div>    
             </div>
             <!-- Your existing modal script and other content here -->
         </div>
@@ -118,19 +116,29 @@
         var categoryButtonsContainer = document.getElementById("vegstartercontainer");
 
         var items = [
-            "King Prawn Tawa",
-            "Tandoori Fish Sizzler",
-            "Fish Fry",
-            "Fish Pakora",
-            "Masala Prawn",
-            "Chilli Prawn"
+            "Extra Dip",
+            "Papodams",
+            "Pickle Tray",
+            "Plain Yogurt",
+            "Chips",
+            "Raita",
+            "Green Salad",
+            "Garlic Onion And Chilli Fry",
+            "3 Poppadoms with Pickle Try",
+            "Paprika Chips",
+            "Poussin Chips",
+            "Chilli Chips and Cheese",
+            "Chilli Chips (reg)",
+            "Chilli Chips (large)",
+            "Chicken Nuggets and Chips",
+            "Curry Sauce"
         ];
 
         for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "10.375rem";
-            button.style.height = "5.375rem";
+            button.style.width = "12.375rem";
+            button.style.height = "7.375rem";
             button.textContent = items[i];
 
             // Manually control the spacing between buttons
