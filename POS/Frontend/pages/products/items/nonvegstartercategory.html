@@ -15,7 +15,6 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <div style="justify-content: center; margin-top: 30px;">
                 <div id="item-details" class="item-prop">
-                    <label id="itemName" class="cname">Item Name: </label>
                 </div>
                 <div id="quantityControls" class="quantity-controls">
                     <label class="txt"> Add Quantity:</label>
@@ -28,21 +27,12 @@
                         <div class="spicy-level-container">
                             <!-- Spicy Level -->
                             <label class="spicy-level txt">Spicy Level:</label>
-                            <select id="spicyLevel" class="mdl-textfield__input" onchange="updateSelectColor()">
+                            <select id="spicyLevel" class="mdl-textfield__input" required>
                                 <option value="select" class="spicy-level-option" selected>Select</option>
                                 <option value="mild" class="spicy-level-option">Mild</option>
                                 <option value="medium" class="spicy-level-option">Medium</option>
                                 <option value="spicy" class="spicy-level-option">Spicy</option>
                                 <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
-                            </select>
-                        </div>
-                        <div class="portion-container">
-                            <!-- Portion -->
-                            <label class="portion txt">Portion:</label>
-                            <select id="portion" class="mdl-textfield__input" onchange="updateSelectColor()">
-                                <option value="select" class="spicy-level-option" selected>Select</option>
-                                <option value="regular" class="spicy-level-option">Regular</option>
-                                <option value="large" class="spicy-level-option">Large</option>
                             </select>
                         </div>
                     </div>
@@ -53,7 +43,7 @@
                 </div>
                 
                 <div class="button-container">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitItem()">Submit</button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
                 </div>
     
@@ -71,29 +61,54 @@
 
     <script>
         
-        function updateSelectColor() {
-            var select = document.getElementById("spicyLevel");
-            var selectedOption = select.options[select.selectedIndex];
-            select.style.backgroundColor = window.getComputedStyle(selectedOption).backgroundColor;
+        function submitItem() {
+            var spicyselect = document.getElementById("spicyLevel");    
+           
+            if (spicyselect.value == "select"){
+                spicyselect.style.backgroundColor = 'red';     
+            }else{
+                spicyselect.style.backgroundColor = '#3b3b3b';
+            }
         }
         
-        function openModal(itemName) {
+        function resetSelects() {
+            var spicySelect = document.getElementById("spicyLevel");
+            var notesTextArea = document.getElementById("notes");
+
+            // Reset the background color
+            spicySelect.style.backgroundColor = '#3b3b3b';
+
+            // Reset the selected options
+            spicySelect.selectedIndex = 0;
+            notesTextArea.value = '';
+            quantityValue = 1;
+            updateQuantityDisplay();
+        }
+
+        function openModal(itemDetails) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
+            
+            var itemDetailsContainer = document.getElementById('item-details');
+            itemDetailsContainer.innerHTML = '';
 
-            // Set the item name label based on the passed item name
-            var itemNameLabel = document.getElementById('itemName');
+            var [itemName, itemPrice] = itemDetails.split("£");
 
-            if (itemNameLabel) {
-                itemNameLabel.innerHTML = 'Item Name: ' + itemName;
-            } else {
-                console.error('Item name label not found.');
-            }
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name cname txt";
+            itemNameDiv.textContent = "Item Name: " + itemName.trim();
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price cname";
+            priceDiv.textContent = "Price: £" + itemPrice.trim(); 
+
+            itemDetailsContainer.appendChild(itemNameDiv);
+            itemDetailsContainer.appendChild(priceDiv);
         }
 
         function closeModal() {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'none';
+            resetSelects();
         }
 
         var quantityValue = 1; // Initial quantity value

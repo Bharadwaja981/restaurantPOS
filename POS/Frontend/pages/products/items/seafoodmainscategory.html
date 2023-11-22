@@ -15,7 +15,6 @@
             <span class="close" onclick="closeModal()">&times;</span>
             <div style="justify-content: center; margin-top: 30px;">
                 <div id="item-details" class="item-prop">
-                    <label id="itemName" class="cname">Item Name: </label>
                 </div>
                 <div id="quantityControls" class="quantity-controls">
                     <label class="txt"> Add Quantity:</label>
@@ -28,7 +27,7 @@
                         <div class="spicy-level-container">
                             <!-- Spicy Level -->
                             <label class="spicy-level txt">Spicy Level:</label>
-                            <select id="spicyLevel" class="mdl-textfield__input" onchange="updateSelectColor()">
+                            <select id="spicyLevel" class="mdl-textfield__input" required>
                                 <option value="select" class="spicy-level-option" selected>Select</option>
                                 <option value="mild" class="spicy-level-option">Mild</option>
                                 <option value="medium" class="spicy-level-option">Medium</option>
@@ -36,13 +35,29 @@
                                 <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
                             </select>
                         </div>
-                        <div class="portion-container">
+                        <div class="portion-container" id="portionid">
                             <!-- Portion -->
                             <label class="portion txt">Portion:</label>
-                            <select id="portion" class="mdl-textfield__input" onchange="updateSelectColor()">
+                            <select id="portion" class="mdl-textfield__input" required>
                                 <option value="select" class="spicy-level-option" selected>Select</option>
                                 <option value="regular" class="spicy-level-option">Regular</option>
                                 <option value="large" class="spicy-level-option">Large</option>
+                            </select>
+                        </div>
+                        <div class="type-container" id="typeid">
+                            <label class="type txt">Type:</label>
+                            <select id="type" class="mdl-textfield__input" required>
+                                <option value="select" class="type-option" selected>None</option>
+                                <option value="Curry" class="type-option">Curry</option>
+                                <option value="Bhuna" class="type-option">Bhuna</option>
+                                <option value="Madras" class="type-option">Madras</option>
+                                <option value="Jalfrezi" class="type-option">Jalfrezi</option>
+                                <option value="Kadai" class="type-option">Kadai</option>
+                                <option value="Tawa" class="type-option">Tawa</option>
+                                <option value="Vandaloo" class="type-option">Vindaloo</option>
+                                <option value="Palak" class="type-option">Palak</option>
+                                <option value="Saag" class="type-option">Saag</option>
+                                <option value="Methi" class="type-option">Methi</option>
                             </select>
                         </div>
                     </div>
@@ -53,7 +68,7 @@
                 </div>
                 
                 <div class="button-container">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitItem()">Submit</button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
                 </div>
     
@@ -71,32 +86,88 @@
 
     <script>
         
-        function updateSelectColor() {
-            var select = document.getElementById("spicyLevel");
-            var selectedOption = select.options[select.selectedIndex];
-            select.style.backgroundColor = window.getComputedStyle(selectedOption).backgroundColor;
+        function submitItem() {
+            var spicyselect = document.getElementById("spicyLevel");
+            var portionselect = document.getElementById("portion");
+            var typeselect = document.getElementById("type");
+            
+            if (typeselect.value == "select") {   
+                typeselect.style.backgroundColor = 'red';             
+            }else{
+                typeselect.style.backgroundColor = '#3b3b3b';
+            }
+            if (spicyselect.value == "select"){
+                spicyselect.style.backgroundColor = 'red';     
+            }else{
+                spicyselect.style.backgroundColor = '#3b3b3b';
+            }
+            if(portionselect.value == "select"){
+                portionselect.style.backgroundColor = 'red';     
+            }else{
+                portionselect.style.backgroundColor = '#3b3b3b';
+            }
         }
         
-        function openModal(itemName) {
+        function resetSelects() {
+            var spicySelect = document.getElementById("spicyLevel");
+            var portionSelect = document.getElementById("portion");
+            var typeSelect = document.getElementById("type");
+            var notesTextArea = document.getElementById("notes");
+
+            // Reset the background color
+            spicySelect.style.backgroundColor = '#3b3b3b';
+            portionSelect.style.backgroundColor = '#3b3b3b';
+            typeSelect.style.backgroundColor = '#3b3b3b';
+
+            // Reset the selected options
+            spicySelect.selectedIndex = 0;
+            portionSelect.selectedIndex = 0;
+            typeSelect.selectedIndex = 0;
+            notesTextArea.value = '';
+            quantityValue = 1;
+            updateQuantityDisplay();
+        }
+
+        function openModal(itemDetails) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
+            
+            var itemDetailsContainer = document.getElementById('item-details');
+            itemDetailsContainer.innerHTML = '';
 
-            // Set the item name label based on the passed item name
-            var itemNameLabel = document.getElementById('itemName');
+            var [itemName, itemPrice] = itemDetails.split("£");
 
-            if (itemNameLabel) {
-                itemNameLabel.innerHTML = 'Item Name: ' + itemName;
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name cname txt";
+            itemNameDiv.textContent = "Item Name: " + itemName.trim();
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price cname";
+            priceDiv.textContent = "Price: £" + itemPrice.trim(); 
+
+            itemDetailsContainer.appendChild(itemNameDiv);
+            itemDetailsContainer.appendChild(priceDiv);
+             // Show/hide select boxes based on the selected item
+            var typeContainer = document.getElementById("typeid");
+            var portionContainer = document.getElementById("portionid");
+
+            if (itemName == "Garlic Butter Prawns") {
+                // If the item name includes "Curry", show the type select and hide the portion select
+                typeContainer.style.display = 'block';
+                portionContainer.style.display = 'none';
             } else {
-                console.error('Item name label not found.');
+                // Otherwise, hide the type container
+                typeContainer.style.display = 'none';
+                portionContainer.style.display = 'none';
             }
         }
 
         function closeModal() {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'none';
+            resetSelects();
         }
 
-        var quantityValue = 1; // Initial quantity value
+        var quantityValue = 1;
 
         function incrementQuantity() {
             quantityValue++;
