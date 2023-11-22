@@ -1,0 +1,74 @@
+<!-- table.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Rectangle Example</title>
+    <!-- Google Material Icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../placeitems/placeitems.css">
+
+</head>
+<body>
+    <div class="main-con">
+        <div class="top-header">
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
+                <span class="material-icons">arrow_back</span> Back
+            </a>
+            <!-- Content for top header -->
+        </div>
+        <div class="bottom-con">
+            <div class="left-content">
+                <!-- Iframe will be dynamically added here -->
+            </div>
+            <div class="right-content">
+                <div class="right-info">
+                    <!-- Selected table info will be displayed here -->
+                </div>
+                <div class="right-tag">
+                    <div class="i-t">
+                        <h1 class="name-text">Item</h1>
+                    </div>
+                    <h1 class="name-text">Qty</h1>
+                    <h1 class="name-text">unit Price</h1>
+                    <h1 class="name-text">Price</h1>
+                </div>
+                <div class="item-div">
+                    <div id="item-add" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="handleItemClick()">
+                        <div class="i-t">
+                            <h1 class="i-txt">Lamb kheema chicken tikka tawa lamb kheema chicken tikka tawa</h1>
+                        </div>
+                        <label class="i-text">01</label>
+                        <label class="i-text">£11.00</label>
+                        <label class="i-text">£11.00</label>
+                    </div>
+                    <div id="item-add" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="handleItemClick()">
+                        <div class="i-t">
+                            <h1 class="i-txt">Lamb </h1>
+                        </div>
+                        <label class="i-text">01</label>
+                        <label class="i-text">£0.00</label>
+                        <label class="i-text">£0.00</label>
+                    </div>
+                </div>
+                <div class="total-tag">
+                    <h1 class="total-text">Total Items</h1>
+                    <h1 class="total-text">000</h1>
+                    <h1 class="total-text">Total Price :</h1>
+                    <h1 class="total-text">£000.00</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Material Design Lite JS -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
