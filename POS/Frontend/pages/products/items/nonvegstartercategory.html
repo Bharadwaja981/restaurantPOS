@@ -120,38 +120,72 @@
         var items = [
             "Chicken Samosa",
             "Lamb Samosa",
-            "Chef's Special Sizzler",
-            "Mix Sizzler",
-            "Mix Sizzler Boneless",
             "Chicken Kebab",
-            "Lamb Kebab",
-            "Chicken Tandoori",
-            "Crispy Chicken",
-            "Karmos Chicken",
-            "Chicken Niblets (jeera/chilli/Mari)",
-            "Chicken Lollipop",
-            "Chicken Wings (jeera/chilli/Mari)",
             "Tikka Roll",
+            "Chicken Tandoori (Half)",
+            "Karmos Chicken (Reg)",
+            "Chicken Tikka (Reg)",
+            "Chicken Lollipop (Reg)",
             "Kebab Roll",
-            "Lamb Chops",
-            "Lamb Fry",
-            "Meatballs (Lamb)",
             "Chicken Pakora",
-            "Boneless Chicken",
+            "Chicken Niblets (Jeera)",
+            "Chicken Niblets (Chilli)",
+            "Chicken Niblets (Mari)",
+            "Chicken Wings (Jeera)",
+            "Chicken Wings (Chilli)",
+            "Chicken Wings (Mari)",
+            "Boneless Chicken (Jeera)",
+            "Boneless Chicken (Mari)",
+            "Lamb Kebab",
+            "Crispy Chicken (Reg)",
+            "Meatballs (Lamb)",
+            "Lamb Chops (Reg)",
+            "Crispy Chicken (Large)",
+            "Lamb Fry",
+            "Mix Sizzler (reg)",
+            "Mix Sizzler Boneless (reg)",
+            "Crispy Chicken (Large)",
+            "Chicken Lollipop (Large)",
+            "Chicken Tandoori (Full)",
+            "Karmos Chicken (Large)",
+            "Mix Sizzler (Large)",
+            "Mix Sizzler Boneless (Large)",
+            "Lamb Chops (Large)",
+            "Chef's Special Sizzler"
         ];
+
+        var price = ["£4.50", "£4.50", "£6.50", "£6.50", "£7.00",
+                    "£7.00", "£7.00", "£7.00", "£7.00", "£7.00",
+                    "£7.00", "£7.00", "£7.00", "£7.00", "£7.00",
+                    "£7.00", "£7.00", "£7.00", "£7.50", "£7.50",
+                    "£7.50", "£9.00", "£10.00", "£10.00", "£11.00",
+                    "£11.00", "£11.00", "£11.00", "£11.00", "£12.00",
+                    "£12.00", "£15.00", "£15.00", "£15.00", "£25.00"
+                ];
 
         for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
             button.style.width = "12.375rem";
             button.style.height = "7.375rem";
-            button.textContent = items[i];
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name";
+            itemNameDiv.textContent = items[i];
+
+            // Create a div for the price
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price";
+            priceDiv.textContent = price[i];
+
+            // Append the item name and price divs to the button
+            button.appendChild(itemNameDiv);
+            button.appendChild(priceDiv);
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.onclick = function () {
-                    openModal(items[i]);
+                    openModal(items[i] + price[i]);
                 };
 
             categoryButtonsContainer.appendChild(button);

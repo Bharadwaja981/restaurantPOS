@@ -118,35 +118,49 @@
         var categoryButtonsContainer = document.getElementById("vegstartercontainer");
 
         var items = [
-            "Prawn Biryani",
-            "Chicken Dum Biryani (with or without Bone)",
-            "Lamb Dum Biryani (with or without Bone)",
-            "Fish Biryani",
-            "Veg Biryani",
-            "Paneer Biryani",
+            "Plain Rice",
+            "Jeera Rice",
+            "Pilav Rice",
             "Veg Rice",
             "Garlic & Onion Rice",
             "Egg Fried Rice",
-            "Kheema Rice",
-            "Plain Rice",
-            "Jeera Rice",
-            "Pilau Rice",
             "Green Peas Rice",
-            "Mashroom Rice"
+            "Mashroom Rice",
+            "Kheema Rice",
+            "Veg Biryani",
+            "Chicken Dum Biryani (with or without Bone)",
+            "Fish Biryani",
+            "Paneer Biryani",
+            "Lamb Dum Biryani (with or without Bone)",
+            "Prawn Biryani"
+            
         ];            
+
+        var price = ["£2.50", "£2.50", "£3.00", "£4.00", "£4.00", "£4.00", "£4.00", "£4.00", "£4.50", "£8.50", "£9.50", "£9.50", "£9.50", "£10.00","£11.00"]
 
         for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
             button.style.width = "12.375rem";
             button.style.height = "7.375rem";
-            button.textContent = items[i];
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name";
+            itemNameDiv.textContent = items[i];
+
+            // Create a div for the price
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price";
+            priceDiv.textContent = price[i];
+
+            // Append the item name and price divs to the button
+            button.appendChild(itemNameDiv);
+            button.appendChild(priceDiv);
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.onclick = function () {
-                    openModal(items[i]);
+                    openModal(items[i] + price[i]);
                 };
 
             categoryButtonsContainer.appendChild(button);

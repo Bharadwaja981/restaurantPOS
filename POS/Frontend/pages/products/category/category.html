@@ -31,6 +31,7 @@
         <!-- Category div with buttons -->
         <div class="cont-bar">
             <span class="orange-text">Category</span>
+            <span class="orange-text" id="cattxt">Category</span>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
                 <span class="material-icons orange-icon">add</span>
             </button>
@@ -53,7 +54,7 @@
                              "../items/ricecategory.html",
                              "../items/naancategory copy.html",
                              "../items/extrascategory.html",
-                             "../items/noodlescategory.html",
+                             "../items/noodlecategory.html",
                              "../items/dessertscategory.html",
                              "../items/currysaucecategory.html",
                              "../items/curryadongategory.html" 
@@ -113,6 +114,8 @@
             "Curry-Add On"
         ];
 
+        var cattxt = document.getElementById("cattxt");
+
         for (let i = 0; i < categories.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
@@ -127,6 +130,7 @@
             categoryButtonsContainer.appendChild(button);
             button.onclick = function () {
                 openCategory(i);
+                cattxt.textContent = categories[i]
             };
         }
     </script>

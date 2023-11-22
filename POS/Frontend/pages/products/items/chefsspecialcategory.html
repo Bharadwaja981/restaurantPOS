@@ -118,30 +118,44 @@
         var categoryButtonsContainer = document.getElementById("vegstartercontainer");
 
         var items = [
-            "Butter Chicken (on the bone indian style)",
-            "Mix Grill in Kadai (On / Off the bone)",
-            "Lamb Chops Curry",
-            "Dal Ghosh (On / Off the bone)",
-            "Lamb & Chicken Tawa",
-            "Chicken Tikka & Lamb Kheema Tawa",
-            "Dal Chicken (On / Off the bone)",
             "Dhaba Paneer",
-            "Paneer Bhurji",    
-
+            "Lamb and Chicken Tawa",
+            "Chicken Tikka and Lamb Kheema Tawa",
+            "Dal Chicken",
+            "Paneer Bhurji",
+            "Lamb Chops Curry",
+            "Dal Ghost",
+            "Mix Grill Kadai (Regular)",
+            "mix Grill Kadai (Large)",
+            "Butter Chicken (Regular)",
+            "Butter Chicken (Large)"
         ];
+
+        var price = ["£9.00", "£9.50", "£9.50", "£10.00", "£10.00", "£12.00", "£12.00", "£13.00", "£18.00", "£14.00", "£20.00"];
 
         for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
             button.style.width = "12.375rem";
             button.style.height = "7.375rem";
-            button.textContent = items[i];
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name";
+            itemNameDiv.textContent = items[i];
+
+            // Create a div for the price
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price";
+            priceDiv.textContent = price[i];
+
+            // Append the item name and price divs to the button
+            button.appendChild(itemNameDiv);
+            button.appendChild(priceDiv);
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.onclick = function () {
-                    openModal(items[i]);
+                    openModal(items[i] + price[i]);
                 };
 
             categoryButtonsContainer.appendChild(button);

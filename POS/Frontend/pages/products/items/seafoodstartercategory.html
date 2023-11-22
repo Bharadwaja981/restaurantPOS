@@ -118,26 +118,43 @@
         var categoryButtonsContainer = document.getElementById("vegstartercontainer");
 
         var items = [
-            "King Prawn Tawa",
-            "Tandoori Fish Sizzler",
-            "Fish Fry",
             "Fish Pakora",
-            "Masala Prawn",
-            "Chilli Prawn"
+            "Tandoori Fish Sizzler - Dry (reg)",
+            "Fish Fry - Dry (reg)",
+            "Masala Prawn (reg)",
+            "Chilli Prawn (indo Chinese)",
+            "King Prawns Tawa (reg)",
+            "Tandoori Fish Sizzler - Dry (large)",
+            "Fish Fry - Dry (large)",
+            "Masala Prawn - Dry (large)",
+            "King Prawns Tawa (large)"
         ];
+
+        var price = ["£7.00", "£10.00", "£10.00", "£10.00", "£10.00","£12.00", "£14.00", "£14.00", "£15.00", "£16.00" ]
 
         for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "10.375rem";
-            button.style.height = "5.375rem";
-            button.textContent = items[i];
+            button.style.width = "12.375rem";
+            button.style.height = "7.375rem";
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name";
+            itemNameDiv.textContent = items[i];
+
+            // Create a div for the price
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price";
+            priceDiv.textContent = price[i];
+
+            // Append the item name and price divs to the button
+            button.appendChild(itemNameDiv);
+            button.appendChild(priceDiv);
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.onclick = function () {
-                    openModal(items[i]);
+                    openModal(items[i] + price[i]);
                 };
 
             categoryButtonsContainer.appendChild(button);

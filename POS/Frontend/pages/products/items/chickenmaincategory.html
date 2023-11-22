@@ -122,22 +122,37 @@
             "Chicken Tikka Masala",
             "Garlic Chilli Chicken",
             "Chicken Rogan Josh",
-            "Dhaba Chicken",
-            "Chicken Machusi (on / off the bone)"
+            "Dhaba Chicken (off the bone)",
+            "Dhaba Chicken (on the bone)",
+            "Chicken Machusi (off the bone)",
+            "Chicken Machusi (on the bone)"
         ];
+
+        var price = ["£8.50", "£8.50", "£8.50", "£8.50", "£8.50", "£8.50", "£10.00", "£10.00"]
 
         for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
             button.style.width = "12.375rem";
             button.style.height = "7.375rem";
-            button.textContent = items[i];
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name";
+            itemNameDiv.textContent = items[i];
+
+            // Create a div for the price
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price";
+            priceDiv.textContent = price[i];
+
+            // Append the item name and price divs to the button
+            button.appendChild(itemNameDiv);
+            button.appendChild(priceDiv);
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.onclick = function () {
-                    openModal(items[i]);
+                    openModal(items[i] + price[i]);
                 };
 
             categoryButtonsContainer.appendChild(button);

@@ -28,21 +28,37 @@
                         <div class="spicy-level-container">
                             <!-- Spicy Level -->
                             <label class="spicy-level txt">Spicy Level:</label>
-                            <select id="spicyLevel" class="mdl-textfield__input" onchange="updateSelectColor()">
-                                <option value="select" class="spicy-level-option" selected>Select</option>
+                            <select id="spicyLevel" class="mdl-textfield__input" required>
+                                <option value="none" class="spicy-level-option" selected>None</option>
                                 <option value="mild" class="spicy-level-option">Mild</option>
                                 <option value="medium" class="spicy-level-option">Medium</option>
                                 <option value="spicy" class="spicy-level-option">Spicy</option>
                                 <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
                             </select>
                         </div>
-                        <div class="portion-container">
+                        <div class="portion-container" id="portionid">
                             <!-- Portion -->
                             <label class="portion txt">Portion:</label>
-                            <select id="portion" class="mdl-textfield__input" onchange="updateSelectColor()">
-                                <option value="select" class="spicy-level-option" selected>Select</option>
+                            <select id="portion" class="mdl-textfield__input" required>
+                                <option value="none" class="spicy-level-option" selected>None</option>
                                 <option value="regular" class="spicy-level-option">Regular</option>
                                 <option value="large" class="spicy-level-option">Large</option>
+                            </select>
+                        </div>
+                        <div class="type-container" id="typeid">
+                            <label class="type txt">Type:</label>
+                            <select id="type" class="mdl-textfield__input" required>
+                                <option value="none" class="type-option" selected>None</option>
+                                <option value="Curry" class="type-option">Curry</option>
+                                <option value="Bhuna" class="type-option">Bhuna</option>
+                                <option value="Madras" class="type-option">Madras</option>
+                                <option value="Jalfrezi" class="type-option">Jalfrezi</option>
+                                <option value="Kadai" class="type-option">Kadai</option>
+                                <option value="Tawa" class="type-option">Tawa</option>
+                                <option value="Vandaloo" class="type-option">Vindaloo</option>
+                                <option value="Palak" class="type-option">Palak</option>
+                                <option value="Saag" class="type-option">Saag</option>
+                                <option value="Methi" class="type-option">Methi</option>
                             </select>
                         </div>
                     </div>
@@ -53,7 +69,7 @@
                 </div>
                 
                 <div class="button-container">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitCustomerName()">Submit</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitItem()">Submit</button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeModal()">Cancel</button>
                 </div>
     
@@ -70,11 +86,28 @@
     </div>
 
     <script>
-        
-        function updateSelectColor() {
-            var select = document.getElementById("spicyLevel");
-            var selectedOption = select.options[select.selectedIndex];
-            select.style.backgroundColor = window.getComputedStyle(selectedOption).backgroundColor;
+        function submitItem() {
+            var spicyselect = document.getElementById("spicyLevel");
+            var portionselect = document.getElementById("portion");
+            var typeselect = document.getElementById("type");
+            var spicyerrorMessageLabel = document.getElementById('spicyerrorMessage');
+            var portionerrorMessageLabel = document.getElementById('portionerrorMessage');
+            var typeerrorMessageLabel = document.getElementById('typeerrorMessage');
+            if (typeselect.value == "none") {   
+                typeselect.style.backgroundColor = 'red';             
+            }else{
+                typeselect.style.backgroundColor = '#3b3b3b';
+            }
+            if (spicyselect.value == "none"){
+                spicyselect.style.backgroundColor = 'red';     
+            }else{
+                spicyselect.style.backgroundColor = '#3b3b3b';
+            }
+            if(portionselect.value == "none"){
+                portionselect.style.backgroundColor = 'red';     
+            }else{
+                portionselect.style.backgroundColor = '#3b3b3b';
+            }
         }
         
         function openModal(itemName) {
@@ -86,6 +119,19 @@
 
             if (itemNameLabel) {
                 itemNameLabel.innerHTML = 'Item Name: ' + itemName;
+                console.log(itemName);
+                if(itemName == "Mix Veg£8.00" || itemName == "Paneer£8.00"){
+                    var select = document.getElementById("portionid");
+                    select.style.display = 'none';
+                    var select = document.getElementById("typeid");
+                    select.style.display = 'visible';
+                }
+                else{
+                    var select = document.getElementById("portionid");
+                    select.style.display = 'none';
+                    var select = document.getElementById("typeid");
+                    select.style.display = 'none';
+                }
             } else {
                 console.error('Item name label not found.');
             }
@@ -118,35 +164,9 @@
         var categoryButtonsContainer = document.getElementById("vegstartercontainer");
 
         var items = [
-            "Mix Veg Curry",
-            "Mix Veg Bhuna",
-            "Mix Veg Korma",
-            "Mix Veg Madras",
-            "Mix Veg Jalfrezi",
-            "Mix Veg Kadai",
-            "Mix Veg Tawa",
-            "Mix Veg Vinadaloo",
-            "Mix Veg Palak",
-            "Mix Veg Saag",
-            "Mix Veg Methi",
-            "Paneer Curry",
-            "Paneer Bhuna",
-            "Paneer Korma",
-            "Paneer Madras",
-            "Paneer Jalfrezi",
-            "Paneer Kadai",
-            "Paneer Tawa",
-            "Paneer Vinadaloo",
-            "Paneer Palak",
-            "Paneer Saag",
-            "Paneer Methi",
-            "Paneer Tikka Masala",
-            "Paneer Butter Masala",
-            "Mutter Paneer",
-            "Paneer Shaslik Kadai",
-            "Garlic Chilli Paneer",
             "Egg Curry",
-            "Veg Methi Soya Kheema Tawa",
+            "Mix Veg",
+            "Veg Methi (Soya) Kheema Tawa",
             "Tarka Dal",
             "Dal Makhani",
             "Bombay Aloo",
@@ -154,25 +174,50 @@
             "Sweet Corn Methi",
             "Rajma Curry",
             "Aloo Mutter",
+            "Channa Masala",
             "Aloo Palak",
             "Aloo Methi",
-            "Channa Masala",
             "Sag Aloo",
-            "Vegetable Tikka (Soya)"
+            "Paneer",
+            "Paneer Tikka Masala",
+            "Paneer Butter Masala",
+            "Mutter Paneer",
+            "Paneer Shaslik Kadai",
+            "Garlic Chilli Paneer",
+            "Vegetable Tikka (Soya)",
+            "Egg Burji"
         ];
+        
+        var price = ["£8.00", "£8.00", "£8.00", "£8.00", "£8.00", 
+                    "£8.00", "£8.00", "£8.00", "£8.00", "£8.00", 
+                    "£8.00", "£8.00", "£8.00", "£8.00", "£8.50", 
+                    "£8.50", "£8.50", "£8.50", "£8.50", "£8.50", 
+                    "£9.00", "£9.00"
+                ]
 
-        for (let i = 0; i < items.length; i++) {
+            for (let i = 0; i < items.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
             button.style.width = "12.375rem";
             button.style.height = "7.375rem";
-            button.textContent = items[i];
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name";
+            itemNameDiv.textContent = items[i];
+
+            // Create a div for the price
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price";
+            priceDiv.textContent = price[i];
+
+            // Append the item name and price divs to the button
+            button.appendChild(itemNameDiv);
+            button.appendChild(priceDiv);
 
             // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.onclick = function () {
-                    openModal(items[i]);
+                    openModal(items[i] + price[i]);
                 };
 
             categoryButtonsContainer.appendChild(button);
