@@ -153,5 +153,22 @@
 
 }
 
+/* Custom styles for buttons */
+.act-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 15px 30px; /* Padding for button size */
+    margin: 10px; /* Margin between buttons */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from text */
+    display: inline-block;
+    font-size: 16px; /* Font size of text */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    height: 4rem;
+}
 
-
+/* Hover effect for buttons */
+.act-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

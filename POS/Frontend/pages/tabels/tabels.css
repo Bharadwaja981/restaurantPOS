@@ -6,6 +6,38 @@
     overflow: hidden;
 }
 
+/* Define the style for the scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Set width of the scrollbar */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #010f55;
+}
+
+/* Handle on scrollbar drag */
+::-webkit-scrollbar-thumb:active {
+    background: #0b0c11;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #5a649c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #090a13;
+    border-radius: 10px;
+}
+
+/* Add corner radius to the scrollbar */
+::-webkit-scrollbar-corner {
+    background: #0b0c11;
+    border-radius: 10px;
+}
+
 .main-con {
     display: flex;
     height: 100vh;
@@ -67,11 +99,38 @@
 
 }
 
+.right-top, .tab-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+.void-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from text */
+    font-size: 19px; /* Font size of text */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
+
+/* Hover effect for buttons */
+.void-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* Hover effect for buttons */
+.act-button:active {
+    background-color: #070c19; /* Darker green on hover */
+}
+
 .right-info{
     margin: 5px;
     height: 5vh;
 }
-
 
 .right-tag, .total-tag{
     display: flex;
@@ -105,19 +164,6 @@
     overflow-y: visible;
 }
 
-/* Styling the scrollbar for WebKit browsers (Chrome, Safari, newer Edge) */
-.item-div::-webkit-scrollbar {
-    width: 8px;
-}
-
-.item-div::-webkit-scrollbar-thumb {
-    background-color: #383f61;
-    border-radius: 10px;
-}
-
-.item-div::-webkit-scrollbar-track {
-    background-color: #5a649c;
-}
 
 .item-add {
     display: flex;
@@ -170,6 +216,27 @@
     background-color:#3b5fbb;
     border: 0.1px solid #2b4586;
 
+}
+
+
+/* Custom styles for buttons */
+.act-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 15px 30px; /* Padding for button size */
+    margin: 10px; /* Margin between buttons */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from text */
+    display: inline-block;
+    font-size: 16px; /* Font size of text */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    height: 4rem;
+}
+
+/* Hover effect for buttons */
+.act-button:hover {
+    background-color: #45a049; /* Darker green on hover */
 }
 
 .custom-button {

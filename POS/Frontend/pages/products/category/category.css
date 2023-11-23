@@ -12,6 +12,39 @@
     background-color: #2980b9;
 }
 
+
+/* Define the style for the scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Set width of the scrollbar */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #010f55;
+}
+
+/* Handle on scrollbar drag */
+::-webkit-scrollbar-thumb:active {
+    background: #0b0c11;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #5a649c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 10px;
+}
+
+/* Add corner radius to the scrollbar */
+::-webkit-scrollbar-corner {
+    background: #33374b;
+    border-radius: 10px;
+}
+
 .items, .product-names{
     background-color: #091a4d; 
     padding-bottom: 0px;/* Set your desired background color */

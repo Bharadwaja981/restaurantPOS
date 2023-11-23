@@ -63,8 +63,6 @@
         
         function submitItem() {
             var spicyselect = document.getElementById("spicyLevel");
-            var portionselect = document.getElementById("portion");
-            var typeselect = document.getElementById("type");
             
             if (spicyselect.value == "select"){
                 spicyselect.style.backgroundColor = 'red';     
@@ -75,19 +73,12 @@
         
         function resetSelects() {
             var spicySelect = document.getElementById("spicyLevel");
-            var portionSelect = document.getElementById("portion");
-            var typeSelect = document.getElementById("type");
             var notesTextArea = document.getElementById("notes");
 
             // Reset the background color
             spicySelect.style.backgroundColor = '#3b3b3b';
-            portionSelect.style.backgroundColor = '#3b3b3b';
-            typeSelect.style.backgroundColor = '#3b3b3b';
-
             // Reset the selected options
             spicySelect.selectedIndex = 0;
-            portionSelect.selectedIndex = 0;
-            typeSelect.selectedIndex = 0;
             notesTextArea.value = '';
             quantityValue = 1;
             updateQuantityDisplay();
