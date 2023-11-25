@@ -40,15 +40,15 @@
                     <h1 class="name-text">unit Price</h1>
                     <h1 class="name-text">Price</h1>
                 </div>
-                <div class="item-div">
-                    <div id="item-add" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
+                <div class="item-div" id="item-div">
+                    <!-- <div id="item-add" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
                         <div class="i-t">
                             <h1 class="i-txt" id="item-name">Lamb kheema chicken tikka tawa lamb kheema chicken tikka tawa</h1>
                         </div>
                         <label class="i-text" id="qty">01</label>
                         <label class="i-text" id="unit-price">£11.00</label>
                         <label class="i-text" id="price">£11.00</label>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="total-tag">
                     <h1 class="total-text">Total Items</h1>
@@ -164,6 +164,8 @@
 
     <!-- Your main script -->
     <script>
+
+
         // Add event listeners to buttons for ripple effect
         const rippleButtons = document.querySelectorAll('.tab-existing-order-list-btn');
         rippleButtons.forEach(button => {
@@ -313,18 +315,18 @@
                     if (selectedButton) {
                         selectedButton.style.backgroundColor = 'red';
                     }
-
+                    window.location.href = '../products/category/cat.html';
                     // Create an iframe element
-                    var iframe = document.createElement("iframe");
-                    iframe.src = '../products/category/category.html';
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.border = 'none';
+                    // var iframe = document.createElement("iframe");
+                    // iframe.src = '../products/category/category.html';
+                    // iframe.style.width = '100%';
+                    // iframe.style.height = '100%';
+                    // iframe.style.border = 'none';
 
-                    // Replace the left-content with the iframe
-                    var leftContentContainer = document.getElementById("leftContentContainer");
-                    leftContentContainer.innerHTML = ''; // Clear previous content
-                    leftContentContainer.appendChild(iframe);
+                    // // Replace the left-content with the iframe
+                    // var leftContentContainer = document.getElementById("leftContentContainer");
+                    // leftContentContainer.innerHTML = ''; // Clear previous content
+                    // leftContentContainer.appendChild(iframe);
                 } else {
                     alert('Invalid customer name for table reservation.');
                 }

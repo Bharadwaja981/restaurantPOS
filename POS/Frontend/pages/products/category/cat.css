@@ -1,17 +1,4 @@
 
-.custom-button {
-    /* Custom button color */
-    background-color: #EB6440;
-    color: #ffffff;
-    border-radius: 0ps;
-    /* Custom hover effect */
-    transition: background-color 0.3s ease;
-}
-
-.custom-button.mdl-button--raised.mdl-js-ripple-effect:hover {
-    background-color: #2980b9;
-}
-
 /* Define the style for the scrollbar */
 ::-webkit-scrollbar {
     width: 8px; /* Set width of the scrollbar */
@@ -29,7 +16,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #5a649c;
+    background: transparent;
 }
 
 /* Handle */
@@ -44,6 +31,25 @@
     border-radius: 10px;
 }
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: visible;
+    text-transform: none;
+}
+
+.mdl-button{
+    text-transform: none !important;
+}
+.main-con {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+
+
+}
 
 .top-header {
     height: 5vh;
@@ -52,21 +58,67 @@
 
 }
 
+.bottom-con {
+    display: flex;
+    height: 100%;
+}
+
 
 .left-content {
     background-color: #070c19;
     border: 0.1px solid rgb(56, 56, 56);
     width: 80vw;
     overflow: auto;
-    gap: 4.5rem;
     display: flex;
     flex-wrap: wrap;
 
 }
 
+.product-names{
+    height: 54vh;
+    width: 100%;
+}
+
+.orange-bar {
+    background-color: orange;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orange-text {
+    color: #000000; /* Set the text color to white or another contrasting color */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.orange-button {
+    background-color: #070d20;
+    color: white; /* Set the button text color to white or another contrasting color */
+    font-size: 20px; /* Set the desired font size */
+}
+
+.category-names{
+    height: 30vh;
+    overflow: scroll;
+}
+
+.custom-button{
+    background-color: #eb6240;
+    color: #ffffff;
+    border-radius: 0ps;
+    /* Custom hover effect */
+    transition: background-color 0.3s ease;
+}
+
+.custom-button.mdl-button--raised.mdl-js-ripple-effect:hover {
+    background-color: #5340bb;
+}
 
 .right-content {
-    width: 20vw;
+    width: 25vw;
     background-color: #7b86c3;
     border: 0.1px solid rgb(56, 56, 56);
     overflow: auto;
@@ -120,40 +172,75 @@
     text-align: flex;   
 }
 
-.name-text,.total-text{
-    font-size: 1.2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #ffffff;
-    margin-right: 15px;
-    margin-left: 15px;
+.total-text{
+    
+    width: 100px;
 }
 
 .i-t{
-    width: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+}
+.name-item{
+    width: 60%;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+.iname-item{
+    width: 60%;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    text-align: left;
+    height: 70px;
+    overflow: hidden;
+
+
+}
+.name-text{
+    width: 60px;
+}
+
+.name-space{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-content: center;
+}
+
+.add-item{
+    overflow: auto;
 }
 
 .item-div{
     height: 70vh;
     background-color: #5a649c;
     margin: 0px;
-    overflow-y: visible;
+    overflow-y: auto;
 }
 
 
 .item-add {
     display: flex;
     justify-content: space-between;
-    align-items: space-between;
     background-color: #95a4f7;
     border: 0.1px solid #070c19;
     width: 100%;
-    height: 55px;
     cursor: pointer;
     padding: 10px;
     margin-bottom: 5px;
     border: none;
     border-radius: 5px;
-    text-align: flex;
+    min-height: 70px;
+    max-height: 70px;
 }
 
 
@@ -214,43 +301,28 @@
     background-color: #45a049; /* Darker green on hover */
 }
 
+.custom-button {
+    background-color: rgb(121, 72, 21); /* Default background color */
+    color: #fff; /* Default text color */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
 
+/* Change color on hover */
+.custom-button:hover {
+    background-color: #7F167F; /* Change this to the desired hover color */
+}
 
-.category {
+.items{
+    height: 100vh;
     padding-bottom: 0px;
-    padding-top: 5px;
-    padding-left: 5px;/* Set your desired background color */
+    margin-bottom: 0px;
 }
 
-.orange-bar {
-    background-color: orange;
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cont-bar{
-    background-color: orange;
-    display: flex;
-    padding: 2px;
-    justify-content: space-between;
-    align-items: center;
+.item-container{
+    background-color:#091a4d;
 }
 
 
-.orange-text {
-    color: #000000; /* Set the text color to white or another contrasting color */
-    font-size: 25px;
-    font-weight: bold;
-    padding-left: 0px;
-}
-
-.orange-button {
-    background-color: #070d20;
-    color: white; /* Set the button text color to white or another contrasting color */
-    font-size: 24px; /* Set the desired font size */
-}
 .modal {
     display: none;
     position: fixed;
