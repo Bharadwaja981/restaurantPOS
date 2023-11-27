@@ -79,7 +79,6 @@
         
         function submitItem() {
             var spicyselect = document.getElementById("spicyLevel");
-            var portionselect = document.getElementById("portion");
             var typeselect = document.getElementById("type");
             
             if (typeselect.value == "select") {   
@@ -92,6 +91,25 @@
             }else{
                 spicyselect.style.backgroundColor = '#3b3b3b';
             }
+            var itemName = document.querySelector('.item-name').textContent;
+            var quantity = document.getElementById('quantityValue').textContent;
+            var price = document.querySelector('.item-price').textContent;
+
+            // Calculate total price
+            var totalPrice ='£' + (parseFloat(price.replace('£', '')) * parseInt(quantity)).toFixed(2);
+
+            var data = {
+                itemName: itemName,
+                quantity: quantity,
+                price: price,
+                totalPrice: totalPrice
+            };
+
+            // Send a message to the parent window
+            window.parent.postMessage(data, '*');
+
+            // Close the modal
+            closeModal();
         }
         
         function resetSelects() {
@@ -122,10 +140,10 @@
 
             var itemNameDiv = document.createElement("div");
             itemNameDiv.className = "item-name cname txt";
-            itemNameDiv.textContent = "Item Name: " + itemName.trim();
+            itemNameDiv.textContent = itemName.trim();
             var priceDiv = document.createElement("div");
             priceDiv.className = "item-price cname";
-            priceDiv.textContent = "Price: £" + itemPrice.trim(); 
+            priceDiv.textContent = itemPrice.trim(); 
 
             itemDetailsContainer.appendChild(itemNameDiv);
             itemDetailsContainer.appendChild(priceDiv);

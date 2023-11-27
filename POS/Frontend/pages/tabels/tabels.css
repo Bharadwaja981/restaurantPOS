@@ -63,7 +63,7 @@
 .left-content {
     background-color: #070c19;
     border: 0.1px solid rgb(56, 56, 56);
-    width: 80vw;
+    width: 100%;
     overflow: auto;
     gap: 4.5rem;
     display: flex;
@@ -90,20 +90,6 @@
 
 
 
-.right-content {
-    width: 20vw;
-    background-color: #7b86c3;
-    border: 0.1px solid rgb(56, 56, 56);
-    overflow: auto;
-    flex-wrap: wrap;
-
-}
-
-.right-top, .tab-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-}
 
 .void-button {
     background-color: #4CAF50; /* Green background color */
@@ -127,117 +113,6 @@
     background-color: #070c19; /* Darker green on hover */
 }
 
-.right-info{
-    margin: 5px;
-    height: 5vh;
-}
-
-.right-tag, .total-tag{
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    background-color: #313864;
-    border: 0.1px solid #070c19;
-    width: 100%;
-    height: 40px;
-    padding-top: 10px;
-    border: none;
-    text-align: flex;   
-}
-
-.name-text,.total-text{
-    font-size: 1.2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #ffffff;
-    margin-right: 15px;
-    margin-left: 15px;
-}
-
-.i-t{
-    width: 200px;
-}
-
-.item-div{
-    height: 70vh;
-    background-color: #5a649c;
-    margin: 0px;
-    overflow-y: visible;
-}
-
-
-.item-add {
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    background-color: #95a4f7;
-    border: 0.1px solid #070c19;
-    width: 100%;
-    height: 55px;
-    cursor: pointer;
-    padding: 10px;
-    margin-bottom: 5px;
-    border: none;
-    border-radius: 5px;
-    text-align: flex;
-}
-
-
-.order-text{
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #070c19;
-}
-
-
-
-.i-text{
-    font-size: 15px;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #070c19;
-    margin-right: 15px;
-}
-
-.i-txt{
-    font-size: 15px;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: #070c19;
-    overflow: wrap;
-    text-align: left;
-}
-
-.right-bottom-buttons {
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    height: 10vh;
-    background-color:#3b5fbb;
-    border: 0.1px solid #2b4586;
-
-}
-
-
-/* Custom styles for buttons */
-.act-button {
-    background-color: #4CAF50; /* Green background color */
-    color: white; /* White text color */
-    padding: 15px 30px; /* Padding for button size */
-    margin: 10px; /* Margin between buttons */
-    text-align: center; /* Center text */
-    text-decoration: none; /* Remove underline from text */
-    display: inline-block;
-    font-size: 16px; /* Font size of text */
-    cursor: pointer; /* Add cursor pointer on hover */
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    height: 4rem;
-}
-
-/* Hover effect for buttons */
-.act-button:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
 
 .custom-button {
     background-color: #8a9dad; /* Default background color */
@@ -256,7 +131,7 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: auto;cd   
     background-color: rgba(3, 3, 3, 0.623);
     justify-content: flex-start; /* Align content at the top */
     padding-top: 5px; /* Add padding at the top */

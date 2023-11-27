@@ -12,7 +12,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="cat.css">
-
 </head>
 <body>
     <div class="main-con">
@@ -47,7 +46,8 @@
             </div>
             <div class="right-content">
                 <div class="right-info" id="selectedTableInfo">
-
+                     <div class="name-text">Name: </div>
+                     <div class="name-text">Table: </div>
                 </div>
                 <div class="right-tag">
                     <div class="i-t">
@@ -60,14 +60,14 @@
                     </div>
                 </div>
                 <div class="item-div" id="item-div">
-                    <div id="item-add i-t" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
+                    <!-- <div id="item-add i-t" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
                         <div class="iname-item" id="item-name">Lamb kheema chicken tikka tawa lamb kheema chicken tikka tawa</div>
                         <div class="name-space">
                             <div class="name-text" id="qty">01</div>
                             <div class="name-text" id="unit-price">£11.00</div>
                             <div class="name-text" id="price">£11.00</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="total-tag">
                     <div class="i-t">
@@ -75,7 +75,7 @@
                         <div class="name-space">
                             <div class="total-text">000</div>
                             <div class="total-text">Total Price</div>
-                            <div class="total-text">£111.000</div>
+                            <div class="total-text">£111.00</div>
                         </div>
                     </div>
                 </div>
@@ -95,6 +95,70 @@
         </div>
     </div>
     <script>
+
+        window.addEventListener('message', function (event) {
+            // Check the origin of the message to ensure it's from the same origin
+            if (event.origin === window.location.origin) {
+                // Access the data sent from vegstartercategory.html
+                var data = event.data;
+                
+            // Perform actions with the received data, such as creating new divs in item-div
+                createNewDiv(data);
+            }
+        });
+
+        // Function to create a new div inside item-div
+        function createNewDiv(data) {
+            // Check if the data is defined
+            if (data && data.itemName && data.quantity && data.price && data.totalPrice) {
+                var itemDivContainer = document.getElementById('item-div');
+
+                // Create a new item div
+                var newItemDiv = document.createElement('div');
+                newItemDiv.className = 'item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect';
+                newItemDiv.id = 'item-add i-t';
+
+                // Create div for item name
+                var itemNameDiv = document.createElement('div');
+                itemNameDiv.className = 'iname-item';
+                itemNameDiv.textContent = data.itemName;
+
+                // Create div for name-space (quantity, unit-price, price)
+                var nameSpaceDiv = document.createElement('div');
+                nameSpaceDiv.className = 'name-space';
+
+                // Create div for quantity
+                var quantityDiv = document.createElement('div');
+                quantityDiv.className = 'name-text';
+                quantityDiv.id = 'qty';
+                quantityDiv.textContent = data.quantity;
+
+                // Create div for unit price
+                var unitPriceDiv = document.createElement('div');
+                unitPriceDiv.className = 'name-text';
+                unitPriceDiv.id = 'unit-price';
+                unitPriceDiv.textContent = data.price;
+
+                // Create div for total price
+                var totalPriceDiv = document.createElement('div');
+                totalPriceDiv.className = 'name-text';
+                totalPriceDiv.id = 'price';
+                totalPriceDiv.textContent = data.totalPrice;
+
+                // Append quantity, unit-price, and price to name-space div
+                nameSpaceDiv.appendChild(quantityDiv);
+                nameSpaceDiv.appendChild(unitPriceDiv);
+                nameSpaceDiv.appendChild(totalPriceDiv);
+
+                // Append item name and name-space to the new item div
+                newItemDiv.appendChild(itemNameDiv);
+                newItemDiv.appendChild(nameSpaceDiv);
+
+                // Append the new item div to the existing content (item-div)
+                itemDivContainer.appendChild(newItemDiv);
+            } 
+        }
+       
         // Create buttons using the DOM API
         var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
 
@@ -121,9 +185,9 @@
                              "../items/nonvegstartercategory.html",
                              "../items/seafoodstartercategory.html",
                              "../items/vegetablemaincategory.html",
-                             "../items/chickenmaincategory.html",
-                             "../items/lambmaincategory copy.html",
                              "../items/seafoodmainscategory.html",
+                             "../items/chickenmaincategory.html",
+                             "../items/lambmaincategory.html",
                              "../items/chefsspecialcategory.html",
                              "../items/classicdishescategory.html",
                              "../items/ricecategory.html",
@@ -148,8 +212,10 @@
             document.body.appendChild(modal);
 
             // Display the modal
-            modal.style.display = 'block';
+            modal.style.display = 'Hidden';
         }
+
+        var modal = createModal();  
 
         function createModal() {
             var modal = document.createElement('div');
@@ -161,13 +227,12 @@
             return modal;
         }
 
-        var cattxt = document.getElementById("cattxt");
 
         for (let i = 0; i < categories.length; i++) {
             var button = document.createElement("button");
             button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mb-1 custom-button";
-            button.style.width = "12.00rem";
-            button.style.height = "7.00rem";
+            button.style.width = "10.00rem";
+            button.style.height = "5.00rem";
             button.textContent = categories[i];
 
             // Manually control the spacing between buttons
@@ -179,7 +244,6 @@
             categoryButtonsContainer.appendChild(button);
             button.onclick = function () {
                 openCategoryPage(i);
-                cattxt.textContent = categories[i]
             };
         }
     </script>

@@ -28,46 +28,7 @@
             <div class="left-content" id="leftContentContainer">
                 <!-- Iframe will be dynamically added here -->
             </div>
-            <div class="right-content">
-                <div class="right-info" id="selectedTableInfo">
-
-                </div>
-                <div class="right-tag">
-                    <div class="i-t">
-                        <h1 class="name-text">Item</h1>
-                    </div>
-                    <h1 class="name-text">Qty</h1>
-                    <h1 class="name-text">unit Price</h1>
-                    <h1 class="name-text">Price</h1>
-                </div>
-                <div class="item-div" id="item-div">
-                    <!-- <div id="item-add" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
-                        <div class="i-t">
-                            <h1 class="i-txt" id="item-name">Lamb kheema chicken tikka tawa lamb kheema chicken tikka tawa</h1>
-                        </div>
-                        <label class="i-text" id="qty">01</label>
-                        <label class="i-text" id="unit-price">£11.00</label>
-                        <label class="i-text" id="price">£11.00</label>
-                    </div> -->
-                </div>
-                <div class="total-tag">
-                    <h1 class="total-text">Total Items</h1>
-                    <h1 class="total-text">000</h1>
-                    <h1 class="total-text">Total Price :</h1>
-                    <h1 class="total-text">£000.00</h1>
-                </div>
-                <div class="action-buttons">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleHold()">
-                        Hold
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handlePay()">
-                        Pay
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleClear()">
-                        Clear
-                    </button>
-                </div>
-            </div>
+           
         </div>
     </div>
 
@@ -304,10 +265,10 @@
                 // Validate and assign the table based on the entered customer name
                 if (customerName === currentCustomerName) {
                     // Table allocation logic...
-                    var selectedTableInfo = document.getElementById("selectedTableInfo");
-                    selectedTableInfo.innerHTML = '<div class="tab-div"><h1 class="i-text"><b>Table : ' + selectedTable + '</h1><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect void-button"> Void </br></button></div>'
-                        +'<h1 class="i-text">Customer Name: ' + currentCustomerName + '</h1>';
-                    componentHandler.upgradeDom();
+                    // var selectedTableInfo = document.getElementById("selectedTableInfo");
+                    // selectedTableInfo.innerHTML = '<div class="tab-div"><h1 class="i-text"><b>Table : ' + selectedTable + '</h1><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect void-button"> Void </br></button></div>'
+                    //     +'<h1 class="i-text">Customer Name: ' + currentCustomerName + '</h1>';
+                    // componentHandler.upgradeDom();
                     create_order();
 
                     // Change the color of the selected table button to red
@@ -316,6 +277,7 @@
                         selectedButton.style.backgroundColor = 'red';
                     }
                     window.location.href = '../products/category/cat.html';
+                    
                     // Create an iframe element
                     // var iframe = document.createElement("iframe");
                     // iframe.src = '../products/category/category.html';

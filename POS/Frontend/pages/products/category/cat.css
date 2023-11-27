@@ -2,6 +2,7 @@
 /* Define the style for the scrollbar */
 ::-webkit-scrollbar {
     width: 8px; /* Set width of the scrollbar */
+    height: 8px; /* Set height of the scrollbar */
 }
 
 /* Handle on hover */
@@ -178,7 +179,7 @@
 }
 
 .i-t{
-    width: 100%;
+    width: 96%;
     display: flex;
     justify-content: space-between;
     font-size: 14px;
