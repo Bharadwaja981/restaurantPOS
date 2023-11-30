@@ -238,6 +238,7 @@
                 employeename: 'Employee1',
                 status: 'Open'
             };
+            window.parent.postMessage(data, '*');
             fetch('http://127.0.0.1:5000/create_order', {
                 method: 'POST',
                 headers: {
@@ -268,27 +269,12 @@
                     // var selectedTableInfo = document.getElementById("selectedTableInfo");
                     // selectedTableInfo.innerHTML = '<div class="tab-div"><h1 class="i-text"><b>Table : ' + selectedTable + '</h1><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect void-button"> Void </br></button></div>'
                     //     +'<h1 class="i-text">Customer Name: ' + currentCustomerName + '</h1>';
-                    // componentHandler.upgradeDom();
-                    create_order();
-
-                    // Change the color of the selected table button to red
                     var selectedButton = document.getElementById("button" + tableNumber);
                     if (selectedButton) {
                         selectedButton.style.backgroundColor = 'red';
                     }
-                    window.location.href = '../products/category/cat.html';
-                    
-                    // Create an iframe element
-                    // var iframe = document.createElement("iframe");
-                    // iframe.src = '../products/category/category.html';
-                    // iframe.style.width = '100%';
-                    // iframe.style.height = '100%';
-                    // iframe.style.border = 'none';
 
-                    // // Replace the left-content with the iframe
-                    // var leftContentContainer = document.getElementById("leftContentContainer");
-                    // leftContentContainer.innerHTML = ''; // Clear previous content
-                    // leftContentContainer.appendChild(iframe);
+                    window.location.href = '../products/category/cat.html';
                 } else {
                     alert('Invalid customer name for table reservation.');
                 }

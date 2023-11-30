@@ -203,9 +203,8 @@
     text-align: left;
     height: 70px;
     overflow: hidden;
-
-
 }
+
 .name-text{
     width: 60px;
 }
@@ -302,16 +301,6 @@
     background-color: #45a049; /* Darker green on hover */
 }
 
-.custom-button {
-    background-color: rgb(121, 72, 21); /* Default background color */
-    color: #fff; /* Default text color */
-    transition: background-color 0.3s ease; /* Add a smooth transition effect */
-}
-
-/* Change color on hover */
-.custom-button:hover {
-    background-color: #7F167F; /* Change this to the desired hover color */
-}
 
 .items{
     height: 100vh;
@@ -322,7 +311,6 @@
 .item-container{
     background-color:#091a4d;
 }
-
 
 .modal {
     display: none;

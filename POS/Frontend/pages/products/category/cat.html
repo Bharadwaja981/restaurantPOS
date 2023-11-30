@@ -1,15 +1,15 @@
-<!-- table.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resizable Rectangle Example</title>
-    <!-- Google Material Icons CSS -->
+   
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Google Material Design Lite CSS -->
+   
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <!-- Bootstrap CSS -->
+  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="cat.css">
 </head>
@@ -19,7 +19,6 @@
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
                 <span class="material-icons">arrow_back</span> Back
             </a>
-            <!-- Content for top header -->
         </div>
         <div class="bottom-con">
             <div class="left-content" >
@@ -73,9 +72,9 @@
                     <div class="i-t">
                         <div class="iname-item">Total items</div>
                         <div class="name-space">
-                            <div class="total-text">000</div>
+                            <div class="total-text" id="totalItems">000</div>
                             <div class="total-text">Total Price</div>
-                            <div class="total-text">£111.00</div>
+                            <div class="total-text" id="totalprice">£00.00</div>
                         </div>
                     </div>
                 </div>
@@ -94,72 +93,70 @@
             </div>
         </div>
     </div>
-    <script>
+    <script>        
 
         window.addEventListener('message', function (event) {
-            // Check the origin of the message to ensure it's from the same origin
             if (event.origin === window.location.origin) {
-                // Access the data sent from vegstartercategory.html
                 var data = event.data;
                 
-            // Perform actions with the received data, such as creating new divs in item-div
                 createNewDiv(data);
             }
         });
 
-        // Function to create a new div inside item-div
         function createNewDiv(data) {
-            // Check if the data is defined
             if (data && data.itemName && data.quantity && data.price && data.totalPrice) {
                 var itemDivContainer = document.getElementById('item-div');
 
-                // Create a new item div
                 var newItemDiv = document.createElement('div');
                 newItemDiv.className = 'item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect';
                 newItemDiv.id = 'item-add i-t';
 
-                // Create div for item name
                 var itemNameDiv = document.createElement('div');
                 itemNameDiv.className = 'iname-item';
                 itemNameDiv.textContent = data.itemName;
 
-                // Create div for name-space (quantity, unit-price, price)
                 var nameSpaceDiv = document.createElement('div');
                 nameSpaceDiv.className = 'name-space';
 
-                // Create div for quantity
                 var quantityDiv = document.createElement('div');
                 quantityDiv.className = 'name-text';
                 quantityDiv.id = 'qty';
                 quantityDiv.textContent = data.quantity;
 
-                // Create div for unit price
                 var unitPriceDiv = document.createElement('div');
                 unitPriceDiv.className = 'name-text';
                 unitPriceDiv.id = 'unit-price';
                 unitPriceDiv.textContent = data.price;
 
-                // Create div for total price
                 var totalPriceDiv = document.createElement('div');
                 totalPriceDiv.className = 'name-text';
                 totalPriceDiv.id = 'price';
                 totalPriceDiv.textContent = data.totalPrice;
 
-                // Append quantity, unit-price, and price to name-space div
                 nameSpaceDiv.appendChild(quantityDiv);
                 nameSpaceDiv.appendChild(unitPriceDiv);
                 nameSpaceDiv.appendChild(totalPriceDiv);
 
-                // Append item name and name-space to the new item div
                 newItemDiv.appendChild(itemNameDiv);
                 newItemDiv.appendChild(nameSpaceDiv);
 
-                // Append the new item div to the existing content (item-div)
                 itemDivContainer.appendChild(newItemDiv);
+
+                var totalItemsDiv = document.getElementById('totalItems');
+                totalItemsDiv.textContent = itemDivContainer.children.length;
+
+                var priceDiv = document.getElementById('totalprice');
+                var totalItemsPrice = Array.from(itemDivContainer.children).reduce(function (total, item) {
+
+                    var itemPrice = parseFloat(item.querySelector('.name-text#price').textContent.replace('£', ''));
+                    return total + itemPrice;
+                }, 0);
+
+                priceDiv.textContent = '£' + totalItemsPrice.toFixed(2);
+            
             } 
         }
        
-        // Create buttons using the DOM API
         var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
 
         var categories = [
@@ -205,13 +202,11 @@
             iframe.style.height = "100%";
             iframe.style.border = 'none';
 
-            // Replace the left-content with the iframe
             var leftContentContainer = document.getElementById("product-names");
-            leftContentContainer.innerHTML = ''; // Clear previous content
+
             leftContentContainer.appendChild(iframe);
             document.body.appendChild(modal);
 
-            // Display the modal
             modal.style.display = 'Hidden';
         }
 
@@ -219,11 +214,9 @@
 
         function createModal() {
             var modal = document.createElement('div');
-            modal.id = 'itemModal'; // Replace with the actual ID of your modal element
+
             modal.className = 'modal';
             
-            // Your modal content and styling go here
-
             return modal;
         }
 
@@ -235,7 +228,6 @@
             button.style.height = "5.00rem";
             button.textContent = categories[i];
 
-            // Manually control the spacing between buttons
             button.style.marginRight = "10px";
             button.style.marginBottom = "10px";
             button.style.marginTop = "10px";
@@ -248,9 +240,8 @@
         }
     </script>
 
-    <!-- Google Material Design Lite JS -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <!-- Bootstrap JS (optional) -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
