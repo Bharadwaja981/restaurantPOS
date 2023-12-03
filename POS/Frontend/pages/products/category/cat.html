@@ -72,9 +72,9 @@
                     <div class="i-t">
                         <div class="iname-item">Total items</div>
                         <div class="name-space">
-                            <div class="total-text" id="totalItems">000</div>
+                            <div class="total-text" id="totalItems"></div>
                             <div class="total-text">Total Price</div>
-                            <div class="total-text" id="totalprice">£00.00</div>
+                            <div class="total-text" id="totalprice"></div>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         Pay
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleClear()">
-                        Clear
+                        Clear Items
                     </button>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 var itemDivContainer = document.getElementById('item-div');
 
                 var newItemDiv = document.createElement('div');
-                newItemDiv.className = 'item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect';
+                newItemDiv.className = 'item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button';
                 newItemDiv.id = 'item-add i-t';
 
                 var itemNameDiv = document.createElement('div');
@@ -220,10 +220,28 @@
             return modal;
         }
 
+        function handleClear(){
+            var itemDiv = document.getElementById('item-div');
+            itemDiv.innerHTML = '';
+            var priceDiv = document.getElementById('totalprice');
+            priceDiv.innerHTML = '';
+            var totalItemsDiv = document.getElementById('totalItems');
+            totalItemsDiv.innerHTML = '';
+        }
+
+        function handlePay(){
+            var check = document.getElementById('item-div');
+            if (check.children.length != 0){
+                window.location.href = '../../pay/pay.html';
+            }
+            else{
+                alert('Please add items to cart');
+            }
+        }
 
         for (let i = 0; i < categories.length; i++) {
             var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mb-1 custom-button";
+            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-lg mb-1 custom-button";
             button.style.width = "10.00rem";
             button.style.height = "5.00rem";
             button.textContent = categories[i];
