@@ -53,7 +53,13 @@
     height: 5vh;
     background-color: #1e8729;
     border: 0.2px solid rgb(56, 56, 56);
+    display: flex;
+    justify-content: space-between;
 
+}
+
+.cartBtn{
+    display: none;
 }
 
 .left-content {
@@ -79,7 +85,7 @@
 
 .payInfo{
     width: 100%;
-    height: 10vh;
+    height: 12vh;
     overflow: auto;
     background-color:#bfc4df;
 }
@@ -89,6 +95,7 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: x-large;
+    font-weight: bold;
     margin-left: 15px;
     margin-right: 15px;
 }
@@ -97,7 +104,58 @@
     width: 100%;
     height: 60vh;
     overflow: auto;
-    background-color:#2d3147;
+    background-color:rgb(75, 99, 119);
+}
+
+.orderAmount{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+
+.totalAmount{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.enterAmount{
+    width: 60%;
+    font-size: 30px;
+
+}
+
+.divider{
+    height: 3px;
+    width: 100%;
+    background-color:#000000;
+}
+
+.pad{
+    background-color:#070c19;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    margin: 5px;
+    width: 500px;
+    height: 450px;
+}
+
+.row1{
+    display: flex;
+    margin: 15px;
+    justify-content: space-between;
+}
+
+.number{
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    width: 50px;
+    height: 50px;
+    background-color:#1e8729
 }
 
 .payBtn{
@@ -124,3 +182,41 @@
 .right-info{
     margin-top: 5px;
 }
+
+@media only screen and (max-width: 800px) {
+    
+    .cartBtn{
+        display: block;
+    }
+
+    .orderDetails{
+        display: flex;
+        flex-direction: column;
+        justify-content: safe;
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: .15px;
+        margin-right: 15px;
+    }
+
+    .orderAmount{
+        display: flex;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+
+    .pad{
+        background-color:#070c19;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: stretch;
+        justify-content: space-evenly;
+        width: 449px;
+        height: 390px;
+    }
+
+    .right-content{
+        display: none;
+    }
+  }
