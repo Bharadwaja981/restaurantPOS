@@ -1,0 +1,40 @@
+<!-- printable.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Order</title>
+    <link rel="stylesheet" href="../print/printable.css">
+</head>
+<body>
+    <h1>Reciept</h1>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div id="orderDetails"></div>
+
+    <script>
+        // Function to set order details from pay.html
+        function setOrderDetails(orderDetails) {
+            console.log('orderDetails', orderDetails);
+
+            // Display order details on the printable page
+            var orderDetailsDiv = document.getElementById('orderDetails');
+            orderDetailsDiv.innerHTML = `
+                <p>Order Number: ${orderDetails.orderNumber}</p>
+                <p>Customer Name: ${orderDetails.customerName}</p>
+                <p>Order Type: ${orderDetails.dineIn}</p>
+                <p>Table Number: ${orderDetails.tableNumber}</p>
+                <p>Total Amount: £ ${orderDetails.totalAmount}</p>
+            `;
+
+            // Print the page when loaded
+            window.print();
+            window.onafterprint = function () {
+                // Close the window after printing (optional)
+                window.close();
+            };
+        }
+    </script>
+</body>
+</html>

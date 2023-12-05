@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 80mm !important;
+    background-color: burlywood;
+}
+
+h1 {
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+}
+
+#orderDetails {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.line{
+    height: 2px;
+    width: 100%;
+    background-color:#333;
+}
+
+p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+@media print {
+    body {
+        font-family: Arial, sans-serif;
+        width: 80mm !important;
+        background-color: burlywood;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    .line{
+        height: 2px;
+        width: 100%;
+        background-color:#333;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
