@@ -37,7 +37,6 @@
     margin: 0;
     box-sizing: border-box;
     overflow: hidden;
-    text-transform: none;
 }
 
 .main-con {
@@ -87,7 +86,7 @@
     width: 100%;
     height: 12vh;
     overflow: auto;
-    background-color:#bfc4df;
+    background-color:rgb(75, 99, 119);
 }
 
 .orderDetails{
@@ -98,16 +97,18 @@
     font-weight: bold;
     margin-left: 15px;
     margin-right: 15px;
+    color: #000000
 }
 
 .numPad{
     width: 100%;
     height: 60vh;
     overflow: auto;
-    background-color:rgb(75, 99, 119);
+    background-color:#010f55;
 }
 
 .orderAmount{
+    background-color:rgb(75, 99, 119);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -117,12 +118,20 @@
 .totalAmount{
     font-size: 40px;
     font-weight: bold;
+    color: #000000
+}
+
+.discountAmount{
+    font-size: 40px;
+    font-weight: bold;
+    color : #83759d;
 }
 
 .enterAmount{
     width: 60%;
     font-size: 30px;
-
+    background-color:#89abc7;
+    border: 1px solid #610d0d;
 }
 
 .divider{
@@ -131,16 +140,20 @@
     background-color:#000000;
 }
 
-.pad{
-    background-color:#070c19;
+.btnpad{
+    background-color:#010f55;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: stretch;
-    justify-content: space-evenly;
+    flex-direction: row;
+    
+}
+
+.pad{
+    display: flex;
     margin: 5px;
-    width: 500px;
-    height: 450px;
+    width: 678px;
+    height: 481px;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .row1{
@@ -149,20 +162,96 @@
     justify-content: space-between;
 }
 
+.row2{
+    display: flex;
+    margin: 15px;
+    justify-content: space-between;
+}
+
+.disc{
+    width: 60%;
+    font-size: 30px;    
+}
+
 .number{
+    text-transform: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: x-large;
-    width: 50px;
-    height: 50px;
-    background-color:#1e8729
+    width: 160px;
+    height: 129px;
+    background-color:#7d8d6f;
+    border: 1px solid #610d0d;
 }
 
-.payBtn{
+.number:active{
+    background-color:#b62b2b;    
+}
+
+.extraBtns{
+    display: flex;
+    margin: 5px;
+    width: 678px;
+    height: 481px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.extraBtn{
+    text-transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    width: 260px;
+    height: 88px;
+    background-color:#7d8d6f;
+    border: 1px solid #610d0d;
+}
+
+.extraBtn:hover{
+    background-color:#8e38c0;
+}
+.extraDiv{
+    display: flex;
+    margin: 5px;
+    width: 290px;
+    height: 481px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payBtnDiv{
     width: 100%;
     height: 22vh;
     overflow: auto;
-    background-color:#a4acd8;
+}
+
+.payBtns{
+    background-color:#010f55;
+    display: flex;
+    height: 202px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.payBtn{
+    text-transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    width: 260px;
+    height: 129px;
+    background-color:#8d6f78;
+    border: 2px solid #610d0d;
+}
+
+.payBtn:hover{
+    background-color:#8e38c0;
 }
 
 .bottom-con {
@@ -205,15 +294,230 @@
         margin-left: 15px;
     }
 
+        
+    .totalAmount{
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .discountAmount{
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .numPad{
+        width: 100%;
+        height: 61vh;
+        overflow: auto;
+    }
+
+    .btnpad{
+        display: flex;
+
+    }
+
     .pad{
-        background-color:#070c19;
+        display: flex;
+        margin: 5px;
+        width: 450px;
+        height: 445px;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .row1{
+        display: flex;
+        margin: 15px;
+        justify-content: space-between;
+    }
+
+    .number{
+        display: flex;
+        justify-content: center;
+        font-size: large;
+        width: 100px;
+        height: 100px;
+        background-color: #1e8729;
+        flex-wrap: wrap;
+        text-transform: none;    
+    }
+
+    .extraBtns{
+        display: flex;
+        margin: 5px;
+        width: 297px;
+        height: 445px;
+        flex-direction: column;
+        justify-content: space-evenly;;
+    }
+
+    .extraBtn{
+        display: flex;
+        justify-content: center;
+        font-size: large;
+        width: 85px;
+        height: 100px;
+        flex-wrap: wrap;
+        text-transform: none;
+        background-color:#125219
+    }
+
+    .extraDiv{
+        display: none;
+    }
+   
+    .payBtns{
+        display: flex;
+        height: 200px;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-wrap: nowrap;
+    }
+    .payBtn{
+        text-transform: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-large;
+        width: 100px;
+        height: 100px;
+        background-color:#c06e38
+    }
+
+    .right-content{
+        display: none;
+    }
+  }
+
+  @media only screen and (max-width: 430px) {
+    
+    .cartBtn{
+        display: block;
+    }
+
+    .orderDetails{
         display: flex;
         flex-direction: column;
+        justify-content: safe;
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: .15px;
+        margin-right: 15px;
+    }
+
+    .orderAmount{
+        display: flex;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+
+        
+    .totalAmount{
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    .discountAmount{
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    .disc{        
+        width: 100%;
+        font-size: 24px;
+        margin-top: 2px; 
+    }
+
+    .numPad{
+        width: 100%;
+        height: 61vh;
+        overflow: auto;
+    }
+
+    .btnpad{
+        display: flex;
+
+    }
+
+    .pad{
+        display: flex;
+        margin: 5px;
+        width: 650px;
+        height: 506px;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .row1{
+        display: flex;
+        margin: 15px;
+        justify-content: space-between;
+    }
+
+    .row2{
+        display: flex;
+        margin: 6px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .number{
+        display: flex;
+        justify-content: center;
+        font-size: large;
+        width: 100px;
+        height: 60px;
+        background-color: #1e8729;
         flex-wrap: wrap;
-        align-content: stretch;
+        text-transform: none;    
+    }
+
+    .extraBtns{
+        display: flex;
+        margin: 5px;
+        width: 297px;
+        height: 506px;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .extraBtn{
+        display: flex;
+        justify-content: center;
+        font-size: large;
+        line-height: normal;
+        width: 144px;
+        height: 55px;
+        flex-wrap: wrap;
+        text-transform: none;
+        background-color:#125219
+    }
+
+    .extraDiv{
+        display: none;
+    }
+   
+    .payBtns{
+        display: flex;
+        height: 200px;
+        align-items: center;
+        flex-direction: row;
         justify-content: space-evenly;
-        width: 449px;
-        height: 390px;
+        flex-wrap: nowrap;
+    }
+    .payBtn{
+        text-transform: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-large;
+        width: 100px;
+        height: 100px;
+        background-color:#8d6f78;
+        border: 2px solid #610d0d;
     }
 
     .right-content{

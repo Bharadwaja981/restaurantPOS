@@ -1,22 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pay Page</title>
-    <!-- Google Material Icons CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Google Material Design Lite CSS -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../pay/pay.css">
 </head>
 <body>
     <div class="main-con">
         <div class="top-header">
-            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
+            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button" href="../products/category/cat.html" style="color: aliceblue;">
                 <span class="material-icons">arrow_back</span> Back
             </a>
             <a id="cartBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect back-button cartBtn" style="color: aliceblue;">
@@ -36,56 +32,167 @@
                         </div>   
                    </div>
                    <div class="numPad">
-                    <div class="orderAmount">
-                        <div class="totalAmount">00000</div>
-                        <input type="text" class="enterAmount" placeholder="Enter Amount"></input>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="pad">
-                        <div class="row1">
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">1</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">2</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">3</div>
+                        <div class="orderAmount">
+                            <div style="display: flex; flex-direction: row;"><span class="material-icons">currency_pound</span>
+                                <div class="totalAmount" id="totalAmount">50.50</div></div>
+                            <div style="display: flex; flex-direction: row;"><span class="material-icons">currency_pound</span>
+                                <div class="discountAmount" id="discountAmount">00.00</div></div>
+                            <input type="text" class="enterAmount" id="enterAmount" placeholder="Enter Amount"></input>
                         </div>
-                        <div class="row1">
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">4</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">5</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">6</div>
+                        <div class="divider"></div>
+                        <div class="btnpad">
+                            <div class="pad">
+                                <div class="row1">
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="1">1</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="2">2</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="3">3</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="4">4</div>
+                                </div>
+                                <div class="row1">
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="5">5</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="6">6</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="7">7</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="8">8</div>
+                                </div>
+                                <div class="row1">
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="9">9</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="0">0</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key=".">.</div>
+                                    <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num" data-key="Backspace">
+                                        <span class="material-icons">arrow_back</span>
+                                    </div>                             
+                                </div>
+                            </div>
+                            <div class="extraBtns">
+                                <div class="row2">
+                                    <div class="extraBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="discountBtn">Discount</div>
+                                    <input type="text" class="disc" id="disc" placeholder="Enter Percentage"></input>
+                                </div>
+                                <div class="row2">
+                                    <div class="extraBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="empDiscountBtn">Employee Discount</div>
+                                    <input type="text" class="disc" id="empdisc" placeholder="Enter Percentage (5%)"></input>
+                                </div>
+                                <div class="row2">
+                                    <div class="extraBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="custDiscountBtn">Customer Discount</div>
+                                    <input type="text" class="disc" id="custdisc" placeholder="Enter Percentage"></input>
+                                </div>
+                                <div class="row2">
+                                    <div class="extraBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="clearBtn">Clear</div>
+                                </div>
+                            </div>
+                            <div class="extraDiv">
+                                
+                            </div>
                         </div>
-                        <div class="row1">
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">7</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">8</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">9</div>
-                        </div>
-                        <div class="row1">
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">*</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">0</div>
-                            <div class="number mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="num">#</div>
-                        </div>
-                    </div>
                    </div>
-                   <div class="payBtn">Payment</div>
+                   <div class="divider"></div>
+                   <div class="payBtnDiv">
+                        <div class="payBtns">
+                            <div class="row1">
+                                <div class="payBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="printBtn">Print</div>
+                            </div>
+                            <div class="row1">
+                                <div class="payBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="cashBtn">Cash</div>
+                            </div>
+                            <div class="row1">
+                                <div class="payBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="card1Btn">Card 1</div>
+                            </div>
+                            <div class="row1">
+                                <div class="payBtn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="card2Btn">Card 2</div>
+                            </div>
+                        </div>
+                   </div>
                 </div>
             </div>
             <div class="right-content" id="rightContent">
                 <div class="right-info">
-                    <!-- Selected table info will be displayed here -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- Google Material Design Lite JS -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var inputField = document.getElementById('enterAmount');
+            var totalAmountElement = document.getElementById('totalAmount');
+            var discountAmountElement = document.getElementById('discountAmount');
+            var numberButtons = document.querySelectorAll('.number');
+            var empDiscountButton = document.getElementById('empDiscountBtn');
+            var discountButton = document.getElementById('discountBtn');
+            var custDiscountButton = document.getElementById('custDiscountBtn');
+            var clearButton = document.getElementById('clearBtn');
+            var activeInput = inputField;
+    
+            // Function to reset amounts
+            function resetAmounts() {
+                totalAmountElement.style.color = "";
+                totalAmountElement.textContent = "50.50";
+                discountAmountElement.textContent = "00.00";
+                discountAmountElement.style.color = "#83759d";
+            }
+    
+            numberButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    if (button.dataset.key === 'Backspace') {
+                        var currentValue = activeInput.value;
+                        activeInput.value = currentValue.substring(0, currentValue.length - 1);
+                    } else {
+                        activeInput.value += button.textContent;
+                    }
+                });
+            });
+    
+            empDiscountButton.addEventListener('click', function () {
+                applyDiscount('empdisc');
+            });
+
+            custDiscountButton.addEventListener('click', function () {
+                applyDiscount('custdisc');
+            });
+
+            discountButton.addEventListener('click', function () {
+                applyDiscount('disc');
+            });
+
+            function applyDiscount(discountType) {
+                var totalAmount = parseFloat(totalAmountElement.textContent);
+                var discountInput = document.getElementById(discountType);
+                var discountPercentage = parseFloat(discountInput.value);
+                
+                if (isNaN(discountPercentage)) {
+                    alert('Please enter a valid percentage.');
+                    return;
+                }
+
+                var discount = (totalAmount * discountPercentage) / 100;
+                var discountedTotal = totalAmount - discount;
+                discountAmountElement.textContent = discount.toFixed(2);
+                totalAmountElement.style.color = "#83759d";
+                discountAmountElement.style.color = "#000000";
+                totalAmountElement.textContent = discountedTotal.toFixed(2);
+            }
+
+            clearButton.addEventListener('click', resetAmounts);
+
+            document.querySelectorAll('.disc').forEach(function (input) {
+                input.addEventListener('focus', function () {
+                    activeInput = input;
+                });
+            });
+
+            // Set activeInput to enterAmount when it gains focus
+            inputField.addEventListener('focus', function () {
+                activeInput = inputField;
+            });
+        });
+
         var btnEle = document.getElementById("cartBtn");
-        btnEle.addEventListener("click",function(){ 
-        if(document.getElementById("rightContent").style.display=="block"){
-        document.getElementById("rightContent").style.display="none"
-        }
-        else{
-            document.getElementById("rightContent").style.display="block"
+        btnEle.addEventListener("click", function () {
+            if (document.getElementById("rightContent").style.display == "block") {
+                document.getElementById("rightContent").style.display = "none"
+            } else {
+                document.getElementById("rightContent").style.display = "block"
             }
         });
     </script>
