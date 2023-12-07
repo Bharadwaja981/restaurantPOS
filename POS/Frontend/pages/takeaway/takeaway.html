@@ -14,6 +14,49 @@
     <link rel="stylesheet" href="takeaway.css">
 </head>
 <body>
+    <div id="itemModal" class="modal" >
+        <div class="itemmodal-content" >
+            <span class="close" onclick="closeItemModal()">&times;</span>
+            <div style="justify-content: center; margin-top: 30px;">
+                <div id="item-details" class="item-prop">
+                    <label id="itemName" class="cname">Item Name: </label>
+                </div>
+                <div id="quantityControls" class="quantity-controls">
+                    <label class="txt"> Add Quantity:</label>
+                    <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+                    <span id="quantityValue">01</span>
+                    <button class="quantity-btn" onclick="decrementQuantity()">-</button>
+                </div>
+                <div>
+                    <div class="container-group">
+                        <div class="spicy-level-container">
+                            <!-- Spicy Level -->
+                            <label class="spicy-level txt">Spicy Level:</label>
+                            <select id="spicyLevel" class="mdl-textfield__input" required>
+                                <option value="select" class="spicy-level-option" selected>Select</option>
+                                <option value="mild" class="spicy-level-option">Mild</option>
+                                <option value="medium" class="spicy-level-option">Medium</option>
+                                <option value="spicy" class="spicy-level-option">Spicy</option>
+                                <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-area-container">
+                    <label class="txt"> Add customer note here :</label>
+                    <textarea id="notes" class="notes" name=" " rows="4" cols="50"></textarea>
+                </div>
+                
+                <div class="button-container">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn"  onclick="submitItem()">Submit</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 modbtn" onclick="closeItemModal()">Cancel</button>
+                </div>
+    
+            </div>
+            <!-- Your existing modal script and other content here -->
+        </div>
+    </div>
+    
     <div class="main-con">
         <div class="top-header">
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
@@ -97,21 +140,6 @@
     </div>
     <script>        
 
-        var itemmodal = createItemModal();
-        document.body.appendChild(itemmodal);
-
-        // Function to open item modal
-        function openItem() {
-            console.log("Opening item modal...");
-            itemmodal.style.display = 'block';
-            console.log("Item modal opened.");
-        }
-
-        // Function to close item modal
-        function closeItemModal() {
-            itemmodal.style.display = 'none';
-        }
-
         window.addEventListener('message', function (event) {
             if (event.origin === window.location.origin) {
                 var data = event.data;
@@ -158,7 +186,10 @@
                 newItemDiv.appendChild(nameSpaceDiv);
 
                 itemDivContainer.appendChild(newItemDiv);
-                newItemDiv.addEventListener('click', openItem);
+                // newItemDiv.addEventListener('click', openItem);
+                newItemDiv.onclick = function(){
+                    openItem();
+                }
 
                 var totalItemsDiv = document.getElementById('totalItems');
                 totalItemsDiv.textContent = itemDivContainer.children.length;
@@ -174,34 +205,53 @@
             
             } 
         }
-       
 
-        function createItemModal() {
-            var itemmodal = document.createElement('itemmodal');
-            itemmodal.className = 'itemmodal';
+        function submitItem() {
+            closeItemModal();
+        }
 
-            var modalContent = document.createElement('div');
-            modalContent.className = 'itemmodal-content';
-
-            var closeModalButton = document.createElement('button');
-            closeModalButton.textContent = 'Close';
-            closeModalButton.className = 'close-itemmodal-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect';
-            closeModalButton.addEventListener('click', closeItemModal);
-
-            var modalText = document.createElement('p');
-            modalText.textContent = 'This is the item modal. Add your text here.';
+        function openItem() {
+            var modal = document.getElementById('itemModal');
+            modal.style.display = 'block';
             
-            var itemDetailsContainer = document.createElement('div');
-            itemDetailsContainer.id = 'item-details';
-            itemDetailsContainer.className = 'item-prop';
+            var itemDetailsContainer = document.getElementById('item-details');
+            itemDetailsContainer.innerHTML = '';
 
-            modalContent.appendChild(modalText);
-            modalContent.appendChild(itemDetailsContainer);
-            modalContent.appendChild(closeModalButton);
+            var [itemName, itemPrice] = itemDetails.split("£");
+            var itemNameDiv = document.createElement("div");
+            itemNameDiv.className = "item-name cname txt";
+            itemNameDiv.textContent = itemName.trim();
+            var priceDiv = document.createElement("div");
+            priceDiv.className = "item-price cname";
+            priceDiv.textContent = "£" + itemPrice.trim(); 
 
-            itemmodal.appendChild(modalContent);
+            itemDetailsContainer.appendChild(itemNameDiv);
+            itemDetailsContainer.appendChild(priceDiv);
+            
+        }
 
-            return itemmodal;
+        function closeItemModal() {
+            var modal = document.getElementById('itemModal');
+            modal.style.display = 'none';
+        }
+
+        var quantityValue = 1; // Initial quantity value
+
+        function incrementQuantity() {
+            quantityValue++;
+            updateQuantityDisplay();
+        }
+
+        function decrementQuantity() {
+            if (quantityValue > 1) {
+                quantityValue--;
+                updateQuantityDisplay();
+            }
+        }
+
+        function updateQuantityDisplay() {
+            var quantityDisplay = document.getElementById('quantityValue');
+            quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
         }
 
         var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
