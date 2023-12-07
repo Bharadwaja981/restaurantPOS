@@ -97,6 +97,21 @@
     </div>
     <script>        
 
+        var itemmodal = createItemModal();
+        document.body.appendChild(itemmodal);
+
+        // Function to open item modal
+        function openItem() {
+            console.log("Opening item modal...");
+            itemmodal.style.display = 'block';
+            console.log("Item modal opened.");
+        }
+
+        // Function to close item modal
+        function closeItemModal() {
+            itemmodal.style.display = 'none';
+        }
+
         window.addEventListener('message', function (event) {
             if (event.origin === window.location.origin) {
                 var data = event.data;
@@ -160,8 +175,33 @@
             } 
         }
        
-        function openItem(){
-            alert('you clicked item');
+
+        function createItemModal() {
+            var itemmodal = document.createElement('itemmodal');
+            itemmodal.className = 'itemmodal';
+
+            var modalContent = document.createElement('div');
+            modalContent.className = 'itemmodal-content';
+
+            var closeModalButton = document.createElement('button');
+            closeModalButton.textContent = 'Close';
+            closeModalButton.className = 'close-itemmodal-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect';
+            closeModalButton.addEventListener('click', closeItemModal);
+
+            var modalText = document.createElement('p');
+            modalText.textContent = 'This is the item modal. Add your text here.';
+            
+            var itemDetailsContainer = document.createElement('div');
+            itemDetailsContainer.id = 'item-details';
+            itemDetailsContainer.className = 'item-prop';
+
+            modalContent.appendChild(modalText);
+            modalContent.appendChild(itemDetailsContainer);
+            modalContent.appendChild(closeModalButton);
+
+            itemmodal.appendChild(modalContent);
+
+            return itemmodal;
         }
 
         var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
