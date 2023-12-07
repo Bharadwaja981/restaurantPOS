@@ -22,7 +22,6 @@
                 </a>
                 <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#070d20"> Takeaway</div>
             </div>
-            
         </div>
         <div class="bottom-con">
             <div class="left-content" >
@@ -62,7 +61,7 @@
                     </div>
                 </div>
                 <div class="item-div" id="item-div">
-                    <!-- <div id="item-add i-t" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
+                    <!-- <div id="item-add i-t" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="openItem()">
                         <div class="iname-item" id="item-name">Lamb kheema chicken tikka tawa lamb kheema chicken tikka tawa</div>
                         <div class="name-space">
                             <div class="name-text" id="qty">01</div>
@@ -144,6 +143,7 @@
                 newItemDiv.appendChild(nameSpaceDiv);
 
                 itemDivContainer.appendChild(newItemDiv);
+                newItemDiv.addEventListener('click', openItem);
 
                 var totalItemsDiv = document.getElementById('totalItems');
                 totalItemsDiv.textContent = itemDivContainer.children.length;
@@ -160,6 +160,10 @@
             } 
         }
        
+        function openItem(){
+            alert('you clicked item');
+        }
+
         var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
 
         var categories = [
