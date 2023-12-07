@@ -1,11 +1,48 @@
 
+/* Define the style for the scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* Set width of the scrollbar */
+    height: 8px; /* Set height of the scrollbar */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #010f55;
+}
+
+/* Handle on scrollbar drag */
+::-webkit-scrollbar-thumb:active {
+    background: #0b0c11;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 10px;
+}
+
+/* Add corner radius to the scrollbar */
+::-webkit-scrollbar-corner {
+    background: #33374b;
+    border-radius: 10px;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
+    text-transform: none;
 }
 
+.mdl-button{
+    text-transform: none !important;
+}
 .main-con {
     display: flex;
     height: 100vh;
@@ -16,21 +53,9 @@
 }
 
 .top-header {
-    height: 100px;
+    height: 5vh;
     background-color: #1e8729;
     border: 0.2px solid rgb(56, 56, 56);
-
-}
-
-.left-content {
-    background-color: #070c19;
-    padding: 20px;
-    border: 0.1px solid rgb(56, 56, 56);
-    width: 80vw;
-    overflow: auto;
-    gap: 4.5rem;
-    display: flex;
-    flex-wrap: wrap;
 
 }
 
@@ -40,24 +65,467 @@
 }
 
 
+.left-content {
+    background-color: #070c19;
+    border: 0.1px solid rgb(56, 56, 56);
+    width: 80vw;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.product-names{
+    height: 54vh;
+    width: 100%;
+}
+
+.orange-bar {
+    background-color: orange;
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orange-text {
+    color: #000000; /* Set the text color to white or another contrasting color */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.orange-button {
+    background-color: #070d20;
+    color: white; /* Set the button text color to white or another contrasting color */
+    font-size: 20px; /* Set the desired font size */
+}
+
+.category-names{
+    height: 30vh;
+    overflow: scroll;
+}
+
+.custom-button{
+    background-color: #eb6240;
+    color: #ffffff;
+    border-radius: 0ps;
+    /* Custom hover effect */
+    transition: background-color 0.3s ease;
+}
+
+.custom-button.mdl-button--raised.mdl-js-ripple-effect:hover {
+    background-color: #5340bb;
+}
+
 .right-content {
-    width: 20vw;
+    width: 25vw;
     background-color: #7b86c3;
-    padding: 10px;
     border: 0.1px solid rgb(56, 56, 56);
     overflow: auto;
     flex-wrap: wrap;
 
 }
 
-.right-info{
-    margin-top: 5px;
+.right-top, .tab-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
 }
 
+.void-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from text */
+    font-size: 19px; /* Font size of text */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+}
+
+
+/* Hover effect for buttons */
+.void-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* Hover effect for buttons */
+.act-button:active {
+    background-color: #070c19; /* Darker green on hover */
+}
+
+.right-info{
+    margin: 5px;
+    height: 5vh;
+}
+
+.right-tag, .total-tag{
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    background-color: #313864;
+    border: 0.1px solid #070c19;
+    width: 100%;
+    height: 40px;
+    padding-top: 10px;
+    border: none;
+    text-align: flex;   
+}
+
+.total-text{
+    
+    width: 100px;
+}
+
+.i-t{
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+}
+.name-item{
+    width: 60%;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+.iname-item{
+    width: 60%;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    text-align: left;
+    height: 70px;
+    overflow: hidden;
+}
+
+.name-text{
+    width: 60px;
+}
+
+.name-space{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-content: center;
+}
+
+.add-item{
+    overflow: auto;
+}
+
+.item-div{
+    height: 70vh;
+    background-color: #5a649c;
+    margin: 0px;
+    overflow-y: auto;
+}
+
+
+.item-add {
+    display: flex;
+    justify-content: space-between;
+    background-color: #95a4f7;
+    border: 0.1px solid #070c19;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 5px;
+    min-height: 70px;
+    max-height: 70px;
+}
+
+
 .order-text{
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #070c19;
+}
+
+
+
+.i-text{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #070c19;
+    margin-right: 15px;
+}
+
+.i-txt{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #070c19;
+    overflow: wrap;
+    text-align: left;
+}
+
+.right-bottom-buttons {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 10vh;
+    background-color:#3b5fbb;
+    border: 0.1px solid #2b4586;
+
+}
+
+
+/* Custom styles for buttons */
+.act-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 15px 30px; /* Padding for button size */
+    margin: 10px; /* Margin between buttons */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from text */
+    display: inline-block;
+    font-size: 16px; /* Font size of text */
+    cursor: pointer; /* Add cursor pointer on hover */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    height: 4rem;
+}
+
+/* Hover effect for buttons */
+.act-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+
+.items{
+    height: 100vh;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.item-container{
+    background-color:#091a4d;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(3, 3, 3, 0.575);
+    justify-content: flex-start; /* Align content at the top */
+    padding-top: 0px; /* Add padding at the top */
+}
+
+.modal-content {
+    background-color: #c6d1c3;
+    margin: 15px auto; /* Adjust margin */
+    padding: 20px;
+    margin-top: 0px;
+    border: 1px solid #380000;
+    width: 75%;
+    height: 550px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-prop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#item-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-name {
+    flex-grow: 1; /* Takes available space */
+}
+
+.item-price {
+    margin-left: 10px; /* Add some space between name and price */
+}
+.cname{
+    font-size: 40px;
+}
+
+.quantity-controls{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-btn {
+    font-size: 40px;
+    width: 60px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 0 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.quantity-btn:hover {
+    background-color: rgb(155, 8, 8);
+}
+
+#quantityValue {
+    font-size: 25px;
+    margin: 0 10px;
+}
+
+.container-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.spicy-level-container,.portion-container, .type-container  {
+    display: flex;
+    align-items: center;
+    width: 150%;
+    flex: 1;
+    margin: 30px;
+}
+
+.spicy-level,.portion, .type {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+#spicyLevel, #portion, #type{
+    font-size: 30px;
+    color:#ffffff;
+    width: 40%;
+    height: 60px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    appearance: none; /* Remove default arrow in Firefox */
+    background-color: #3b3b3b; /* Default background color for "Medium" */
+}
+
+.spicy-level-option, .type-option {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3b3b3b;
+}
+
+.spicy-level-option:nth-child(1) {
+    background-color: #3b3b3b;
+    color: #030303;
+}
+
+.spicy-level-option:nth-child(2) {
+    background-color: #d1ca2e;
+    color: #fff;
+}
+
+.spicy-level-option:nth-child(3) {
+    background-color: #f64709;
+    color: #fff;
+}
+
+.spicy-level-option:nth-child(4) {
+    background-color: #e80700;
+    color: #fff;
+}
+.spicy-level-option:nth-child(5) {
+    background-color: #9e0500;
+    color: #fff;
+}
+.txt-area-container {
+    width: calc(100% - 20px); /* 100% width minus 20px padding (10px on each side) */
+    padding: 10px;
+}
+
+.notes {
+    width: 100%;
+    height: 57px;
+    font-size: 25px;
+    background-color:#c6d1c3;
+}
+
+.txt{
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.close {
+    color: #000000;
+    float: right;
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(48, 2, 2);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+label{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    color: #070c19;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 50px;
+    font-size: 30px;
+}
+
+.modbtn {
+    background-color: #070c19;
+    color: rgb(255, 255, 255);
+    padding: 15px 20px; /* Adjust padding to increase button size */
+    margin-top: 5px;
+    border-radius: 5px;
+    width: 200px; /* Adjust width to increase button size */
+    height: 75px !important; /* Add height to adjust button height */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 50px;
+}
+
+.modbtn:hover{
+    background-color: #12399e;
+}
+/* Add a new class for spacing between buttons */
+.button-container {
+    align-items: center;    
+    justify-content: center;
+    display: flex;
+    gap: 10px; /* Adjust the gap as needed */
 }
 
