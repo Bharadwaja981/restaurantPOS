@@ -16,7 +16,7 @@
 <body>
     <div id="itemModal" class="modal" >
         <div class="itemmodal-content" >
-            <span class="close" onclick="closeItemModal()">&times;</span>
+            <span class="itemclose" onclick="closeItemModal()">&times;</span> </br></br>
             <div style="justify-content: center; margin-top: 30px;">
                 <div id="item-details" class="item-prop">
                     <label id="itemName" class="cname">Item Name: </label>
@@ -188,7 +188,12 @@
                 itemDivContainer.appendChild(newItemDiv);
                 // newItemDiv.addEventListener('click', openItem);
                 newItemDiv.onclick = function(){
-                    openItem();
+                    console.log(itemNameDiv.textContent + unitPriceDiv.textContent);
+                    var itemDetails = { name: itemNameDiv.textContent,
+                                        price: unitPriceDiv.textContent,
+                                        quantity: quantityDiv.textContent};
+                    console.log(itemDetails.quantity);
+                    openItem(itemDetails);
                 }
 
                 var totalItemsDiv = document.getElementById('totalItems');
@@ -210,24 +215,27 @@
             closeItemModal();
         }
 
-        function openItem() {
+        function openItem(itemDetails) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
             
             var itemDetailsContainer = document.getElementById('item-details');
             itemDetailsContainer.innerHTML = '';
 
-            var [itemName, itemPrice] = itemDetails.split("£");
             var itemNameDiv = document.createElement("div");
             itemNameDiv.className = "item-name cname txt";
-            itemNameDiv.textContent = itemName.trim();
+            itemNameDiv.textContent = itemDetails.name;
             var priceDiv = document.createElement("div");
             priceDiv.className = "item-price cname";
-            priceDiv.textContent = "£" + itemPrice.trim(); 
+            priceDiv.textContent = itemDetails.price; 
 
             itemDetailsContainer.appendChild(itemNameDiv);
             itemDetailsContainer.appendChild(priceDiv);
             
+            var quantityDisplay = document.getElementById('quantityValue');
+            quantityDisplay.textContent = itemDetails.quantity;
+            quantityValue = quantityDisplay.textContent;
+            console.log(quantityValue);
         }
 
         function closeItemModal() {

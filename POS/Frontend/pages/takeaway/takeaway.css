@@ -530,6 +530,24 @@ input {
     gap: 10px; /* Adjust the gap as needed */
 }
 
+/* individual item modal css */
+
+.itemclose {
+    color: #000000;
+    float: left;
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 20px;
+}
+
+.itemclose:hover,
+.itemclose:focus {
+    color: rgb(48, 2, 2);
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .itemmodal {
     position: fixed;
     top: 50%;  /* Adjust this value to position vertically */
