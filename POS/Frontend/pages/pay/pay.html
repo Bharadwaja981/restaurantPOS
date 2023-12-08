@@ -111,7 +111,32 @@
             </div>
         </div>
     </div>
+    <div class="hidden-print" id="printableArea">
+        <h1>Reciept</h1>
+        <h2>-------------------------</h2>
+        <div id="orderDetailsPrint"></div>
+    </div>
     <script>
+         function setOrderDetails(orderDetails) {
+            var orderDetailsDiv = document.getElementById('orderDetailsPrint');
+            orderDetailsDiv.innerHTML = `
+                <p class="printdetails">Order Number: ${orderDetails.orderNumber}</p><br>
+                <p class="printdetails">Customer Name: ${orderDetails.customerName}</p> <br>
+                <p class="printdetails">Order Type: ${orderDetails.dineIn}</p><br>
+                <p class="printdetails">Table Number: ${orderDetails.tableNumber}</p>
+                <p class="printdetails">Total Amount: £ ${orderDetails.totalAmount}</p>
+            `;
+            
+            var printableContent = document.getElementById('printableArea');
+
+            for (var i = 0; i < printableContent.childNodes.length; i++) {
+                console.log(printableContent.childNodes[i].innerHTML, 'in for loop log');
+                if (printableContent.childNodes[i].innerHTML) {
+                    document.getElementById("printableArea").innerHTML += printableContent.childNodes[i].innerHTML;
+                }
+            }
+        }
+
         function printOrder() {
             var orderDetails = {
                 orderNumber: document.querySelector('.oNumber').textContent,
@@ -120,16 +145,14 @@
                 tableNumber: document.querySelector('.tabNumber').textContent,
                 totalAmount: document.getElementById('totalAmount').textContent
             };
-            // Create a new window or tab with the printable.html file
-            var printWindow = window.open('../print/printable.html', '_blank');
+
+           setOrderDetails(orderDetails);
+           
+           window.print();
+            window.onafterprint = function () {
+                window.close();
+            };
             
-            if (printWindow) {
-                printWindow.onload = function () {
-                    // Call a function in the new window to set order details
-                    printWindow.setOrderDetails(orderDetails);
-                    console.log(orderDetails);
-                };
-            }
         }
 
         document.addEventListener('DOMContentLoaded', function () {
