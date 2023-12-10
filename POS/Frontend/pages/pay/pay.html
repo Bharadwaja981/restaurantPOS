@@ -113,28 +113,45 @@
     </div>
     <div class="hidden-print" id="printableArea">
         <h1>Reciept</h1>
-        <h2>-------------------------</h2>
+        <h2>------------------------</h2>
         <div id="orderDetailsPrint"></div>
     </div>
     <script>
          function setOrderDetails(orderDetails) {
             var orderDetailsDiv = document.getElementById('orderDetailsPrint');
-            orderDetailsDiv.innerHTML = `
-                <p class="printdetails">Order Number: ${orderDetails.orderNumber}</p><br>
-                <p class="printdetails">Customer Name: ${orderDetails.customerName}</p> <br>
-                <p class="printdetails">Order Type: ${orderDetails.dineIn}</p><br>
-                <p class="printdetails">Table Number: ${orderDetails.tableNumber}</p>
-                <p class="printdetails">Total Amount: £ ${orderDetails.totalAmount}</p>
-            `;
-            
-            var printableContent = document.getElementById('printableArea');
+            orderDetailsDiv.innerHTML = ''; // Clear existing content
 
-            for (var i = 0; i < printableContent.childNodes.length; i++) {
-                console.log(printableContent.childNodes[i].innerHTML, 'in for loop log');
-                if (printableContent.childNodes[i].innerHTML) {
-                    document.getElementById("printableArea").innerHTML += printableContent.childNodes[i].innerHTML;
-                }
-            }
+            // Create separate elements for each piece of information
+            var orderNumberElement = document.createElement('p');
+            orderNumberElement.textContent = 'Order Number: ' + orderDetails.orderNumber;
+
+            var customerNameElement = document.createElement('p');
+            customerNameElement.textContent = 'Customer Name: ' + orderDetails.customerName;
+
+            var orderTypeElement = document.createElement('p');
+            orderTypeElement.textContent = 'Order Type: ' + orderDetails.dineIn;
+
+            var tableNumberElement = document.createElement('p');
+            tableNumberElement.textContent = 'Table Number: ' + orderDetails.tableNumber;
+
+            var totalAmountElement = document.createElement('p');
+            totalAmountElement.textContent = 'Total Amount: £ ' + orderDetails.totalAmount;
+
+            // Append each element to the orderDetailsDiv
+            orderDetailsDiv.appendChild(orderNumberElement);
+            orderDetailsDiv.appendChild(customerNameElement);
+            orderDetailsDiv.appendChild(orderTypeElement);
+            orderDetailsDiv.appendChild(tableNumberElement);
+            orderDetailsDiv.appendChild(totalAmountElement);
+
+            // Set the content of the printableArea
+            var printableArea = document.getElementById('printableArea');
+            printableArea.innerHTML = '<br>' +
+                'Order Number: ' + orderDetails.orderNumber + '<br>' +
+                'Customer Name: ' + orderDetails.customerName + '<br>' +
+                'Order Type: ' + orderDetails.dineIn + '<br>' +
+                'Table Number: ' + orderDetails.tableNumber + '<br>' +
+                'Total Amount: £ ' + orderDetails.totalAmount + '<br>';
         }
 
         function printOrder() {
@@ -146,9 +163,8 @@
                 totalAmount: document.getElementById('totalAmount').textContent
             };
 
-           setOrderDetails(orderDetails);
-           
-           window.print();
+            setOrderDetails(orderDetails);
+            window.print();
             window.onafterprint = function () {
                 window.close();
             };

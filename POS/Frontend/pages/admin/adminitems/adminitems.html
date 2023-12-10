@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../adminitems/adminitems.css">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <h2>Ad<span class="danger">Min</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="../../admin/admin.html" target="_top">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="../adminorders/adminorders.html">
+                    <span class="material-icons-sharp">
+                        format_list_numbered_rtl
+                    </span>
+                    <h3>Orders</h3>
+                </a>
+                <a href="../adminitems/adminitems.html"  class="active">
+                    <span class="material-icons-sharp">
+                        category
+                    </span>
+                    <h3>Items</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>New Login</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            
+            <!-- End of Analyses -->
+
+             <!-- New items Section  -->
+            <div class="new-items">
+                <h2>Categories and Items</h2>
+                <div class="item-list">
+                    <div class="item">
+                        <img src="../images/category.png">
+                        <h2>Categories</h2>
+                        <p>7</p>
+                    </div>
+                    <div class="item">
+                        <img src="../images/items.png">
+                        <h2>Items</h2>
+                        <p>54</p>
+                    </div>
+                    <div class="item">
+                        <img src="../images/plus.png">
+                        <h2>Add New</h2>
+                        <p>Item or Category</p>
+                    </div>
+                </div>
+            </div>
+             <!-- End of New items Section -->
+            <!-- Recent Orders Table  -->
+            <section class="current-items">
+                <h2>Current Items</h2>
+                <table id="current-items">
+                    <thead>
+                        <tr>
+                            <th>item Id</th>
+                            <th>Item Name</th>
+                            <th>Price</th>
+                            <th>Category Id</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </section>
+            <!-- End of Recent Orders -->
+            <!-- Recent Orders Table  -->
+            <section class="current-category">
+                <h2>Current Categories</h2>
+                <table id="current-category"> 
+                    <thead>
+                        <tr id="cat">
+                            <th>Category Id</th>
+                            <th>Category Name</th>
+                            <th>No of Products</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </section>
+            <!-- End of Recent Orders -->
+
+            <!-- Add New Item -->
+            <div class="new-products">
+                <h2>Add Items</h2>
+                <div class="product-details">
+                    <div class="product">
+                        <h1> Product Name: </h1>
+                        <input type="text" placeholder=" Enter Name">
+                    </div>
+                    <div class="product">
+                        <h1> Price: £ </h1>
+                        <input type="text" placeholder=" Enter Price">
+                    </div>
+                    <div class="product">
+                        <h1 > Category: </h1>
+                        <select class="category-selector" name = "category">
+                            <option value = "Veg Starter">Veg Starter</option>
+                            <option value = "Non-Veg Starter">Non-Veg Starter </option>
+                            <option value = "Seafood Starter">Seafood Starter</option>
+                            <option value = "Vegetable Mains">Vegetable Mains</option>
+                            <option value = "Seafood Mains">Seafood Mains</option>
+                            <option value = "Chicken Mains">Chicken Mains</option>
+                            <option value = "Lamb Mains">Lamb Mains</option>
+                            <option value = "Chefs Specials">Chefs Specials</option>
+                            <option value = "Classic Dishes">Classic Dishes</option>
+                            <option value = "Rice">Rice</option>
+                            <option value = "Naan">Naan</option>
+                            <option value = "Extras">Extras</option>
+                            <option value = "Noodles">Noodles</option>
+                            <option value = "Desserts">Desserts</option>
+                            <option value = "Curry Sauce">Curry Sauce</option>
+                            <option value = "Curry-Add On">Curry-Add On</option>
+                        </select>
+                    </div>
+                    <div class="product">
+                        <h1 > Type: </h1>
+                        <select class="category-selector" name = "type">
+                            <option value="select" selected>None</option>
+                            <option value="Curry" >Curry</option>
+                            <option value="Bhuna" >Bhuna</option>
+                            <option value="Madras" >Madras</option>
+                            <option value="Jalfrezi" >Jalfrezi</option>
+                            <option value="Kadai" >Kadai</option>
+                            <option value="Tawa" >Tawa</option>
+                            <option value="Vandaloo" >Vindaloo</option>
+                            <option value="Palak" >Palak</option>
+                            <option value="Saag" >Saag</option>
+                            <option value="Methi" >Methi</option>
+                        </select>
+                    </div>
+                    <div class="product">
+                        <div class="btn-container">
+                            <button class="btn"> Submit</button>
+                            <button class="btn"> Cancel</button>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- End of Main Content -->
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+        </div>
+
+        <script src="../data.js"></script>
+        <script src="../adminmain.js"></script>
+    </div>
+</body>
+
+</html>

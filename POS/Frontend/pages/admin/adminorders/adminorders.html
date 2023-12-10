@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../adminitems/adminitems.css">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <h2>Ad<span class="danger">Min</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="../../admin/admin.html" target="_top">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="../adminorders/adminorders.html"  class="active">
+                    <span class="material-icons-sharp">
+                        format_list_numbered_rtl
+                    </span>
+                    <h3>Orders</h3>
+                </a>
+                <a href="../adminitems/adminitems.html" >
+                    <span class="material-icons-sharp">
+                        category
+                    </span>
+                    <h3>Items</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>New Login</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <!-- Recent Orders Table  -->
+            <section class="recent-orders">
+                <h2>Current Categories</h2>
+                <table id="recent-orders"> 
+                    <thead>
+                        <tr id="cat">
+                            <th>Course Name</th>
+                            <th>Course Number</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </section>
+            <!-- End of Recent Orders -->
+            
+            <section class="recent-orders">
+                <h2>Current Orders</h2>
+                <table id="recent-orders"> 
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Course Number</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </section>
+
+        </main>
+        <!-- End of Main Content -->
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+        </div>
+
+        <script src="../data.js"></script>
+        <script src="../adminorders/adminorders.js"></script>
+    </div>
+</body>
+
+</html>

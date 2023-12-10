@@ -541,10 +541,6 @@
      display: none;
 }
 
-.printdetails {
-    font-size: 24px;
-}
-
 @media print {
     .hidden-print {
         display: block;
@@ -556,7 +552,11 @@
         display: none;
     }
 
+    body {
+        font-size: 12pt;
+        white-space: pre-line;
+    }
     .printdetails {
-        font-size: 24px;
+        white-space: pre-line;
     }
 }
