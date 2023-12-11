@@ -312,7 +312,6 @@ main .new-items .item-list {
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 1.4rem;
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -326,6 +325,7 @@ main .new-items .item-list .item{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 
@@ -378,7 +378,6 @@ main .recent-orders a{
     margin: 1rem auto;
     color: var(--color-primary);
 }
-
 
 main .current-category{
     margin-top: 1.3rem;

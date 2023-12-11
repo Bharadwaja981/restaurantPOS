@@ -1,4 +1,4 @@
-const Orders = [
+export const Orders = [
     {
         productName: 'JavaScript Tutorial',
         productNumber: '85743',
@@ -19,90 +19,32 @@ const Orders = [
     },
 ]
 
-const Categories = [
-    {
-        categoryId: '1',
-        categoryName: 'Veg Starter',
-        noOfProducts: '20'
-    },
-    {
-        categoryId: '2',
-        categoryName: 'Non-Veg Starter',
-        noOfProducts: '34'
-    },
-    {
-        categoryId: '3',
-        categoryName: 'Seafood Starter',
-        noOfProducts: '10'
-    },
-    {
-        categoryId: '4',
-        categoryName: 'Vegetable Mains',
-        noOfProducts: '22'
-    },
-    {
-        categoryId: '5',
-        categoryName: 'Seafood Mains',
-        noOfProducts: '4'
-    },
-    {
-        categoryId: '6',
-        categoryName: 'Chicken Mains',
-        noOfProducts: '8'
-    },
-    {
-        categoryId: '7',
-        categoryName: 'Lamb Mains',
-        noOfProducts: '10'
-    },
-    {
-        categoryId: '8',
-        categoryName: 'Chefs Specials',
-        noOfProducts: '11'
-    },
-    {
-        categoryId: '9',
-        categoryName: 'Classic Dishes',
-        noOfProducts: '3'
-    },
-    {
-        categoryId: '10',
-        categoryName: 'Rice',
-        noOfProducts: '17'
-    },
-    {
-        categoryId: '11',
-        categoryName: 'Naan',
-        noOfProducts: '12'
-    },
-    {
-        categoryId: '12',
-        categoryName: 'Extras',
-        noOfProducts: '16'
-    },
-    {
-        categoryId: '13',
-        categoryName: 'Noodles',
-        noOfProducts: '3'
-    },
-    {
-        categoryId: '14',
-        categoryName: 'Desserts',
-        noOfProducts: '9'
-    },
-    {
-        categoryId: '15',
-        categoryName: 'Curry Sauce',
-        noOfProducts: '7'
-    },
-    {
-        categoryId: '16',
-        categoryName: 'Curry-Add On',
-        noOfProducts: '4'
-    }
-]
 
-const Items = [
+export async function getCategoryData() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/get_category_list');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching category data:', error);
+        return [];
+    }
+}
+
+export let Categories;
+
+export async function loadCategoryData() {
+    try {
+        Categories = await getCategoryData();
+        return Categories;
+    } catch (error) {
+        console.error('Error loading category data:', error);
+    }
+}
+
+await loadCategoryData();
+
+export const Items = [
     {
         itemId: '01',
         itemName: 'Cocktail Samosa (8 pieces)',

@@ -15,6 +15,8 @@ DB_PASSWORD = 'DfsSnk3NDnP7GfXtCbiXoxYZ8f1Fh64g'
 DB_HOST = 'flora.db.elephantsql.com'
 DB_PORT = '5432'
 
+print ('Database Connection')
+
 # Establish a connection to the PostgreSQL database
 def create_connection():
     conn = psycopg2.connect(
@@ -71,6 +73,34 @@ def get_orders_for_today():
         }
         orders_list.append(order_dict)
     return jsonify(orders_list)
+
+@app.route('/get_category_list', methods=['GET', 'POST'])
+def get_category_list():
+    conn = create_connection()
+    cursor = conn.cursor()
+    query = """
+        SELECT * FROM public.category
+    """
+
+    cursor.execute(query)
+    categories = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    # Convert categories to a list of dictionaries for JSON serialization
+    category_list = []
+    for category in categories:
+        category_dict = {
+            "categoryid": category[0],
+            "categoryname": category[1]
+        }
+        category_list.append(category_dict)
+
+    return jsonify(category_list)
+
+
+
 
 
 @app.route('/create_order', methods=['POST'])
