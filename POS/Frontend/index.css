@@ -6,10 +6,12 @@ body, html {
 .rectangle {
     width: 100vw;
     height: 100vh;
-    background-color: #3498db; /* Example background color (you can change this) */
+    background-color: #3498db;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .modal {
