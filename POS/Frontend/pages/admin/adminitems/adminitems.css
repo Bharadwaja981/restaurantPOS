@@ -540,9 +540,7 @@ main table tbody td{
     color: var(--color-dark-variant);
 }
 
-main table tbody tr:last-child td{
-    border: none;
-}
+
 
 main .current-items a{
     text-align: center;
@@ -766,14 +764,6 @@ main .current-items a{
         width: 73vw;
     }
 
-    main table thead tr th:last-child{
-        display: none;
-    }
-
-    main table tbody tr td:last-child{
-        display: none;
-    }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -846,16 +836,6 @@ main .current-items a{
     main .recent-orders table{
         width: 100%;
         margin: 0;
-    }
-
-    main table thead tr th:last-child,
-    main table thead tr th:first-child{
-        display: none;
-    }
-
-    main table tbody tr td:last-child,
-    main table tbody tr td:first-child{
-        display: none;
     }
     
     main .current-category{

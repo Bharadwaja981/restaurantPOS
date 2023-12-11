@@ -99,9 +99,19 @@ def get_category_list():
 
     return jsonify(category_list)
 
-
-
-
+@app.route('/add_category', methods=['POST'])
+def add_category():
+    conn = create_connection()
+    data = request.get_json()
+    cursor = conn.cursor()
+    query = sql.SQL("""INSERT INTO category (categoryname) VALUES(%s)""")
+    cursor.execute(query, (
+        data.get('categoryname')
+    ))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return 'new category inserted successfully'
 
 @app.route('/create_order', methods=['POST'])
 def create_order():

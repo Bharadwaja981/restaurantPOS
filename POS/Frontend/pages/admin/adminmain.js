@@ -6,6 +6,9 @@ const closeBtn = document.getElementById('close-btn');
 
 const darkMode = document.querySelector('.dark-mode');
 
+
+let newCategoryName = '';
+
 menuBtn.addEventListener('click', () => {
     sideMenu.style.display = 'block';
 });
@@ -38,11 +41,11 @@ Categories.forEach(category => {
     const trContent = `
         <td>${category.categoryid}</td>
         <td>${category.categoryname}</td>
+       <td class="primary">Details</td>
     `;
     tr.innerHTML = trContent;
     document.querySelector('#current-category tbody').appendChild(tr);
 });
-
 
 const recentOrdersSection = document.querySelector('.current-items');
 const currentCategorySection = document.querySelector('.current-category');

@@ -68,7 +68,7 @@
                     </span>
                     <h3>New Login</h3>
                 </a>
-                <a href="#">
+                <a href="../../../Index.html">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -145,14 +145,14 @@
                 <h2>Add Items</h2>
                 <div class="product-details">
                     <div class="product">
-                        <h1> Product Name: </h1>
-                        <input type="text" placeholder=" Enter Name">
+                        <h1> Category Name </h1>
+                        <input type="text" class="category-input" placeholder=" Enter Name">
                     </div>
-                    <div class="product">
+                    <!-- <div class="product">
                         <h1> Price: £ </h1>
                         <input type="text" placeholder=" Enter Price">
-                    </div>
-                    <div class="product">
+                    </div> -->
+                    <!-- <div class="product">
                         <h1 > Category: </h1>
                         <select class="category-selector" name = "category">
                             <option value = "Veg Starter">Veg Starter</option>
@@ -188,10 +188,10 @@
                             <option value="Saag" >Saag</option>
                             <option value="Methi" >Methi</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="product">
                         <div class="btn-container">
-                            <button class="btn"> Submit</button>
+                            <button class="btn" onclick="create_category()"> Submit</button>
                             <button class="btn"> Cancel</button>   
                         </div>
                     </div>
@@ -222,6 +222,39 @@
 
         <script type="module" src="../data.js"></script>
         <script type="module" src="../adminmain.js"></script>
+        <script>
+        
+        function create_category() {
+            const categoryNameInput = document.querySelector('.product input');
+            const enteredCategoryName = categoryNameInput.value;
+            newCategoryName = enteredCategoryName;
+            const data = {
+                categoryname: enteredCategoryName
+            };
+            window.parent.postMessage(data, '*');
+            fetch('http://127.0.0.1:5000/create_order', {
+                method: 'POST',
+                mode:'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+            
+        </script>
     </div>
 </body>
 
