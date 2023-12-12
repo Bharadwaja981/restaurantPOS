@@ -1,4 +1,5 @@
 import { Orders, loadCategoryData, Categories } from './data.js';
+import { openEditModal, openDeleteModal } from '../admin/functions.js';
 
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
@@ -36,11 +37,11 @@ Orders.forEach(order => {
 Categories.forEach(category => {
     const tr = document.createElement('tr');
     const trContent = `
-        <td>${category.categoryid}</td>
+        <td>${category.id}</td>
         <td>${category.categoryname}</td>
         <td class="primary">
-            <button class="edit-btn" data-categoryid="${category.categoryid}">Edit</button>
-            <button class="delete-btn" data-categoryid="${category.categoryid}">Delete</button>
+            <button class="edit-btn" data-id="${category.id}">Edit</button>
+            <button class="delete-btn" data-id="${category.id}">Delete</button>
         </td>
     `;
     tr.innerHTML = trContent;
@@ -51,104 +52,11 @@ Categories.forEach(category => {
     const deleteBtn = tr.querySelector('.delete-btn');
 
     editBtn.addEventListener('click', () => {
-        openEditModal(category);
+        openEditModal(category, 'category');
     });
 
     deleteBtn.addEventListener('click', () => {
-        openDeleteModal(category);
+        openDeleteModal(category, 'category');
     });
 });
 
-// Function to open the edit modal with category details
-function openEditModal(category) {
-    const modal = document.getElementById('editModal');
-    const categoryIdInput = document.getElementById('categoryId');
-    const categoryNameInput = document.getElementById('categoryName');
-    const newCategoryNameInput = document.getElementById('newCategoryName');
-
-    categoryIdInput.value = category.categoryid;
-    categoryNameInput.value = category.categoryname;
-    newCategoryNameInput.value = '';
-
-    modal.style.display = 'block';
-
-    // Handle the modal close button
-    const closeModalButton = document.getElementById('closeModal');
-    closeModalButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Handle the update button
-    const updateButton = document.getElementById('updateCategory');
-    updateButton.addEventListener('click', () => {
-        // Implement your logic to update the category using the values in categoryIdInput and newCategoryNameInput
-        console.log('Category ID:', categoryIdInput.value);
-        console.log('Category Name:', categoryNameInput.value);
-        console.log('New Category Name:', newCategoryNameInput.value);
-
-        // Close the modal after updating
-        modal.style.display = 'none';
-    });
-
-    // Handle the cancel button
-    const cancelButton = document.getElementById('cancelUpdate');
-    cancelButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Handle clicks outside the modal to close it
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-}
-
-// Function to open the edit modal with category details
-function openDeleteModal(category) {
-    const modal = document.getElementById('deleteModal');
-    const categoryIdInput = document.getElementById('categoryId');
-    const categoryNameInput = document.getElementById('categoryName');
-
-    if (categoryIdInput && categoryNameInput) {
-        console.log('Category ID:', category.categoryid);
-        console.log('Category Name:', category.categoryname);
-
-        categoryIdInput.value = category.categoryid;
-        categoryNameInput.value = category.categoryname;
-
-        console.log('After assignment - Category ID:', categoryIdInput.value);
-        console.log('After assignment - Category Name:', categoryNameInput.value);
-
-        modal.style.display = 'block';
-
-        // Handle the modal close button
-        const closeModalButton = document.getElementById('closeModal');
-        closeModalButton.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        // Handle the update button
-        const updateButton = document.getElementById('deleteCategory');
-        updateButton.addEventListener('click', () => {
-            console.log('Record Deleted Successfully');
-
-            modal.style.display = 'none';
-        });
-
-        // Handle the cancel button
-        const cancelButton = document.getElementById('cancelDelete');
-        cancelButton.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        // Handle clicks outside the modal to close it
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    } else {
-        console.error('Input elements not found');
-    }
-}

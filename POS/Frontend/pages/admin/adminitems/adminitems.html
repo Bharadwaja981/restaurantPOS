@@ -213,43 +213,46 @@
             </div>
             <!-- End of Nav -->
         </div>
-
-        <script type="module" src="../data.js"></script>
-        <script type="module" src="../adminmain.js"></script>
-        <script>
-        
-        function create_category() {
-            const categoryNameInput = document.querySelector('.product input');
-            const enteredCategoryName = categoryNameInput.value;
-            newCategoryName = enteredCategoryName;
-            const data = {
-                categoryname: enteredCategoryName
-            };
-            window.parent.postMessage(data, '*');
-            fetch('http://127.0.0.1:5000/create_order', {
-                method: 'POST',
-                mode:'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    console.log('Success:', data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-            
-        </script>
     </div>
+    <div id="editModal" class="editmodal">
+        
+    </div>
+    <script type="module" src="../data.js"></script>
+    <script type="module" src="../functions.js"></script>
+    <script type="module" src="../adminmain.js"></script>
+    <script>
+    
+    function create_category() {
+        const categoryNameInput = document.querySelector('.product input');
+        const enteredCategoryName = categoryNameInput.value;
+        newCategoryName = enteredCategoryName;
+        const data = {
+            categoryname: enteredCategoryName
+        };
+        window.parent.postMessage(data, '*');
+        fetch('http://127.0.0.1:5000/add_category', {
+            method: 'POST',
+            mode:'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+        
+    </script>
 </body>
 
 </html>

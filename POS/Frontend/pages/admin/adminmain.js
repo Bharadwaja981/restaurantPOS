@@ -1,5 +1,5 @@
 import { loadCategoryData, Categories, Items } from './data.js';
-
+import { openEditModal, openDeleteModal } from '../admin/functions.js';
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
@@ -23,39 +23,13 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 
-Items.forEach(item => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${item.itemId}</td>
-        <td>${item.itemName}</td>
-        <td>${item.price}</td>
-        <td>${item.categoryId}</td>
-       <td class="primary">Details</td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('#current-items tbody').appendChild(tr);
-});
-
-Categories.forEach(category => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${category.categoryid}</td>
-        <td>${category.categoryname}</td>
-        <td>
-            <button class="edit-btn" data-categoryid="${category.categoryid}">Edit</button>
-            <button class="delete-btn" data-categoryid="${category.categoryid}">Delete</button>
-        </td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('#current-category tbody').appendChild(tr);
-});
-
 const recentOrdersSection = document.querySelector('.current-items');
 const currentCategorySection = document.querySelector('.current-category');
 const addItemSection = document.querySelector('.new-products');
 const categoriesItem = document.querySelector('.item-list .item:nth-child(1)');
 const itemsItem = document.querySelector('.item-list .item:nth-child(2)');
 const addItem = document.querySelector('.item-list .item:nth-child(3)');
+
 
 recentOrdersSection.style.display = 'none';
 currentCategorySection.style.display = 'none';
@@ -79,3 +53,61 @@ addItem.addEventListener('click', function () {
     currentCategorySection.style.display = 'none';
     addItemSection.style.display = 'block';
 });
+
+
+Items.forEach(item => {
+    const tr = document.createElement('tr');
+    const trContent = `
+        <td>${item.itemId}</td>
+        <td>${item.itemName}</td>
+        <td>${item.price}</td>
+        <td>${item.categoryId}</td>
+         <td class="primary">
+            <button class="edit-btn" data-id="${item.itemId}">Edit</button>
+            <button class="delete-btn" data-id="${item.itemId}">Delete</button>
+         </td>
+    `;
+    tr.innerHTML = trContent;
+    document.querySelector('#current-items tbody').appendChild(tr);
+
+
+    const editBtn = tr.querySelector('.edit-btn');
+    const deleteBtn = tr.querySelector('.delete-btn');
+
+    editBtn.addEventListener('click', () => {
+        openEditModal(item, 'item');
+    });
+
+    deleteBtn.addEventListener('click', () => {
+        openDeleteModal(item, 'item');
+    });
+});
+
+Categories.forEach(category => {
+    const tr = document.createElement('tr');
+    const trContent = `
+        <td>${category.id}</td>
+        <td>${category.categoryname}</td>
+        <td>
+            <button class="edit-btn" data-id="${category.id}">Edit</button>
+            <button class="delete-btn" data-id="${category.id}">Delete</button>
+        </td>
+    `;
+    tr.innerHTML = trContent;
+    document.querySelector('#current-category tbody').appendChild(tr);
+
+    
+    const editBtn = tr.querySelector('.edit-btn');
+    const deleteBtn = tr.querySelector('.delete-btn');
+
+    editBtn.addEventListener('click', () => {
+        openEditModal(category, 'category');
+        
+    });
+
+    deleteBtn.addEventListener('click', () => {
+        openDeleteModal(category, 'category');
+       
+    });
+});
+

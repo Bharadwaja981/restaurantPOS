@@ -92,7 +92,7 @@ def get_category_list():
     category_list = []
     for category in categories:
         category_dict = {
-            "categoryid": category[0],
+            "id": category[0],
             "categoryname": category[1]
         }
         category_list.append(category_dict)
