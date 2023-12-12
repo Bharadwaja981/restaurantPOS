@@ -69,12 +69,7 @@
                     </span>
                     <h3>Settings</h3>
                 </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        add
-                    </span>
-                    <h3>New Login</h3>
-                </a>
+                
                 <a href="../../Index.html">
                     <span class="material-icons-sharp">
                         logout
@@ -140,6 +135,21 @@
                 </div>
             </div>
             <!-- End of Analyses -->
+            
+            <section class="current-category">
+                <h2>Current Categories</h2>
+                <table id="current-category"> 
+                    <thead>
+                        <tr id="cat">
+                            <th>Category Id</th>
+                            <th>Category Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </section>
             <!-- Recent Orders Table -->
             <section class="recent-orders">
                 <h2>Current Orders</h2>
@@ -157,23 +167,6 @@
                 </table>
                 <a href="#">Show All</a>
             </section>
-            
-            <!-- End of Recent Orders -->
-            <section class="current-category">
-                <h2>Current Categories</h2>
-                <table id="current-category"> 
-                    <thead>
-                        <tr>
-                            <th>Category Id</th>
-                            <th>Category Name</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <a href="#">Show All</a>
-            </section>
-
         </main>
         <!-- End of Main Content -->
 
@@ -197,9 +190,56 @@
             </div>
             <!-- End of Nav -->
         </div>
-
-
     </div>
+    <div id="editModal" class="editmodal">
+        <div class="editmodal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Edit Category</h2>
+            <form id="editForm">
+                <div class="placecontainer">
+                    <h2 for="categoryId">Category ID:</h2>
+                    <input type="text" id="categoryId" readonly>
+                </div>
+                <div class="placecontainer">
+                    <h2 for="categoryName">Current Name:</h2>
+                    <input type="text" id="categoryName" readonly>
+                </div>
+                <div class="placecontainer">
+                    <h2 for="newCategoryName">New Category Name:</h2>
+                    <input class="newCategoryName" placeholder="Enter name" style="background-color: aliceblue;" type="text" id="newCategoryName">
+                </div>
+                <div class="button-container">
+                    <button type="button" class="modalbtn" id="updateCategory">Update</button>
+                    <button type="button" class="modalbtn" id="cancelUpdate">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="deletemodal">
+        <div class="deletemodal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Edit Category</h2>
+            <form id="deleteForm">
+                <div class="placecontainer">
+                    <h2 for="newCategoryName">You sure want to delete the below ?</h2>
+                </div>
+                <div class="placecontainer">
+                    <h2 for="categoryId">Category ID:</h2>
+                    <input type="text" id="categoryId" readonly>
+                </div>
+                <div class="placecontainer">
+                    <h2 for="categoryName">Current Name:</h2>
+                    <input type="text" id="categoryName" readonly>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="modalbtn" id="deleteCategory">Delete</button>
+                    <button type="button" class="modalbtn" id="cancelDelete">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     
     <script type="module"  src="./data.js"></script>
     <script type="module"  src="./admin.js"></script>

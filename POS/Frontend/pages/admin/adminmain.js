@@ -41,7 +41,10 @@ Categories.forEach(category => {
     const trContent = `
         <td>${category.categoryid}</td>
         <td>${category.categoryname}</td>
-       <td class="primary">Details</td>
+        <td>
+            <button class="edit-btn" data-categoryid="${category.categoryid}">Edit</button>
+            <button class="delete-btn" data-categoryid="${category.categoryid}">Delete</button>
+        </td>
     `;
     tr.innerHTML = trContent;
     document.querySelector('#current-category tbody').appendChild(tr);

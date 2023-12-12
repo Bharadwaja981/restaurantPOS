@@ -407,6 +407,18 @@ main table tbody td{
     color: var(--color-dark-variant);
 }
 
+main table tbody td .edit-btn, .delete-btn{
+    background-color: var(--color-primary);
+    cursor: pointer;
+    padding: 0.5em;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+main table tbody td .edit-btn:hover, .delete-btn:hover{
+    background-color: var(--color-danger);
+}
+
 main table tbody tr:last-child td{
     border: none;
 }
@@ -506,9 +518,6 @@ main .new-products .product-details .product .btn-container .btn{
     border: 1px solid;
 }
 
-main .new-products .product-details .product .btn-container .btn: hover{  
-    box-shadow: none; 
-}
 /*-- add-item end --*/
 
 
@@ -764,6 +773,18 @@ main .current-items a{
         width: 73vw;
     }
 
+    main table tbody td .edit-btn, .delete-btn{
+        background-color: var(--color-primary);
+        cursor: pointer;
+        padding: 0.5em;
+        border: 1px solid black;
+        height: 1.8rem;
+        border-radius: 5px;
+    }
+    
+    main table tbody td .edit-btn:hover, .delete-btn:hover{
+        background-color: var(--color-danger);
+    }
 }
 
 @media screen and (max-width: 768px) {
