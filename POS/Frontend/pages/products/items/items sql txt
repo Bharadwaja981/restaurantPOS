@@ -1,0 +1,240 @@
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Cocktail Samosa (8 pieces)', '1', 4.00, 'no'),
+    ('Veg Samosa', '1', 4.50, 'no'),
+    ('Onion Bhajia', '1', 6.00, 'no'),
+    ('Chana Dry Fry', '1', 6.00, 'no'),
+    ('Crispy Bhajiya', '1', 6.00, 'no'),
+    ('Chilli Potato', '1', 7.00, 'no'),
+    ('Veg Noodles', '1', 7.00, 'no'),
+    ('Mogo (Chilli)', '1', 7.00, 'no'),
+    ('Mogo (Jeera)', '1', 7.00, 'no'),
+    ('Mogo (Plain)', '1', 7.00, 'no'),
+    ('Chilli Mashroom', '1', 7.50, 'no'),
+    ('Chilli Paneer', '1', 7.50, 'no'),
+    ('Aubergine Stiry Fry', '1', 7.50, 'no'),
+    ('Paneer Noodles', '1', 8.00, 'no'),
+    ('Vegetable Tikka (Soya)', '1', 8.00, 'no'),
+    ('Paneer Shaslik', '1', 8.50, 'no'),
+    ('Mix Veg Sizzler (Reg)', '1', 11.00, 'no'),
+    ('Mogo Paneer Sizzler (Reg)', '1', 11.00, 'no'),
+    ('Mix Veg Sizzler (Large)', '1', 15.00, 'no'),
+    ('Mogo Paneer Sizzler (Large)', '1', 15.00, 'no');
+   
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+   VALUES
+    ('Chicken Samosa', '2', 4.50, 'no'),
+    ('Lamb Samosa', '2', 4.50, 'no'),
+    ('Chicken Kebab', '2', 6.50, 'no'),
+    ('Tikka Roll', '2', 6.50, 'no'),
+    ('Chicken Tandoori (Half)', '2', 7.00, 'no'),
+    ('Karmos Chicken (Reg)', '2', 7.00, 'no'),
+    ('Chicken Tikka (Reg)', '2', 7.00, 'no'),
+    ('Chicken Lollipop (Reg)', '2', 7.00, 'no'),
+    ('Kebab Roll', '2', 7.00, 'no'),
+    ('Chicken Pakora', '2', 7.00, 'no'),
+    ('Chicken Niblets (Jeera)', '2', 7.00, 'no'),
+    ('Chicken Niblets (Chilli)', '2', 7.00, 'no'),
+    ('Chicken Niblets (Mari)', '2', 7.00, 'no'),
+    ('Chicken Wings (Jeera)', '2', 7.00, 'no'),
+    ('Chicken Wings (Chilli)', '2', 7.00, 'no'),
+    ('Chicken Wings (Mari)', '2', 7.00, 'no'),
+    ('Boneless Chicken (Jeera)', '2', 7.00, 'no'),
+    ('Boneless Chicken (Mari)', '2', 7.00, 'no'),
+    ('Lamb Kebab', '2', 7.50, 'no'),
+    ('Crispy Chicken (Reg)', '2', 7.50, 'no'),
+    ('Chicken Noodels', '2', 7.50, 'no'),
+    ('Meatballs (Lamb)', '2', 9.00, 'no'),
+    ('Lamb Chops (Reg)', '2', 10.00, 'no'),
+    ('Lamb Fry', '2', 10.00, 'no'),
+    ('Mix Sizzler (reg)', '2', 11.00, 'no'),
+    ('Mix Sizzler Boneless (reg)', '2', 11.00, 'no'),
+    ('Crispy Chicken (Large)', '2', 11.00, 'no'),
+    ('Chicken Lollipop (Large)', '2', 11.00, 'no'),
+    ('Chicken Tandoori (Full)', '2', 12.00, 'no'),
+    ('Karmos Chicken (Large)', '2', 12.00, 'no'),
+    ('Mix Sizzler (Large)', '2', 15.00, 'no'),
+    ('Mix Sizzler Boneless (Large)', '2', 15.00, 'no'),
+    ('Lamb Chops (Large)', '2', 15.00, 'no'),
+    ('Chefs Special Sizzler', '2', 25.00, 'no');
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Fish Pakora', '3', 7.00, 'no'),
+    ('Tandoori Fish Sizzler - Dry (Reg)', '3', 10.00, 'no'),
+    ('Fish Fry - Dry (Reg)', '3', 10.00, 'no'),
+    ('Masala Prawn (Reg)', '3', 10.00, 'no'),
+    ('Chilli Prawn (Indo Chinese)', '3', 10.00, 'no'),
+    ('King Prawns Tawa (Reg)', '3', 12.00, 'no'),
+    ('Tandoori Fish Sizzler - Dry (large)', '3', 14.00, 'no'),
+    ('Fish Fry - Dry (large)', '3', 14.00, 'no'),
+    ('Masala Prawn - Dry (large)', '3', 15.00, 'no'),
+    ('King Prawns Tawa (large)', '3', 16.00, 'no');
+   
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Egg Curry', '4', 8.00, 'no'),
+    ('Mix Veg', '4', 8.00, 'yes'),
+    ('Veg Methi (Soya) Kheema Tawa', '4', 8.00, 'no'),
+    ('Tarka Dal', '4', 8.00, 'no'),
+    ('Dal Makhani', '4', 8.00, 'no'),
+    ('Bombay Aloo', '4', 8.00, 'no'),
+    ('Bhindi Masala', '4', 8.00, 'no'),
+    ('Sweet Corn Methi', '4', 8.00, 'no'),
+    ('Rajma Curry', '4', 8.00, 'no'),
+    ('Aloo Mutter', '4', 8.00, 'no'),
+    ('Channa Masala', '4', 8.00, 'no'),
+    ('Aloo Palak', '4', 8.00, 'no'),
+    ('Aloo Methi', '4', 8.00, 'no'),
+    ('Sag Aloo', '4', 8.00, 'no'),
+    ('Paneer', '4', 8.50, 'yes'),
+    ('Paneer Tikka Masala', '4', 8.50, 'no'),
+    ('Paneer Butter Masala', '4', 8.50, 'no'),
+    ('Mutter Paneer', '4', 8.50, 'no'),
+    ('Paneer Shaslik Kadai', '4', 8.50, 'no'),
+    ('Garlic Chilli Paneer', '4', 8.50, 'no'),
+    ('Vegetable Tikka (Soya)', '4', 9.00, 'no'),
+    ('Egg Burji', '4', 9.00, 'no');
+    
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Garlic Chilli Prawns', '5', 10.50, 'no'),
+    ('Garlic Butter Prawns', '5', 10.50, 'yes'),
+    ('King Prawn Curry', '5', 10.50, 'no'),
+    ('Fish Curry', '5', 9.00, 'no');
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Butter Chicken', '6', 8.50, 'no'),
+    ('Chicken Tikka Masala', '6', 8.50, 'no'),
+    ('Garlic Chilli Chicken', '6', 8.50, 'no'),
+    ('Chicken Rogan Josh', '6', 8.50, 'no'),
+    ('Dhaba Chicken (off the bone)', '6', 8.50, 'no'),
+    ('Dhaba Chicken (on the bone)', '6', 8.50, 'no'),
+    ('Chicken Machusi (off the bone)', '6', 10.00, 'no'),
+    ('Chicken Machusi (on the bone)', '6', 10.00, 'no');
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Butter Lamb', '7', 10.00, 'no'),
+    ('Lamb Tikka Masala', '7', 10.00, 'no'),
+    ('Garlic Chilli Lamb', '7', 10.00, 'no'),
+    ('Lamb Rogan Josh', '7', 10.00, 'no'),
+    ('Kheema Curry ', '7', 10.00, 'no'),
+    ('Kheema Tawa Josh', '7', 10.00, 'no'),
+    ('Dhaba Lamb (off the bone)', '7', 10.00, 'no'),
+    ('Dhaba Lamb (on the bone)', '7', 10.00, 'no'),
+    ('Lamb Machusi (off the bone)', '7', 11.00, 'no'),
+    ('Lamb Machusi (on the bone)', '7', 11.00, 'no');
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Dhaba Paneer', '8', 9.00, 'no'),
+    ('Lamb and Chicken Tawa', '8', 9.50, 'no'),
+    ('Chicken Tikka and Lamb Kheema Tawa', '8', 9.50, 'no'),
+    ('Dal Chicken', '8', 10.00, 'no'),
+    ('Paneer Bhurji', '8', 10.00, 'no'),
+    ('Lamb Chops Curry', '8', 12.00, 'no'),
+    ('Dal Ghost', '8', 12.00, 'no'),
+    ('Mix Grill Kadai (Regular)', '8', 13.00, 'no'),
+    ('Mix Grill Kadai (Large)', '8', 18.00, 'no'),
+    ('Butter Chicken (Regular)', '8', 14.00, 'no'),
+    ('Butter Chicken (Large)', '8', 20.00, 'no');
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Chicken', '9', 8.50, 'yes'),
+    ('Chicken Tikka', '9', 9.00, 'yes'),
+    ('Lamb', '9', 9.00, 'yes');
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Plain Rice', '10', 2.50, 'no'),
+    ('Jeera Rice', '10', 2.50, 'no'),
+    ('Pulav Rice', '10', 3.00, 'no'),
+    ('Veg Rice', '10', 4.00, 'no'),
+    ('Garlic & Onion Rice', '10', 4.00, 'no'),
+    ('Egg Fried Rice', '10', 4.00, 'no'),
+    ('Green Peas Rice', '10', 4.00, 'no'),
+    ('Mashroom Rice', '10', 4.00, 'no'),
+    ('Kheema Rice', '10', 4.50, 'no'),
+    ('Veg Biryani', '10', 4.50, 'no'),
+    ('Chicken Dum Biryani (with Bone)', '10', 8.50, 'no'),
+    ('Chicken Dum Biryani (without Bone)', '10', 9.50, 'no'),
+    ('Fish Biryani', '10', 9.50, 'no'),
+    ('Paneer Biryani', '10', 9.50, 'no'),
+    ('Lamb Dum Biryani (with Bone)', '10', 10.00, 'no'),
+    ('Lamb Dum Biryani (without Bone)', '10', 10.00, 'no'),
+    ('Prawn Biryani', '10', 11.00, 'no');
+   
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Plan Naan', '11', 1.25, 'no'),
+    ('Garlic Naan', '11', 2.00, 'no'),
+    ('Garlic Coriander Naan', '11', 2.00, 'no'),
+    ('Garlic Chilli Naan', '11', 2.50, 'no'),
+    ('Garlic Chilli Cheese naan', '11', 2.50, 'no'),
+    ('Chilli Cheese Naan', '11', 2.50, 'no'),
+    ('Cheese Naan', '11', 2.75, 'no'),
+    ('Peshwari Naan', '11', 2.75, 'no'),
+    ('Garlic Tandoori Roti', '11', 2.75, 'no'),
+    ('Tandoori Roti', '11', 2.75, 'no'),
+    ('Kheema Naan', '11', 3.00, 'no'),
+    ('Chappati', '11', 3.00, 'no');
+   
+   
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Extra Dip', '12', 0.50, 'no'),
+    ('Papodams', '12', 0.75, 'no'),
+    ('Pickle Tray', '12', 1.50, 'no'),
+    ('Plain Yogurt', '12', 1.50, 'no'),
+    ('Chips', '12', 2.00, 'no'),
+    ('Raita', '12', 3.00, 'no'),
+    ('Green Salad', '12', 3.00, 'no'),
+    ('Garlic Onion And Chilli Fry', '12', 3.00, 'no'),
+    ('3 Poppadoms with Pickle Try', '12', 3.00, 'no'),
+    ('Paprika Chips', '12', 3.00, 'no'),
+    ('Poussin Chips', '12', 3.50, 'no'),
+    ('Chilli Chips and Cheese', '12', 3.50, 'no'),
+    ('Chilli Chips (Reg)', '12', 4.00, 'no'),
+    ('Chilli Chips (Large)', '12', 4.50, 'no'),
+    ('Chicken Nuggets and Chips', '12', 4.50, 'no'),
+    ('Curry Sauce', '12', 5.00, 'no');
+
+
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Veg Noodles', '13', 7.00, 'no'),
+    ('Chicken Noodles', '13', 7.50, 'no'),
+    ('Paneer Noodles', '13', 8.50, 'no');
+   
+   
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Singoda Pan', '14', 2.00, 'no'),
+    ('Kuaky', '14', 3.50, 'no'),
+    ('Punky', '14', 3.50, 'no'),
+    ('Ferrero Rochers', '14', 4.95, 'no'),
+    ('Coconut Supreme', '14', 4.95, 'no'),
+    ('Strawberry Flute', '14', 4.95, 'no'),
+    ('Pina Colada', '14', 4.95, 'no'),
+    ('Matka Kulfi', '14', 4.95, 'no'),
+    ('Midnight Mint', '14', 4.95, 'no');
+
+INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('Butter Sauce', '15', 6.00, 'no'),
+    ('Bhuna Sauce', '15', 6.00, 'no'),
+    ('Madras Sauce', '15', 6.00, 'no'),
+    ('Jalfrezi Sauce', '15', 6.00, 'no'),
+    ('Vindaloo Sauce', '15', 6.00, 'no'),
+    ('Masala Sauce', '15', 6.00, 'no'),
+    ('Biryani Sauce', '15', 6.00, 'no');
+
+   INSERT INTO items ("ItemName", "CategoryId", "Price", "Type")
+VALUES
+    ('with Methi', '16', 0.50, 'no'),
+    ('with Palak', '16', 0.50, 'no'),
+    ('with Green Peas', '16', 0.50, 'no'),
+    ('with Potato', '16', 0.50, 'no');

@@ -136,53 +136,12 @@
 
             <!-- Add New Item -->
             <div class="new-products">
-                <h2>Add Items</h2>
-                <div class="product-details">
+                <h2>Add Category</h2>
+                <div class="product-details" id="catpd">
                     <div class="product">
                         <h1> Category Name </h1>
                         <input type="text" class="category-input" placeholder=" Enter Name">
                     </div>
-                    <!-- <div class="product">
-                        <h1> Price: £ </h1>
-                        <input type="text" placeholder=" Enter Price">
-                    </div> -->
-                    <!-- <div class="product">
-                        <h1 > Category: </h1>
-                        <select class="category-selector" name = "category">
-                            <option value = "Veg Starter">Veg Starter</option>
-                            <option value = "Non-Veg Starter">Non-Veg Starter </option>
-                            <option value = "Seafood Starter">Seafood Starter</option>
-                            <option value = "Vegetable Mains">Vegetable Mains</option>
-                            <option value = "Seafood Mains">Seafood Mains</option>
-                            <option value = "Chicken Mains">Chicken Mains</option>
-                            <option value = "Lamb Mains">Lamb Mains</option>
-                            <option value = "Chefs Specials">Chefs Specials</option>
-                            <option value = "Classic Dishes">Classic Dishes</option>
-                            <option value = "Rice">Rice</option>
-                            <option value = "Naan">Naan</option>
-                            <option value = "Extras">Extras</option>
-                            <option value = "Noodles">Noodles</option>
-                            <option value = "Desserts">Desserts</option>
-                            <option value = "Curry Sauce">Curry Sauce</option>
-                            <option value = "Curry-Add On">Curry-Add On</option>
-                        </select>
-                    </div>
-                    <div class="product">
-                        <h1 > Type: </h1>
-                        <select class="category-selector" name = "type">
-                            <option value="select" selected>None</option>
-                            <option value="Curry" >Curry</option>
-                            <option value="Bhuna" >Bhuna</option>
-                            <option value="Madras" >Madras</option>
-                            <option value="Jalfrezi" >Jalfrezi</option>
-                            <option value="Kadai" >Kadai</option>
-                            <option value="Tawa" >Tawa</option>
-                            <option value="Vandaloo" >Vindaloo</option>
-                            <option value="Palak" >Palak</option>
-                            <option value="Saag" >Saag</option>
-                            <option value="Methi" >Methi</option>
-                        </select>
-                    </div> -->
                     <div class="product">
                         <div class="btn-container">
                             <button class="btn" onclick="create_category()"> Submit</button>
@@ -190,6 +149,39 @@
                         </div>
                     </div>
                 </div>
+                
+            </div>
+            <div class="new-products" id="new-product-items">
+                <h2>Add Items</h2>
+                <div class="product-details">
+                    <div class="product">
+                        <h1> Item Name </h1>
+                        <input type="text" class="category-input" placeholder=" Enter Name">
+                    </div>
+                    <div class="product">
+                        <h1> Price: £ </h1>
+                        <input type="text" placeholder=" Enter Price">
+                    </div>
+                    <div class="product">
+                        <h1 > Category: </h1>
+                        <select class="category-selector" name="category" id="categorySelector">
+                        </select>
+                    </div>
+                    <div class="product" >
+                        <h1 > Type: </h1>
+                        <select class="category-selector" name = "type">
+                            <option value="no" selected>N/A</option>
+                            <option value="yes" >Yes</option>
+                        </select>
+                    </div>
+                    <div class="product">
+                        <div class="btn-container">
+                            <button class="btn" onclick="create_category()"> Submit</button>
+                            <button class="btn"> Cancel</button>   
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </main>
         <!-- End of Main Content -->
@@ -214,9 +206,9 @@
             <!-- End of Nav -->
         </div>
     </div>
-    <div id="editModal" class="editmodal">
-        
-    </div>
+    <div id="editModal" class="editmodal"></div>
+    <div id="deleteModal" class="deletemodal"></div>
+
     <script type="module" src="../data.js"></script>
     <script type="module" src="../functions.js"></script>
     <script type="module" src="../adminmain.js"></script>

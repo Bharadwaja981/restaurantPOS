@@ -1,4 +1,4 @@
-import { Orders, loadCategoryData, Categories } from './data.js';
+import { loadItemData, loadCategoryData, loadOrdersData, Categories, Items, Orders} from './data.js';
 import { openEditModal, openDeleteModal } from '../admin/functions.js';
 
 const sideMenu = document.querySelector('aside');
@@ -21,42 +21,84 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 
-Orders.forEach(order => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${order.productName}</td>
-        <td>${order.productNumber}</td>
-        <td>${order.paymentStatus}</td>
-        <td class="${order.status === 'Declined' ? 'danger' : order.status === 'Pending' ? 'warning' : 'primary'}">${order.status}</td>
-        <td class="primary">Details</td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('#recent-orders tbody').appendChild(tr);
-});
-   
-Categories.forEach(category => {
-    const tr = document.createElement('tr');
-    const trContent = `
-        <td>${category.id}</td>
-        <td>${category.categoryname}</td>
-        <td class="primary">
-            <button class="edit-btn" data-id="${category.id}">Edit</button>
-            <button class="delete-btn" data-id="${category.id}">Delete</button>
-        </td>
-    `;
-    tr.innerHTML = trContent;
-    document.querySelector('#current-category tbody').appendChild(tr);
-
-    // Add event listeners for the buttons (you can define separate functions for edit and delete)
-    const editBtn = tr.querySelector('.edit-btn');
-    const deleteBtn = tr.querySelector('.delete-btn');
-
-    editBtn.addEventListener('click', () => {
-        openEditModal(category, 'category');
+const recentOrdersTbody = document.querySelector('#recent-orders tbody');
+const currentItemsTbody = document.querySelector('#current-items tbody');
+const currentCategoryTbody = document.querySelector('#current-category tbody');
+if (recentOrdersTbody) {
+    Orders.forEach(order => {
+        const tr = document.createElement('tr');
+        const trContent = `
+            <td>${order.OrderID}</td>
+            <td>${order.CustomerName}</td>
+            <td>${order.OrderType}</td>
+            <td>${order.TableNumber}</td>
+            <td>${order.OrderDate}</td>
+            <td>${order.Price}</td>
+            <td>${order.PaymentType}</td>
+            <td>${order.EmployeeName}</td>
+            <td>${order.status}</td>
+            <td class="primary">Details</td>
+        `;
+        tr.innerHTML = trContent;
+        recentOrdersTbody.appendChild(tr);
     });
+}
 
-    deleteBtn.addEventListener('click', () => {
-        openDeleteModal(category, 'category');
+if (currentItemsTbody) {
+    Items.forEach(item => {
+        const tr = document.createElement('tr');
+        const trContent = `
+            <td>${item.itemId}</td>
+            <td>${item.itemName}</td>
+            <td>${item.price}</td>
+            <td>${item.categoryId}</td>
+             <td class="primary">
+                <button class="edit-btn" data-id="${item.itemId}">Edit</button>
+                <button class="delete-btn" data-id="${item.itemId}">Delete</button>
+             </td>
+        `;
+        tr.innerHTML = trContent;
+        currentItemsTbody.appendChild(tr);
+
+        const editBtn = tr.querySelector('.edit-btn');
+        const deleteBtn = tr.querySelector('.delete-btn');
+
+        editBtn.addEventListener('click', () => {
+            openEditModal(item, 'item');
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            openDeleteModal(item, 'item');
+        });
     });
-});
+}
+
+if (currentCategoryTbody) {
+    Categories.forEach(category => {
+        const tr = document.createElement('tr');
+        const trContent = `
+            <td>${category.id}</td>
+            <td>${category.categoryname}</td>
+            <td class="primary">
+                <button class="edit-btn" data-id="${category.id}">Edit</button>
+                <button class="delete-btn" data-id="${category.id}">Delete</button>
+            </td>
+        `;
+        tr.innerHTML = trContent;
+        currentCategoryTbody.appendChild(tr);
+
+        // Add event listeners for the buttons (you can define separate functions for edit and delete)
+        const editBtn = tr.querySelector('.edit-btn');
+        const deleteBtn = tr.querySelector('.delete-btn');
+
+        editBtn.addEventListener('click', () => {
+            openEditModal(category, 'category');
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            openDeleteModal(category, 'category');
+        });
+    });
+}
+
 

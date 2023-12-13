@@ -74,6 +74,77 @@ def get_orders_for_today():
         orders_list.append(order_dict)
     return jsonify(orders_list)
 
+@app.route('/get_orders_list', methods=['GET', 'POST'])
+def get_orders_list():
+    conn = create_connection()
+    cursor = conn.cursor()
+    query = """
+        SELECT * FROM public.category
+    """
+    cursor.execute(query)
+    orders = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    # Convert categories to a list of dictionaries for JSON serialization
+    order_list = []
+    for order in orders:
+        order_dict = {
+            "OrderID": order[0],
+            "CustomerName": order[1],
+            "OrderType": order[2],
+            "TableNumber": order[3],
+            "OrderDate": order[4].isoformat(),
+            "Price": order[5],
+            "PaymentType": order[6],
+            "EmployeeName": order[7],
+            "Status": order[8]
+        }
+        order_list.append(order_dict)
+
+    return jsonify(order_list)
+
+@app.route('/get_item_list', methods=['GET', 'POST'])
+def get_item_list():
+    conn = create_connection()
+    cursor = conn.cursor()
+    query = """
+        SELECT * FROM public.items
+    """
+    cursor.execute(query)
+    items = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    # Convert categories to a list of dictionaries for JSON serialization
+    item_list = []
+    for item in items:
+        item_dict = {
+            "ItemId": item[0],
+            "ItemName": item[1],
+            "CategoryId": item[3],
+            "Price": item[4]
+        }
+        item_list.append(item_dict)
+
+    return jsonify(item_list)
+
+@app.route('/del_category', methods=['GET','POST'])
+def del_category():
+    conn = create_connection()
+    cursor = conn.cursor()
+    data = request.get_json()
+    query = """
+        DELETE FROM category WHERE category_id = %s
+    """
+    cursor.execute(query,(data['id'],))
+    cursor.close()
+    conn.close()
+    return 'category deleted successfully'
+
+
 @app.route('/get_category_list', methods=['GET', 'POST'])
 def get_category_list():
     conn = create_connection()
@@ -81,7 +152,6 @@ def get_category_list():
     query = """
         SELECT * FROM public.category
     """
-
     cursor.execute(query)
     categories = cursor.fetchall()
 
@@ -131,7 +201,6 @@ def create_order():
     cursor.close()
     conn.close()
     return 'Order inserted successfully'
-
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -4,6 +4,9 @@ export function openEditModal(module, type) {
     const editModalContent = document.createElement('div');
     editModalContent.className = 'editmodal-content';
     editModalContent.id = 'editModalContent';
+    while (modal.firstChild) {
+        modal.removeChild(modal.firstChild);
+    }
     modal.appendChild(editModalContent);
 
     const headerElement = document.createElement('h2');
@@ -170,13 +173,14 @@ export function openEditModal(module, type) {
 
 
 export function openDeleteModal(module, type) {
-
-
-    const modal = document.getElementById('editModal');
-    const editModalContent = document.createElement('div');
-    editModalContent.className = 'editmodal-content';
-    editModalContent.id = 'editModalContent';
-    modal.appendChild(editModalContent);
+    const modal = document.getElementById('deleteModal');
+    const deleteModalContent = document.createElement('div');
+    deleteModalContent.className = 'deleteModal-content';
+    deleteModalContent.id = 'deleteModalContent';
+    while (modal.firstChild) {
+        modal.removeChild(modal.firstChild);
+    }
+    modal.appendChild(deleteModalContent);
 
     const headerElement = document.createElement('h2');
     headerElement.textContent = 'Delete' + module;
@@ -187,11 +191,11 @@ export function openDeleteModal(module, type) {
     } else {
         headerElement.textContent = 'Delete';
     }
-    editModalContent.appendChild(headerElement);
+    deleteModalContent.appendChild(headerElement);
 
     const formElement = document.createElement('form');
     formElement.id = 'deleteForm';
-    editModalContent.appendChild(formElement);
+    deleteModalContent.appendChild(formElement);
 
     if (type === 'category') {
         const placeContainer = document.createElement('div');
@@ -281,18 +285,36 @@ export function openDeleteModal(module, type) {
     // Handle the update button
     const button1 = document.createElement('button');
     button1.className = 'modalbtn';
-    button1.id = 'update'+module.modulename;
+    button1.id = 'update'+type;
     button1.textContent = 'Delete';
+    if (type === 'item'){
+        button1.addEventListener('click', () => {
+            delCategory(module.itemId,module.itemName);
+        });
+    }else if (type === 'category'){
+        button1.addEventListener('click', () => {
+            delCategory(module.id,module.categoryname);
+        });
+    }else {
+        button1.addEventListener('click', () => {
+            delCategory(module.id, module.Name);
+        });
+    }
     btnConElement.appendChild(button1);
 
     const button2 = document.createElement('button');
     button2.className = 'modalbtn';
     button2.id = 'cancel';
     button2.textContent = 'Cancel';
-    button2.addEventListener('click', () => {
+    button2.addEventListener('click', (event) => {
+        event.preventDefault();
         modal.style.display = 'none';
     });
     btnConElement.appendChild(button2);
 
     modal.style.display = 'block';   
+}
+
+async function delCategory(id,name) {
+    alert(id +'  '+name);
 }

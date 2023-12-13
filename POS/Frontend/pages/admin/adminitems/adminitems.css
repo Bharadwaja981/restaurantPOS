@@ -443,6 +443,7 @@ main .new-items .item-list .item img{
     background-color: var(--color-success);
 }
 
+
 .deletemodal {
     display: none;
     position: fixed;
@@ -457,7 +458,7 @@ main .new-items .item-list .item img{
     padding-top: 60px;
 }
 
-.deletemodal-content {
+.deleteModal-content {
     background-color: var(--color-white);
     margin: 5% auto;
     padding: var(--card-padding);
@@ -472,7 +473,7 @@ main .new-items .item-list .item img{
 }
 
 
-.deletemodal-content .placecontainer{
+.deleteModal-content .placecontainer{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -482,7 +483,7 @@ main .new-items .item-list .item img{
 }
 
 
-.deletemodal-content input{
+.deleteModal-content input{
     margin-left: 15px;
     height: 30px;
     font-weight: 600;
@@ -492,6 +493,55 @@ main .new-items .item-list .item img{
     border-radius:  1rem;
     border: 1px solid;
     background-color: #cdd7dd;
+}
+
+
+.deleteModal-content placeholder{
+    height: 30px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.modalbtn {
+    height: 56px;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color:#363949;
+    cursor: pointer;
+    padding: var(--card-padding);
+    border-radius:  1rem;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalbtn:hover{
+    background-color: var(--color-success);
 }
 
 /* modal css end */
@@ -566,9 +616,10 @@ main table tbody td{
 main table tbody td .edit-btn, .delete-btn{
     background-color: var(--color-primary);
     cursor: pointer;
-    padding: 0.5em;
+    padding: 0.25em 1.5em 0.25em 1.5em;
     border: 1px solid black;
     border-radius: 5px;
+    
 }
 
 main table tbody td .edit-btn:hover, .delete-btn:hover{
@@ -636,6 +687,14 @@ main .new-products .product-details .product placeholder{
     font-family: 'Poppins', sans-serif;
 }
 
+#type-section {
+    display: none;
+}
+
+.category-selector:focus + #type-section {
+    display: block;
+}
+
 main .new-products .product-details .product .category-selector{
     margin-left: 15px;
     height: 55px;
@@ -659,7 +718,12 @@ main .new-products .product-details .product .category-selector select{
     cursor: pointer;
 }
 
-
+main .new-products .product-details .product .btn-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
 main .new-products .product-details .product .btn-container .btn{
     height: 56px;
@@ -672,8 +736,14 @@ main .new-products .product-details .product .btn-container .btn{
     border-radius:  1rem;   
     box-shadow: var(--box-shadow); 
     border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+main .new-products .product-details .product .btn-container .btn:hover {
+    background-color: var(--color-success);
+}
 /*-- add-item end --*/
 
 
