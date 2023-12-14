@@ -1,5 +1,5 @@
 import { loadCategoryData, loadItemData, Categories, Items } from './data.js';
-import { openEditModal, openDeleteModal } from '../admin/functions.js';
+import {openEditModal, openDeleteModal, confirmDelete} from '../admin/functions.js';
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
@@ -66,7 +66,6 @@ Items.forEach(item => {
         <td>${item.ItemName}</td>
         <td>${item.CategoryId}</td>
         <td>${item.Price}</td>
-        <td>${item.Type}</td>
          <td class="btncon">
             <button class="edit-btn" data-id="${item.ItemId}">Edit</button>
             <button class="delete-btn" data-id="${item.ItemId}">Delete</button>
@@ -110,7 +109,7 @@ Categories.forEach(category => {
     });
 
     deleteBtn.addEventListener('click', () => {
-        openDeleteModal(category, 'category');
+        confirmDelete(category);
        
     });
 });

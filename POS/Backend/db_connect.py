@@ -15,7 +15,6 @@ DB_PASSWORD = 'DfsSnk3NDnP7GfXtCbiXoxYZ8f1Fh64g'
 DB_HOST = 'flora.db.elephantsql.com'
 DB_PORT = '5432'
 
-print ('Database Connection')
 
 # Establish a connection to the PostgreSQL database
 def create_connection():
@@ -36,8 +35,7 @@ def get_Table_limit():
         cur = conn.cursor()
         cur.execute('SELECT \"NumberOfTables\" FROM Tables')
         data = cur.fetchall()
-        conn.close()
-        print(data[0][0])
+        commit_and_close(conn,cur)
         return jsonify({'data': data[0][0]})
     except psycopg2.Error as e:
         return jsonify({'error': str(e)})
@@ -79,7 +77,7 @@ def get_orders_list():
     conn = create_connection()
     cursor = conn.cursor()
     query = """
-        SELECT * FROM public.category
+        SELECT * FROM public.orders
     """
     cursor.execute(query)
     orders = cursor.fetchall()
@@ -115,33 +113,31 @@ def get_item_list():
     cursor.execute(query)
     items = cursor.fetchall()
 
-    cursor.close()
-    conn.close()
-
     # Convert categories to a list of dictionaries for JSON serialization
     item_list = []
     for item in items:
         item_dict = {
             "ItemId": item[0],
             "ItemName": item[1],
-            "CategoryId": item[3],
-            "Price": item[4]
+            "CategoryId": item[2],
+            "Price": item[3]
         }
         item_list.append(item_dict)
 
-    return jsonify(item_list)
-
-@app.route('/del_category', methods=['GET','POST'])
-def del_category():
-    conn = create_connection()
-    cursor = conn.cursor()
-    data = request.get_json()
-    query = """
-        DELETE FROM category WHERE category_id = %s
-    """
-    cursor.execute(query,(data['id'],))
     cursor.close()
     conn.close()
+
+    return jsonify(item_list)
+
+@app.route('/del_category/<int:category_id>', methods=['DELETE'])
+def del_category(category_id):
+    conn = create_connection()
+    cursor = conn.cursor()
+    query = """
+        DELETE FROM category WHERE id = %s
+    """
+    cursor.execute(query,(category_id,))
+    commit_and_close(conn,cursor)
     return 'category deleted successfully'
 
 
@@ -174,13 +170,9 @@ def add_category():
     conn = create_connection()
     data = request.get_json()
     cursor = conn.cursor()
-    query = sql.SQL("""INSERT INTO category (categoryname) VALUES(%s)""")
-    cursor.execute(query, (
-        data.get('categoryname')
-    ))
-    conn.commit()
-    cursor.close()
-    conn.close()
+    insert_string = "INSERT INTO category (categoryname) VALUES(' "+data.get('categoryname')+" ')"
+    cursor.execute(insert_string);
+    commit_and_close(conn,cursor)
     return 'new category inserted successfully'
 
 @app.route('/create_order', methods=['POST'])
@@ -197,10 +189,14 @@ def create_order():
         data.get('employeename'),
         data.get('status')
     ))
+    commit_and_close(conn,cursor)
+    return 'Order inserted successfully'
+
+def commit_and_close(conn,cursor):
     conn.commit()
     cursor.close()
     conn.close()
-    return 'Order inserted successfully'
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -184,100 +184,51 @@ export function openDeleteModal(module, type) {
 
     const headerElement = document.createElement('h2');
     headerElement.textContent = 'Delete' + module;
-    if (type === 'category') {
-        headerElement.textContent = 'Delete Category';
-    } else if (type === 'item') {
-        headerElement.textContent = 'Delete Item';
-    } else {
-        headerElement.textContent = 'Delete';
-    }
+    headerElement.textContent = 'Delete Category';
     deleteModalContent.appendChild(headerElement);
+    console.log("came here into cat 1" )
 
     const formElement = document.createElement('form');
     formElement.id = 'deleteForm';
     deleteModalContent.appendChild(formElement);
 
-    if (type === 'category') {
-        const placeContainer = document.createElement('div');
-        placeContainer.className = 'placecontainer';
-        formElement.appendChild(placeContainer);
+    const placeContainer = document.createElement('div');
+    placeContainer.className = 'placecontainer';
+    formElement.appendChild(placeContainer);
 
-        const cText = document.createElement('h2');
-        cText.textContent = 'You sure want to this ?';
-        placeContainer.appendChild(cText);
+    const cText = document.createElement('h2');
+    cText.textContent = 'You sure want to this ?';
+    placeContainer.appendChild(cText);
 
-        const placeContainer1 = document.createElement('div');
-        placeContainer1.className = 'placecontainer';
-        formElement.appendChild(placeContainer1);
+    const placeContainer1 = document.createElement('div');
+    placeContainer1.className = 'placecontainer';
+    formElement.appendChild(placeContainer1);
 
-        const categoryIdText = document.createElement('h2');
-        categoryIdText.textContent = 'Category Id';
-        placeContainer1.appendChild(categoryIdText);
+    const categoryIdText = document.createElement('h2');
+    categoryIdText.textContent = 'Category Id';
+    placeContainer1.appendChild(categoryIdText);
 
-        const categoryIdInput = document.createElement('input');
-        categoryIdInput.id = 'delcategoryId';
-        categoryIdInput.readOnly = true;
-        categoryIdInput.value = module.id;
-        placeContainer1.appendChild(categoryIdInput);
+    const categoryIdInput = document.createElement('input');
+    categoryIdInput.id = 'delcategoryId';
+    categoryIdInput.readOnly = true;
+    categoryIdInput.value = module.id;
+    placeContainer1.appendChild(categoryIdInput);
 
+
+    const placeContainer2 = document.createElement('div');
+    placeContainer2.className = 'placecontainer';
+    formElement.appendChild(placeContainer2);
+
+    const categoryNameText = document.createElement('h2');
+    categoryNameText.textContent = 'Category Name';
+    placeContainer2.appendChild(categoryNameText);
+
+    const categoryNameInput = document.createElement('input');
+    categoryNameInput.id = 'categoryName';
+    categoryNameInput.readOnly = true;
+    categoryNameInput.value = module.categoryname;
+    placeContainer2.appendChild(categoryNameInput);
         
-        const placeContainer2 = document.createElement('div');
-        placeContainer2.className = 'placecontainer';
-        formElement.appendChild(placeContainer2);
-
-        const categoryNameText = document.createElement('h2');
-        categoryNameText.textContent = 'Category Name';
-        placeContainer2.appendChild(categoryNameText);
-
-        const categoryNameInput = document.createElement('input');
-        categoryNameInput.id = 'categoryName';
-        categoryNameInput.readOnly = true;
-        categoryNameInput.value = module.categoryname;
-        placeContainer2.appendChild(categoryNameInput);
-        
-    }
-    else if (type === 'item'){
-        const placeContainer = document.createElement('div');
-        placeContainer.className = 'placecontainer';
-        formElement.appendChild(placeContainer);
-
-        const cText = document.createElement('h2');
-        cText.textContent = 'You sure want to this ?';
-        placeContainer.appendChild(cText);
-
-        const placeContainer1 = document.createElement('div');
-        placeContainer1.className = 'placecontainer';
-        formElement.appendChild(placeContainer1);
-
-        const itemIdText = document.createElement('h2');
-        itemIdText.textContent = 'Item Id';
-        placeContainer1.appendChild(itemIdText);
-
-        const itemIdInput = document.createElement('input');
-        itemIdInput.id = 'delItemId';
-        itemIdInput.readOnly = true;
-        itemIdInput.value = module.itemId;
-        placeContainer1.appendChild(itemIdInput);
-
-        
-        const placeContainer2 = document.createElement('div');
-        placeContainer2.className = 'placecontainer';
-        formElement.appendChild(placeContainer2);
-
-        const itemNameText = document.createElement('h2');
-        itemNameText.textContent = 'Item Name';
-        placeContainer2.appendChild(itemNameText);
-
-        const itemNameInput = document.createElement('input');
-        itemNameInput.id = 'categoryName';
-        itemNameInput.readOnly = true;
-        itemNameInput.value = module.itemName;
-        placeContainer2.appendChild(itemNameInput);
-    }
-    else{
-        console.log('Please pass right module');
-    }
-
     const btnConElement = document.createElement('div');
     btnConElement.className = 'button-container';
     formElement.appendChild(btnConElement);
@@ -287,19 +238,9 @@ export function openDeleteModal(module, type) {
     button1.className = 'modalbtn';
     button1.id = 'update'+type;
     button1.textContent = 'Delete';
-    if (type === 'item'){
-        button1.addEventListener('click', () => {
-            delCategory(module.itemId,module.itemName);
-        });
-    }else if (type === 'category'){
-        button1.addEventListener('click', () => {
-            delCategory(module.id,module.categoryname);
-        });
-    }else {
-        button1.addEventListener('click', () => {
-            delCategory(module.id, module.Name);
-        });
-    }
+    button1.addEventListener('click', () => {
+        console.log("came here into cat")
+    });
     btnConElement.appendChild(button1);
 
     const button2 = document.createElement('button');
@@ -315,6 +256,39 @@ export function openDeleteModal(module, type) {
     modal.style.display = 'block';   
 }
 
-async function delCategory(id,name) {
-    alert(id +'  '+name);
+export function deleteCategory(category) {
+
+    fetch(`http://127.0.0.1:5000/del_category/${category.id}`, {
+        method: 'DELETE'
+    })
+        .then(response => {
+            if (response.ok) {
+                alert(category.id +'  '+category.categoryname+'is deleted');
+
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            console.log(data.message); // This will log the response from Flask
+            // Handle success or perform additional actions based on the response
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            // Handle errors or show appropriate messages to the user
+        });
+
+
+
 }
+
+
+export function confirmDelete(module) {
+    if (confirm("Are you sure you want to delete "+module.categoryname)) {
+        deleteCategory(module);
+    } else {
+        // If user cancels the delete operation
+        console.log("Deletion canceled");
+    }
+}
+
