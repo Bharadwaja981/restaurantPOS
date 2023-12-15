@@ -80,7 +80,7 @@ export function openEditModal(module, type) {
         const itemIdInput = document.createElement('input');
         itemIdInput.id = 'itemId';
         itemIdInput.readOnly = true;
-        itemIdInput.value = module.itemId;
+        itemIdInput.value = module.ItemId;
         placeContainer1.appendChild(itemIdInput);
 
         
@@ -95,7 +95,7 @@ export function openEditModal(module, type) {
         const itemNameInput = document.createElement('input');
         itemNameInput.id = 'itemName';
         itemNameInput.readOnly = true;
-        itemNameInput.value = module.itemName;
+        itemNameInput.value = module.ItemName;
         placeContainer2.appendChild(itemNameInput);
         
         
@@ -110,7 +110,7 @@ export function openEditModal(module, type) {
         const itemPriceInput = document.createElement('input');
         itemPriceInput.id = 'itemPrice';
         itemPriceInput.readOnly = true;
-        itemPriceInput.value = module.price;
+        itemPriceInput.value = module.Price;
         placeContainer3.appendChild(itemPriceInput);
 
         const placeContainer4 = document.createElement('div');
@@ -254,6 +254,289 @@ export function openDeleteModal(module, type) {
     btnConElement.appendChild(button2);
 
     modal.style.display = 'block';   
+}
+
+export function viewModal(module, type){
+    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('viewModal');
+    const viewModalContent = document.createElement('div');
+    viewModalContent.className = 'viewmodal-content';
+    viewModalContent.id = 'viewmodalContent';
+    while (modal.firstChild) {
+        modal.removeChild(modal.firstChild);
+    }
+    modal.appendChild(viewModalContent);
+
+    const detailCon = document.createElement('div');
+    detailCon.className = 'detail-con';
+    viewModalContent.appendChild(detailCon);
+
+    const detailConRow1 = document.createElement('div');
+    detailConRow1.className = 'detail-con-row';
+    detailCon.appendChild(detailConRow1);
+
+    const orderIdElement = document.createElement('h2');
+    orderIdElement.textContent = 'Order ID : '+module.OrderID;
+    detailConRow1.appendChild(orderIdElement);
+
+    const tableNoElement = document.createElement('h2');
+    tableNoElement.textContent = 'Table No : '+module.TableNumber;
+    detailConRow1.appendChild(tableNoElement);
+    
+    const detailConRow2 = document.createElement('div');
+    detailConRow2.className = 'detail-con-row';
+    detailCon.appendChild(detailConRow2);
+
+    const custNameElement = document.createElement('h2');
+    custNameElement.textContent = 'Customer Name : '+module.CustomerName;
+    detailConRow2.appendChild(custNameElement);
+
+    const orderDateElement = document.createElement('h2');
+    const rawDateStringFromDatabase = module.OrderDate;
+    const formattedDate = formatDatabaseDate(rawDateStringFromDatabase); 
+    orderDateElement.textContent = 'OrderDate : '+formattedDate;
+    detailConRow2.appendChild(orderDateElement);
+    const orderTypeElement = document.createElement('h2');
+    orderTypeElement.textContent = 'Order Type : '+module.OrderType;
+    detailConRow2.appendChild(orderTypeElement);
+
+    const elementCon = document.createElement('div');
+    elementCon.className = 'element-con';
+    viewModalContent.appendChild(elementCon);
+
+    let totalitems = 25;
+    const totalItemsElement = document.createElement('h3');
+    totalItemsElement.textContent = 'Total Items in Order: ' + totalitems;
+    elementCon.appendChild(totalItemsElement);
+
+    const totalPriceElement = document.createElement('h2');
+    totalPriceElement.textContent = 'Total Order Price :£' + module.Price + '.00';
+    elementCon.appendChild(totalPriceElement);
+    
+    const formElement = document.createElement('form');
+    formElement.id = 'editForm';
+    viewModalContent.appendChild(formElement);
+
+    // const itemCon = document.createElement('div');
+    // itemCon.className = 'item-con';
+    // formElement.appendChild(itemCon);
+
+    if (type === 'order') {
+        const itemCon = document.createElement('div');
+        itemCon.className = 'item-con';
+        formElement.appendChild(itemCon);
+    
+        // Assume you want to create 10 itemDataCon elements
+        for (let i = 1; i <= totalitems; i++) {
+            const itemDataCon = document.createElement('div');
+            itemDataCon.className = 'item-data-con';
+            itemCon.appendChild(itemDataCon);
+    
+            const itemIdElement = document.createElement('h3');
+            itemIdElement.textContent = i; // Assuming you want IDs like 01, 02, ..., 10
+            itemDataCon.appendChild(itemIdElement);
+    
+            const itemNameElement = document.createElement('h3');
+            itemNameElement.textContent = 'Item ' + i; // Adjust this based on your data
+            itemDataCon.appendChild(itemNameElement);
+    
+            const itemQuantityElement = document.createElement('h3');
+            itemQuantityElement.textContent = '03'; // Set your quantity accordingly
+            itemDataCon.appendChild(itemQuantityElement);
+    
+            const itemIndPriceElement = document.createElement('h3');
+            itemIndPriceElement.textContent = '£10.00'; // Set your individual price accordingly
+            itemDataCon.appendChild(itemIndPriceElement);
+    
+            const itemTotPriceElement = document.createElement('h3');
+            itemTotPriceElement.textContent = '£30.00'; // Set your total price accordingly
+            itemDataCon.appendChild(itemTotPriceElement);
+    
+            const editDelBtnCon = document.createElement('div');
+            editDelBtnCon.className = 'edit-del-btn-container';
+            itemDataCon.appendChild(editDelBtnCon);
+    
+            const editBtnElement = document.createElement('button');
+            editBtnElement.className = 'edit-btn';
+            editBtnElement.textContent = 'edit';
+            editBtnElement.addEventListener('click', () => {
+                // Hide other items
+                const allItemDataCons = document.querySelectorAll('.item-data-con');
+                allItemDataCons.forEach((item) => {
+                    if (item !== itemDataCon) {
+                        item.style.display = 'none';
+                        button1.style.display = 'none';
+                        button2.style.display = 'none';
+                        editBtnElement.style.display = 'none';
+                        delBtnElement.style.display = 'none';
+                        itemIdElement.style.fontSize = '1.5rem';
+                        itemIndPriceElement.style.fontSize = '1.5rem';
+                        itemNameElement.style.fontSize = '1.5rem';
+                        itemQuantityElement.style.fontSize = '1.5rem';
+                        itemTotPriceElement.style.fontSize = '1.5rem';
+                    }
+                });
+            
+                // Display the new div with width 100vw and height 50vh
+                const newDiv = document.createElement('div');
+                newDiv.className = 'item-edit-con';
+                newDiv.style.width = '60vw';
+                newDiv.style.height = '50vh';
+                // Customize other styles as needed
+            
+                // Create a select element
+                const editOptionsSelect = document.createElement('select');
+                editOptionsSelect.className = 'selector';
+                editOptionsSelect.addEventListener('change', () => {
+                    const selectedOption = editOptionsSelect.value;
+            
+                    // Hide both newDiv0 and newDiv1 by default
+                    newDiv0.style.display = 'none';
+                    newDiv1.style.display = 'none';
+            
+                    // Show the selected option
+                    if (selectedOption === 'editQuantity') {
+                        newDiv0.style.display = 'block';
+                    } else if (selectedOption === 'editUnitPrice') {
+                        newDiv1.style.display = 'block';
+                    } else if (selectedOption === 'editBoth') {
+                        newDiv0.style.display = 'block';
+                        newDiv1.style.display = 'block';
+                    }
+                });
+            
+                // Add options to the select element
+                const editOption1 = document.createElement('option');
+                editOption1.value = 'editQuantity';
+                editOption1.text = 'Edit Quantity';
+                editOptionsSelect.appendChild(editOption1);
+            
+                const editOption2 = document.createElement('option');
+                editOption2.value = 'editUnitPrice';
+                editOption2.text = 'Edit Unit Price';
+                editOptionsSelect.appendChild(editOption2);
+            
+                const editOption3 = document.createElement('option');
+                editOption3.value = 'editBoth';
+                editOption3.text = 'Edit Both';
+                editOptionsSelect.appendChild(editOption3);
+            
+                // Append the select element to newDiv
+                newDiv.appendChild(editOptionsSelect);
+            
+                const newDiv0 = document.createElement('div');
+                newDiv0.className = 'item-edit-con-row';
+                newDiv0.style.display = 'none'; // Hide by default
+                // Customize other styles as needed
+            
+                // Display current item name and price
+                const itemQtyEdit = document.createElement('h2');
+                itemQtyEdit.textContent = `Item Quantity:`;
+                newDiv0.appendChild(itemQtyEdit);
+            
+                const itemQuantityInput = document.createElement('input');
+                itemQuantityInput.placeholder = 'Enter New Quantity';
+                newDiv0.appendChild(itemQuantityInput);
+            
+                newDiv.appendChild(newDiv0);
+            
+                const newDiv1 = document.createElement('div');
+                newDiv1.className = 'item-edit-con-row';
+                newDiv1.style.display = 'none'; // Hide by default
+                // Customize other styles as needed
+            
+                // Display current item name and price
+                const itemPriceEdit = document.createElement('h2');
+                itemPriceEdit.textContent = `Item Price:`;
+                newDiv1.appendChild(itemPriceEdit);
+            
+                const itemPriceInput = document.createElement('input');
+                itemPriceInput.placeholder = 'Enter New Item Price';
+                newDiv1.appendChild(itemPriceInput);
+            
+                newDiv.appendChild(newDiv1);
+            
+                const modCanBtnCon = document.createElement('div');
+                modCanBtnCon.className = 'button-container';
+                newDiv.appendChild(modCanBtnCon);
+            
+                // Add "Update" and "Cancel" buttons
+                const updateBtn = document.createElement('button');
+                updateBtn.className = 'modalbtn';
+                updateBtn.textContent = 'Modify';
+                updateBtn.addEventListener('click', () => {
+                    // Add your update logic here
+                    console.log('Update button clicked');
+                });
+                modCanBtnCon.appendChild(updateBtn);
+            
+                const cancelBtn = document.createElement('button');
+                cancelBtn.className = 'modalbtn';
+                cancelBtn.textContent = 'Cancel';
+                cancelBtn.addEventListener('click', () => {
+                    // Hide the new div and display previously hidden elements
+                    newDiv.style.display = 'none';
+                    button1.style.display = 'block';
+                        button2.style.display = 'block';
+                    editBtnElement.style.display = 'block';
+                    delBtnElement.style.display = 'block';
+                    itemIdElement.style.fontSize = '0.87rem';
+                    itemIndPriceElement.style.fontSize = '0.87rem';
+                    itemNameElement.style.fontSize = '0.87rem';
+                    itemQuantityElement.style.fontSize = '0.87rem';
+                    itemTotPriceElement.style.fontSize = '0.87rem';
+                    allItemDataCons.forEach((item) => {
+                        item.style.display = 'flex';
+                    });
+                });
+                modCanBtnCon.appendChild(cancelBtn);
+            
+                // Append the new div to the current itemDataCon
+                itemDataCon.appendChild(newDiv);
+            });
+            editDelBtnCon.appendChild(editBtnElement);
+    
+            const delBtnElement = document.createElement('button');
+            delBtnElement.className = 'edit-btn';
+            delBtnElement.textContent = 'Delete';
+            editDelBtnCon.appendChild(delBtnElement);
+        }
+    }
+    else{
+        console.log('Please pass right module');
+    }
+
+    const btnConElement = document.createElement('div');
+    btnConElement.className = 'button-container';
+    formElement.appendChild(btnConElement);
+
+    const button1 = document.createElement('button');
+    button1.className = 'modalbtn';
+    button1.id = 'update'+module.modulename;
+    button1.textContent = 'Update';
+    btnConElement.appendChild(button1);
+
+    const button2 = document.createElement('button');
+    button2.className = 'modalbtn';
+    button2.id = 'cancel';
+    button2.textContent = 'Cancel';
+    button2.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'visible';
+        document.body.style.overflowX = 'hidden';
+    });
+    btnConElement.appendChild(button2);
+
+    modal.style.display = 'block';   
+}
+
+export function formatDatabaseDate(rawDateString) {
+    const date = new Date(rawDateString);
+
+    const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
+    const formatter = new Intl.DateTimeFormat('en-GB', options);
+
+    return formatter.format(date);
 }
 
 export function deleteCategory(category) {

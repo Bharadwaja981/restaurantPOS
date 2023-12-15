@@ -1,5 +1,5 @@
 import { loadItemData, loadCategoryData, loadOrdersData, Categories, Items, Orders} from './data.js';
-import { openEditModal, openDeleteModal, confirmDelete } from '../admin/functions.js';
+import { openEditModal, openDeleteModal, viewModal, formatDatabaseDate, confirmDelete } from '../admin/functions.js';
 
 const sideMenu = document.querySelector('aside');
 const menuBtn = document.getElementById('menu-btn');
@@ -27,20 +27,30 @@ const currentCategoryTbody = document.querySelector('#current-category tbody');
 if (recentOrdersTbody) {
     Orders.forEach(order => {
         const tr = document.createElement('tr');
+        const formattedOrderDate = formatDatabaseDate(order.OrderDate);
         const trContent = `
             <td>${order.OrderID}</td>
             <td>${order.CustomerName}</td>
             <td>${order.OrderType}</td>
             <td>${order.TableNumber}</td>
-            <td>${order.OrderDate}</td>
+            <td>${formattedOrderDate}</td>
             <td>${order.Price}</td>
             <td>${order.PaymentType}</td>
             <td>${order.EmployeeName}</td>
-            <td>${order.status}</td>
-            <td class="primary">Details</td>
+            <td>${order.Status}</td>
+            <td class="btncont">
+                <button class="edit-btn" data-id="${order.OrderID}">view</button>
+            </td>
+            <td>Details</td>
         `;
         tr.innerHTML = trContent;
         recentOrdersTbody.appendChild(tr);
+
+        const editBtn = tr.querySelector('.edit-btn');
+
+        editBtn.addEventListener('click', () => {
+            viewModal(order, 'order');
+        });
     });
 }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="../adminitems/adminitems.css">
+    <link rel="stylesheet" href="./adminorders.css">
     <title>Admin Dashboard</title>
 </head>
 
@@ -76,7 +76,7 @@
         <main>
             <!-- Recent Orders Table  -->
             <section class="recent-orders">
-                <h2>Current Categories</h2>
+                <h2>All Orders</h2>
                 <table id="recent-orders"> 
                     <thead>
                         <tr id="cat">
@@ -89,6 +89,7 @@
                             <th>Payment Type</th>
                             <th>Employee Name</th>
                             <th>Status</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -115,13 +116,16 @@
                         dark_mode
                     </span>
                 </div>
-
             </div>
-            <!-- End of Nav -->
         </div>
+        <div id="viewModal" class="viewmodal"></div>
+        <div id="editModal" class="editmodal"></div>
+        <div id="deleteModal" class="deletemodal"></div>
 
         <script type="module" src="../data.js"></script>
+        <script type="module"  src="../functions.js"></script>
         <script type="module" src="../admin.js"></script>
+
     </div>
 </body>
 
