@@ -73,6 +73,9 @@
                 var quantity = document.getElementById('quantityValue').textContent;
                 var price = document.querySelector('.item-price').textContent;
 
+                var spicyLevelId = document.getElementById('spicyLevel');
+                var spicyValue = spicyLevelId.value;
+;
                 // Calculate total price
                 var totalPrice ='£' + (parseFloat(price.replace('£', '')) * parseInt(quantity)).toFixed(2);
 
@@ -80,8 +83,10 @@
                     itemName: itemName,
                     quantity: quantity,
                     price: price,
-                    totalPrice: totalPrice
+                    totalPrice: totalPrice,
+                    spicyValue: spicyValue
                 };
+
 
                 // Send a message to the parent window
                 window.parent.postMessage(data, '*');

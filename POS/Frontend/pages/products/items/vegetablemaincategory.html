@@ -28,7 +28,7 @@
                             <!-- Spicy Level -->
                             <label class="spicy-level txt">Spicy Level:</label>
                             <select id="spicyLevel" class="mdl-textfield__input" required>
-                                <option value="select" class="spicy-level-option" selected>None</option>
+                                <option value="select" class="spicy-level-option" selected>Select</option>
                                 <option value="mild" class="spicy-level-option">Mild</option>
                                 <option value="medium" class="spicy-level-option">Medium</option>
                                 <option value="spicy" class="spicy-level-option">Spicy</option>
@@ -47,7 +47,7 @@
                         <div class="type-container" id="typeid">
                             <label class="type txt">Type:</label>
                             <select id="type" class="mdl-textfield__input" required>
-                                <option value="select" class="type-option" selected>None</option>
+                                <option value="select" class="type-option" selected>Select</option>
                                 <option value="Curry" class="type-option">Curry</option>
                                 <option value="Bhuna" class="type-option">Bhuna</option>
                                 <option value="Madras" class="type-option">Madras</option>
@@ -89,29 +89,42 @@
             var spicyselect = document.getElementById("spicyLevel");
             var portionselect = document.getElementById("portion");
             var typeselect = document.getElementById("type");
-            
-            if (typeselect.value == "select") {   
-                typeselect.style.backgroundColor = 'red';             
-            }else{
+
+            if (typeselect.value == "select") {
+                typeselect.style.backgroundColor = 'red';
+            } else {
                 typeselect.style.backgroundColor = '#3b3b3b';
             }
-            if (spicyselect.value == "select"){
-                spicyselect.style.backgroundColor = 'red';     
-            }else{
+            if (spicyselect.value == "select") {
+                spicyselect.style.backgroundColor = 'red';
+            } else {
                 spicyselect.style.backgroundColor = '#3b3b3b';
             }
             var itemName = document.querySelector('.item-name').textContent;
             var quantity = document.getElementById('quantityValue').textContent;
             var price = document.querySelector('.item-price').textContent;
 
+            var spicyLevelId = document.getElementById('spicyLevel');
+            var spicyValue = spicyLevelId.value;
+
+            var typeId = document.getElementById('type');
+            var typeValue = typeId.value;
+
+            // If Mix Veg or Paneer and a type is selected, append the type to the item name
+            if ((itemName == "Mix Veg" || itemName == "Paneer") && typeValue !== "select") {
+                itemName += " ( " + typeValue + " ) ";
+            }
+
             // Calculate total price
-            var totalPrice ='£' + (parseFloat(price.replace('£', '')) * parseInt(quantity)).toFixed(2);
+            var totalPrice = '£' + (parseFloat(price.replace('£', '')) * parseInt(quantity)).toFixed(2);
 
             var data = {
                 itemName: itemName,
                 quantity: quantity,
                 price: price,
-                totalPrice: totalPrice
+                totalPrice: totalPrice,
+                spicyValue: spicyValue,
+                typeValue: typeValue
             };
 
             // Send a message to the parent window
@@ -164,7 +177,7 @@
             var portionContainer = document.getElementById("portionid");
 
             if (itemName == "Mix Veg" || itemName == "Paneer") {
-                typeContainer.style.display = 'block';
+                typeContainer.style.display = 'visible';
                 portionContainer.style.display = 'none';
             } else {
                 

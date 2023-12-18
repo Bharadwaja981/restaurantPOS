@@ -138,13 +138,19 @@
             <div class="new-products">
                 <h2>Add Category</h2>
                 <div class="product-details" id="catpd">
+                    <div class="product" id="catRequired">
+                        <h2> You must enter a value in Input Field</h2>
+                    </div>
                     <div class="product">
                         <h1> Category Name </h1>
-                        <input type="text" class="category-input" placeholder=" Enter Name">
+                        <input type="text" id="inField" class="category-input" placeholder=" Enter Name">
+                    </div>
+                    <div class="product" id="catSuccess">
+                        <h2> Category Created Successfully !</h2>
                     </div>
                     <div class="product">
                         <div class="btn-container">
-                            <button class="btn" onclick="create_category()"> Submit</button>
+                            <button class="btn" onclick="create_category()"> Add</button>
                             <button class="btn"> Cancel</button>   
                         </div>
                     </div>
@@ -217,19 +223,25 @@
     function create_category() {
         const categoryNameInput = document.querySelector('.product input');
         const enteredCategoryName = categoryNameInput.value;
-        newCategoryName = enteredCategoryName;
-        const data = {
-            categoryname: enteredCategoryName
-        };
-        window.parent.postMessage(data, '*');
-        fetch('http://127.0.0.1:5000/add_category', {
-            method: 'POST',
-            mode:'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+
+        if (enteredCategoryName.trim() !== '') {
+            // Only proceed if the input has a non-empty value
+
+            newCategoryName = enteredCategoryName;
+            const data = {
+                categoryname: enteredCategoryName
+            };
+
+            window.parent.postMessage(data, '*');
+
+            fetch('http://127.0.0.1:5000/add_category', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -237,13 +249,21 @@
                 return response.text();
             })
             .then(data => {
+                const sucMsg = document.getElementById('catSuccess');
+                sucMsg.style.display = 'block';
+                const inField = document.getElementById('inField');
+                inField.value = ""; // Clear the input field
                 console.log('Success:', data);
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-    }
-        
+        } else {
+            // Alert the user or handle the case when the input is empty
+            const errMsg = document.getElementById('catRequired');
+            errMsg.style.display = 'block';
+        }
+    }        
     </script>
 </body>
 

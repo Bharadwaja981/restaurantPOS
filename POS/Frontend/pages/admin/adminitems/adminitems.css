@@ -669,6 +669,16 @@ main .new-products .product-details .product{
     justify-content: center;
 }
 
+#catSuccess{
+    color:#1B9C85;
+    display: none;
+}
+
+#catRequired{
+    color:#ff3030;
+    display: none;
+}
+
 main .new-products .product-details .product input{
     margin-left: 15px;
     height: 30px;

@@ -109,7 +109,7 @@ Categories.forEach(category => {
     });
 
     deleteBtn.addEventListener('click', () => {
-        confirmDelete(category);
+        openDeleteModal(category, 'category'); //
        
     });
 });

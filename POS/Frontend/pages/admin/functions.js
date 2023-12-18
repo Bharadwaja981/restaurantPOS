@@ -183,10 +183,8 @@ export function openDeleteModal(module, type) {
     modal.appendChild(deleteModalContent);
 
     const headerElement = document.createElement('h2');
-    headerElement.textContent = 'Delete' + module;
-    headerElement.textContent = 'Delete Category';
+    headerElement.textContent = 'Delete ' + type;
     deleteModalContent.appendChild(headerElement);
-    console.log("came here into cat 1" )
 
     const formElement = document.createElement('form');
     formElement.id = 'deleteForm';
@@ -197,37 +195,69 @@ export function openDeleteModal(module, type) {
     formElement.appendChild(placeContainer);
 
     const cText = document.createElement('h2');
-    cText.textContent = 'You sure want to this ?';
+    cText.textContent = 'You sure want to this ' + type + ' ?';
+    cText.style.color = 'Red';
     placeContainer.appendChild(cText);
 
-    const placeContainer1 = document.createElement('div');
-    placeContainer1.className = 'placecontainer';
-    formElement.appendChild(placeContainer1);
+    if(type === 'item') {
+        const placeContainer1 = document.createElement('div');
+        placeContainer1.className = 'placecontainer';
+        formElement.appendChild(placeContainer1);
 
-    const categoryIdText = document.createElement('h2');
-    categoryIdText.textContent = 'Category Id';
-    placeContainer1.appendChild(categoryIdText);
+        const categoryIdText = document.createElement('h2');
+        categoryIdText.textContent = 'Item Id';
+        placeContainer1.appendChild(categoryIdText);
 
-    const categoryIdInput = document.createElement('input');
-    categoryIdInput.id = 'delcategoryId';
-    categoryIdInput.readOnly = true;
-    categoryIdInput.value = module.id;
-    placeContainer1.appendChild(categoryIdInput);
+        const categoryIdInput = document.createElement('input');
+        categoryIdInput.id = 'delcategoryId';
+        categoryIdInput.readOnly = true;
+        categoryIdInput.value = module.ItemId;
+        placeContainer1.appendChild(categoryIdInput);
 
 
-    const placeContainer2 = document.createElement('div');
-    placeContainer2.className = 'placecontainer';
-    formElement.appendChild(placeContainer2);
+        const placeContainer2 = document.createElement('div');
+        placeContainer2.className = 'placecontainer';
+        formElement.appendChild(placeContainer2);
 
-    const categoryNameText = document.createElement('h2');
-    categoryNameText.textContent = 'Category Name';
-    placeContainer2.appendChild(categoryNameText);
+        const categoryNameText = document.createElement('h2');
+        categoryNameText.textContent = 'Item Name';
+        placeContainer2.appendChild(categoryNameText);
 
-    const categoryNameInput = document.createElement('input');
-    categoryNameInput.id = 'categoryName';
-    categoryNameInput.readOnly = true;
-    categoryNameInput.value = module.categoryname;
-    placeContainer2.appendChild(categoryNameInput);
+        const categoryNameInput = document.createElement('input');
+        categoryNameInput.id = 'categoryName';
+        categoryNameInput.readOnly = true;
+        categoryNameInput.value = module.ItemName;
+        placeContainer2.appendChild(categoryNameInput);
+    }else if (type === 'category'){
+        const placeContainer1 = document.createElement('div');
+        placeContainer1.className = 'placecontainer';
+        formElement.appendChild(placeContainer1);
+
+        const categoryIdText = document.createElement('h2');
+        categoryIdText.textContent = 'Category Id';
+        placeContainer1.appendChild(categoryIdText);
+
+        const categoryIdInput = document.createElement('input');
+        categoryIdInput.id = 'delcategoryId';
+        categoryIdInput.readOnly = true;
+        categoryIdInput.value = module.id;
+        placeContainer1.appendChild(categoryIdInput);
+
+
+        const placeContainer2 = document.createElement('div');
+        placeContainer2.className = 'placecontainer';
+        formElement.appendChild(placeContainer2);
+
+        const categoryNameText = document.createElement('h2');
+        categoryNameText.textContent = 'Category Name';
+        placeContainer2.appendChild(categoryNameText);
+
+        const categoryNameInput = document.createElement('input');
+        categoryNameInput.id = 'categoryName';
+        categoryNameInput.readOnly = true;
+        categoryNameInput.value = module.categoryname;
+        placeContainer2.appendChild(categoryNameInput);
+    }
         
     const btnConElement = document.createElement('div');
     btnConElement.className = 'button-container';
@@ -238,9 +268,40 @@ export function openDeleteModal(module, type) {
     button1.className = 'modalbtn';
     button1.id = 'update'+type;
     button1.textContent = 'Delete';
-    button1.addEventListener('click', () => {
-        console.log("came here into cat")
-    });
+    if(type === 'item'){
+        button1.addEventListener('click', () => {
+            const divEle = document.getElementById('deleteForm');
+            divEle.style.display = 'none';
+
+            const newDivEle = document.createElement('div');
+            deleteModalContent.appendChild(newDivEle);
+
+            const newDivTxt = document.createElement('h1');
+            newDivTxt.textContent = type + ' Deleted Successfully !';
+            newDivEle.appendChild(newDivTxt);
+
+            setTimeout(function () {
+                modal.style.display = 'none';
+            }, 2000);
+        });
+    }else if(type === 'category'){
+        button1.addEventListener('click', () => {
+
+            const divEle = document.getElementById('deleteForm');
+            divEle.style.display = 'none';
+
+            const newDivEle = document.createElement('div');
+            deleteModalContent.appendChild(newDivEle);
+
+            const newDivTxt = document.createElement('h1');
+            newDivTxt.textContent = type + ' Deleted Successfully !';
+            newDivEle.appendChild(newDivTxt);
+            deleteCategory(module);
+            setTimeout(function () {
+                modal.style.display = 'none';
+            }, 2000);
+        });
+    }
     btnConElement.appendChild(button1);
 
     const button2 = document.createElement('button');
@@ -333,22 +394,27 @@ export function viewModal(module, type){
             itemCon.appendChild(itemDataCon);
     
             const itemIdElement = document.createElement('h3');
+            itemIdElement.className = 'item-data-txt';
             itemIdElement.textContent = i; // Assuming you want IDs like 01, 02, ..., 10
             itemDataCon.appendChild(itemIdElement);
     
             const itemNameElement = document.createElement('h3');
+            itemNameElement.className = 'item-data-txt';
             itemNameElement.textContent = 'Item ' + i; // Adjust this based on your data
             itemDataCon.appendChild(itemNameElement);
     
             const itemQuantityElement = document.createElement('h3');
+            itemQuantityElement.className = 'item-data-txt';
             itemQuantityElement.textContent = '03'; // Set your quantity accordingly
             itemDataCon.appendChild(itemQuantityElement);
     
             const itemIndPriceElement = document.createElement('h3');
+            itemIndPriceElement.className = 'item-data-txt';
             itemIndPriceElement.textContent = '£10.00'; // Set your individual price accordingly
             itemDataCon.appendChild(itemIndPriceElement);
     
             const itemTotPriceElement = document.createElement('h3');
+            itemTotPriceElement.className = 'item-data-txt';
             itemTotPriceElement.textContent = '£30.00'; // Set your total price accordingly
             itemDataCon.appendChild(itemTotPriceElement);
     
@@ -356,11 +422,12 @@ export function viewModal(module, type){
             editDelBtnCon.className = 'edit-del-btn-container';
             itemDataCon.appendChild(editDelBtnCon);
     
-            const editBtnElement = document.createElement('button');
+            const editBtnElement = document.createElement('div');
             editBtnElement.className = 'edit-btn';
             editBtnElement.textContent = 'edit';
             editBtnElement.addEventListener('click', () => {
-                // Hide other items
+                console.log('Edit button clicked');
+                
                 const allItemDataCons = document.querySelectorAll('.item-data-con');
                 allItemDataCons.forEach((item) => {
                     if (item !== itemDataCon) {
@@ -377,24 +444,20 @@ export function viewModal(module, type){
                     }
                 });
             
-                // Display the new div with width 100vw and height 50vh
+                
                 const newDiv = document.createElement('div');
                 newDiv.className = 'item-edit-con';
                 newDiv.style.width = '60vw';
                 newDiv.style.height = '50vh';
-                // Customize other styles as needed
-            
-                // Create a select element
+                
                 const editOptionsSelect = document.createElement('select');
                 editOptionsSelect.className = 'selector';
                 editOptionsSelect.addEventListener('change', () => {
                     const selectedOption = editOptionsSelect.value;
             
-                    // Hide both newDiv0 and newDiv1 by default
                     newDiv0.style.display = 'none';
                     newDiv1.style.display = 'none';
             
-                    // Show the selected option
                     if (selectedOption === 'editQuantity') {
                         newDiv0.style.display = 'block';
                     } else if (selectedOption === 'editUnitPrice') {
@@ -403,9 +466,8 @@ export function viewModal(module, type){
                         newDiv0.style.display = 'block';
                         newDiv1.style.display = 'block';
                     }
-                });
+                }); 
             
-                // Add options to the select element
                 const editOption1 = document.createElement('option');
                 editOption1.value = 'editQuantity';
                 editOption1.text = 'Edit Quantity';
@@ -421,15 +483,12 @@ export function viewModal(module, type){
                 editOption3.text = 'Edit Both';
                 editOptionsSelect.appendChild(editOption3);
             
-                // Append the select element to newDiv
                 newDiv.appendChild(editOptionsSelect);
             
                 const newDiv0 = document.createElement('div');
                 newDiv0.className = 'item-edit-con-row';
-                newDiv0.style.display = 'none'; // Hide by default
-                // Customize other styles as needed
-            
-                // Display current item name and price
+                newDiv0.style.display = 'none'; 
+
                 const itemQtyEdit = document.createElement('h2');
                 itemQtyEdit.textContent = `Item Quantity:`;
                 newDiv0.appendChild(itemQtyEdit);
@@ -442,10 +501,8 @@ export function viewModal(module, type){
             
                 const newDiv1 = document.createElement('div');
                 newDiv1.className = 'item-edit-con-row';
-                newDiv1.style.display = 'none'; // Hide by default
-                // Customize other styles as needed
-            
-                // Display current item name and price
+                newDiv1.style.display = 'none'; 
+
                 const itemPriceEdit = document.createElement('h2');
                 itemPriceEdit.textContent = `Item Price:`;
                 newDiv1.appendChild(itemPriceEdit);
@@ -460,12 +517,11 @@ export function viewModal(module, type){
                 modCanBtnCon.className = 'button-container';
                 newDiv.appendChild(modCanBtnCon);
             
-                // Add "Update" and "Cancel" buttons
                 const updateBtn = document.createElement('button');
                 updateBtn.className = 'modalbtn';
                 updateBtn.textContent = 'Modify';
                 updateBtn.addEventListener('click', () => {
-                    // Add your update logic here
+                   
                     console.log('Update button clicked');
                 });
                 modCanBtnCon.appendChild(updateBtn);
@@ -474,7 +530,7 @@ export function viewModal(module, type){
                 cancelBtn.className = 'modalbtn';
                 cancelBtn.textContent = 'Cancel';
                 cancelBtn.addEventListener('click', () => {
-                    // Hide the new div and display previously hidden elements
+                    
                     newDiv.style.display = 'none';
                     button1.style.display = 'block';
                         button2.style.display = 'block';
@@ -491,15 +547,17 @@ export function viewModal(module, type){
                 });
                 modCanBtnCon.appendChild(cancelBtn);
             
-                // Append the new div to the current itemDataCon
                 itemDataCon.appendChild(newDiv);
             });
             editDelBtnCon.appendChild(editBtnElement);
     
-            const delBtnElement = document.createElement('button');
+            const delBtnElement = document.createElement('div');
             delBtnElement.className = 'edit-btn';
             delBtnElement.textContent = 'Delete';
-            editDelBtnCon.appendChild(delBtnElement);
+            delBtnElement.addEventListener('click', () => {
+                console.log('Delete button clicked');
+            });
+            editDelBtnCon.appendChild(delBtnElement);   
         }
     }
     else{
@@ -546,8 +604,6 @@ export function deleteCategory(category) {
     })
         .then(response => {
             if (response.ok) {
-                alert(category.id +'  '+category.categoryname+'is deleted');
-
                 return response.json();
             }
             throw new Error('Network response was not ok.');
@@ -560,18 +616,10 @@ export function deleteCategory(category) {
             console.error('There was a problem with the fetch operation:', error);
             // Handle errors or show appropriate messages to the user
         });
-
-
-
 }
 
 
 export function confirmDelete(module) {
-    if (confirm("Are you sure you want to delete "+module.categoryname)) {
-        deleteCategory(module);
-    } else {
-        // If user cancels the delete operation
-        console.log("Deletion canceled");
-    }
+    deleteCategory(module);
 }
 
