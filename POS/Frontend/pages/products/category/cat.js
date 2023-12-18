@@ -33,9 +33,8 @@ import { Categories, loadCategoryData } from "../../admin/data.js";
     iframe.style.height = "100%";
     iframe.style.border = 'none';
 
-    var categoryNameHeader = document.querySelector('.bottom-con .orange-bar h1');
+    var categoryNameHeader = document.getElementById('select-cat');
     categoryNameHeader.textContent = name; // Set the header text
-    console.log(name);
     var leftContentContainer = document.getElementById("product-names");
 
     leftContentContainer.appendChild(iframe);
