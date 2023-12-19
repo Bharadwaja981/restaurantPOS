@@ -1,19 +1,14 @@
-import { Categories, loadCategoryData, loadOrdersData, Orders } from "../../admin/data.js";
+import { Categories, loadCategoryData, loadOrdersData, Orders } from "../admin/data.js";
 
  const loadNameDiv = document.getElementById("selectedTableInfo");
  if(loadNameDiv){ 
-  const customerName = localStorage.getItem("customerName");
-  const selectedTable = localStorage.getItem("selectedTable");
+  const customerName = localStorage.getItem("takeawaycustomerName");
 
   const custName = document.createElement("div");
   custName.className = "info-text";
   custName.innerHTML = 'Name: ' + customerName;
   loadNameDiv.appendChild(custName);
 
-  const tabNumber = document.createElement("div");
-  tabNumber.className = "info-text";
-  tabNumber.innerHTML = 'Table Number: '+ selectedTable;
-  loadNameDiv.appendChild(tabNumber);
  }
 
 (async () => {
@@ -25,22 +20,22 @@ import { Categories, loadCategoryData, loadOrdersData, Orders } from "../../admi
     });
 
     var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
-    let iframe_pages = [ "../items/vegstartercategory.html",
-                     "../items/nonvegstartercategory.html",
-                     "../items/seafoodstartercategory.html",
-                     "../items/vegetablemaincategory.html",
-                     "../items/seafoodmainscategory.html",
-                     "../items/chickenmaincategory.html",
-                     "../items/lambmaincategory.html",
-                     "../items/chefsspecialcategory.html",
-                     "../items/classicdishescategory.html",
-                     "../items/ricecategory.html",
-                     "../items/naancategory copy.html",
-                     "../items/extrascategory.html",
-                     "../items/noodlecategory.html",
-                     "../items/dessertscategory.html",
-                     "../items/currysaucecategory.html",
-                     "../items/curryadongategory.html" 
+    let iframe_pages = ["../products/items/vegstartercategory.html",
+                        "../products/items/nonvegstartercategory.html",
+                        "../products/items/seafoodstartercategory.html",
+                        "../products/items/vegetablemaincategory.html",
+                        "../products/items/seafoodmainscategory.html",
+                        "../products/items/chickenmaincategory.html",
+                        "../products/items/lambmaincategory.html",
+                        "../products/items/chefsspecialcategory.html",
+                        "../products/items/classicdishescategory.html",
+                        "../products/items/ricecategory.html",
+                        "../products/items/naancategory copy.html",
+                        "../products/items/extrascategory.html",
+                        "../products/items/noodlecategory.html",
+                        "../products/items/dessertscategory.html",
+                        "../products/items/currysaucecategory.html",
+                        "../products/items/curryadongategory.html" 
                     ]
     function openCategoryPage(category, name) {
     var iframe = document.getElementById("itemlist");

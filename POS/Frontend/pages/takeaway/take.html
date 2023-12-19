@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="takeaway.css">
+    <link rel="stylesheet" href="./take.css">
 </head>
-<body style="height: 100%;">
+<body>
     <div id="itemModal" class="modal" >
         <div class="itemmodal-content" >
             <span class="itemclose" onclick="closeItemModal()">&times;</span> </br></br>
@@ -73,56 +73,49 @@
             <!-- Your existing modal script and other content here -->
         </div>
     </div>
-    
     <div class="main-con">
         <div class="top-header">
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../Index.html" target="_top" style="color: aliceblue;">
                     <span class="material-icons">arrow_back</span> Back
                 </a>
-                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#070d20"> Takeaway</div>
+                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#1b1436"> Order Id: 00001</div>
+                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#070d20"> TakeAway</div>
             </div>
+            
         </div>
         <div class="bottom-con">
             <div class="left-content" >
                 <div class="orange-bar">
-                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
-                        <span class="material-icons">arrow_back</span> Back
-                    </a><span class="orange-text">Items</span>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
-                        <span class="material-icons orange-icon">add</span>
-                    </button>
+                    <span class="orange-text">Items</span>
                 </div>
                 <div id="product-names" class="product-names">
                     <iframe src="" id="itemlist"></iframe>
                 </div>
                 <div class="orange-bar">
                     <span class="orange-text">Category</span>
-                    <h1> Select Category</h1>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
+                    <span class="orange-text" id="select-cat">Select Category</span>
+                    <button style="visibility: hidden;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
                         <span class="material-icons orange-icon">add</span>
                     </button>
                 </div>
-                <div class="category-names" id="categoryButtonsContainer">
-                
-                </div>
+                <div class="category-names" id="categoryButtonsContainer"></div>
             </div>
             <div class="right-content">
                 <div class="right-info" id="selectedTableInfo">
-                     <div class="name-text">Name: </div>
-                </div>
-                <div class="right-tag">
-                    <div class="i-t">
-                        <div class="name-item">Item</div>
-                        <div class="name-space">
-                            <div class="name-text">Qty</div>
-                            <div class="name-text">unit Price</div>
-                            <div class="name-text">Price</div>
-                        </div>
-                    </div>
-                </div>
+               </div>
+               <div class="right-tag">
+                   <div class="i-t">
+                       <div class="name-item">Item</div>
+                       <div class="name-space">
+                           <div class="name-text">Qty</div>
+                           <div class="name-text">unit Price</div>
+                           <div class="name-text">Price</div>
+                       </div>
+                   </div>
+               </div>
                 <div class="item-div" id="item-div">
-                    <!-- <div id="item-add i-t" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="openItem()">
+                    <!-- <div id="item-add i-t" class="item-add mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" >
                         <div class="iname-item" id="item-name">Lamb kheema chicken tikka tawa lamb kheema chicken tikka tawa</div>
                         <div class="name-space">
                             <div class="name-text" id="qty">01</div>
@@ -150,14 +143,19 @@
                         Pay
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleClear()">
-                        Clear Items
+                        Clear
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleClear()">
+                        Void
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <script>        
+    <script type="module" src="./take.js"></script>
+    <script type="module"  src="../admin/data.js"></script>
 
+    <script>        
         window.addEventListener('message', function (event) {
             if (event.origin === window.location.origin) {
                 var data = event.data;
@@ -166,7 +164,6 @@
         });
 
         function createNewDiv(data) {
-
             if (data && data.itemName && data.quantity && data.price && data.totalPrice) {
                 var itemDivContainer = document.getElementById('item-div');
 
@@ -207,7 +204,6 @@
                 newItemDiv.appendChild(nameSpaceDiv);
 
                 itemDivContainer.appendChild(newItemDiv);
-                // newItemDiv.addEventListener('click', openItem);
                 newItemDiv.onclick = function(){
                     var itemDetails = { name: itemNameDiv.textContent,
                                         price: unitPriceDiv.textContent,
@@ -215,6 +211,7 @@
                                         spicyValue : data.spicyValue,
                                         typeValue: data.typeValue
                                     };
+                    console.log(itemDetails);
                     openItem(itemDetails);
                 }
 
@@ -342,73 +339,6 @@
             var quantityDisplay = document.getElementById('quantityValue');
             quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
         }
-
-        var categoryButtonsContainer = document.getElementById("categoryButtonsContainer");
-
-        var categories = [
-            "Veg Starter",
-            "Non-Veg Starter",
-            "Seafood Starter",
-            "Vegetable Mains",
-            "Seafood Mains",
-            "Chicken Mains",
-            "Lamb Mains",
-            "Chefs Specials",
-            "Classic Dishes",
-            "Rice",
-            "Naan",
-            "Extras",
-            "Noodles",
-            "Desserts",
-            "Curry Sauce",
-            "Curry-Add On"
-        ];
-
-        let iframe_pages = [ "../products/items/vegstartercategory.html",
-                             "../products/items/nonvegstartercategory.html",
-                             "../products/items/seafoodstartercategory.html",
-                             "../products/items/vegetablemaincategory.html",
-                             "../products/items/seafoodmainscategory.html",
-                             "../products/items/chickenmaincategory.html",
-                             "../products/items/lambmaincategory.html",
-                             "../products/items/chefsspecialcategory.html",
-                             "../products/items/classicdishescategory.html",
-                             "../products/items/ricecategory.html",
-                             "../products/items/naancategory copy.html",
-                             "../products/items/extrascategory.html",
-                             "../products/items/noodlecategory.html",
-                             "../products/items/dessertscategory.html",
-                             "../products/items/currysaucecategory.html",
-                             "../products/items/curryadongategory.html" 
-                            ]
-        function openCategoryPage(category) {
-            var iframe = document.getElementById("itemlist");
-            iframe.setAttribute("src", iframe_pages[category]);
-            iframe.style.width = '100%';
-            iframe.style.height = "100%";
-            iframe.style.border = 'none';
-
-            var categoryNameHeader = document.querySelector('.bottom-con .orange-bar h1');
-            categoryNameHeader.textContent = categories[category];
-
-            var leftContentContainer = document.getElementById("product-names");
-
-            leftContentContainer.appendChild(iframe);
-            document.body.appendChild(modal);
-
-            modal.style.display = 'Hidden';
-        }
-
-        var modal = createModal();  
-
-        function createModal() {
-            var modal = document.createElement('div');
-
-            modal.className = 'modal';
-            
-            return modal;
-        }
-
         function handleClear(){
             var itemDiv = document.getElementById('item-div');
             itemDiv.innerHTML = '';
@@ -445,23 +375,6 @@
             }
         }
 
-        for (let i = 0; i < categories.length; i++) {
-            var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn-lg mb-1 custom-button";
-            button.style.width = "10.00rem";
-            button.style.height = "5.00rem";
-            button.textContent = categories[i];
-
-            button.style.marginRight = "10px";
-            button.style.marginBottom = "10px";
-            button.style.marginTop = "10px";
-            button.style.marginLeft = "10px";
-
-            categoryButtonsContainer.appendChild(button);
-            button.onclick = function () {
-                openCategoryPage(i);
-            };
-        }
     </script>
 
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>

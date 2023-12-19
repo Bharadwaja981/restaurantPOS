@@ -79,19 +79,15 @@
                 <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
                     <span class="material-icons">arrow_back</span> Back
                 </a>
-                <div style="font-size: xx-large; font-weight: bolder; color:#070d20"> Dine In</div>
+                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#1b1436"> Order Id: 00001</div>
+                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#070d20"> Dine-In</div>
             </div>
             
         </div>
         <div class="bottom-con">
             <div class="left-content" >
                 <div class="orange-bar">
-                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../tabels/tabels.html" target="_top" style="color: aliceblue;">
-                        <span class="material-icons">arrow_back</span> Back
-                    </a><span class="orange-text">Items</span>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
-                        <span class="material-icons orange-icon">add</span>
-                    </button>
+                    <span class="orange-text">Items</span>
                 </div>
                 <div id="product-names" class="product-names">
                     <iframe src="" id="itemlist"></iframe>
@@ -99,17 +95,14 @@
                 <div class="orange-bar">
                     <span class="orange-text">Category</span>
                     <span class="orange-text" id="select-cat">Select Category</span>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
+                    <button style="visibility: hidden;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button">
                         <span class="material-icons orange-icon">add</span>
                     </button>
                 </div>
-                <div class="category-names" id="categoryButtonsContainer">
-                
-                </div>
+                <div class="category-names" id="categoryButtonsContainer"></div>
             </div>
             <div class="right-content">
                 <div class="right-info" id="selectedTableInfo">
-                    <div class="name-text">Name: </div>
                </div>
                <div class="right-tag">
                    <div class="i-t">
@@ -150,7 +143,10 @@
                         Pay
                     </button>
                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleClear()">
-                        Clear Items
+                        Clear
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect act-button" onclick="handleClear()">
+                        Void
                     </button>
                 </div>
             </div>

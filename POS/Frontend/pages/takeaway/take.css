@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* Define the style for the scrollbar */
 ::-webkit-scrollbar {
@@ -173,6 +174,12 @@
     text-align: flex;   
 }
 
+.action-buttons{
+    display: flex;
+    flex-direction: row;
+
+}
+
 .total-text{
     
     width: 100px;
@@ -194,6 +201,17 @@
     
 }
 
+.info-text{
+    width: 100%;
+    font-weight: bold;
+    color: #30110c;
+    font-family: 'Poppins', sans-serif;
+}
+
+.name-text{
+    width: 60px;
+}
+
 .iname-item{
     width: 60%;
     padding-left: 10px;
@@ -203,10 +221,6 @@
     text-align: left;
     height: 70px;
     overflow: hidden;
-}
-
-.name-text{
-    width: 60px;
 }
 
 .name-space{

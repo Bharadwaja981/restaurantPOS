@@ -215,6 +215,8 @@
                 errorMessageLabel.textContent = 'Please provide customer name.';
                 errorMessageLabel.style.color = 'red';
             }
+            localStorage.setItem("customerName", currentCustomerName);
+            localStorage.setItem("selectedTable", selectedTable);
         }
 
         function addNewOrder() {
