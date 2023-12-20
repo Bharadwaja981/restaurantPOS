@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takeaway Page</title>
+    <title>Index Page</title>
     <!-- Google Material Icons CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Google Material Design Lite CSS -->
@@ -24,7 +24,7 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="openModal()">
                 Takeaway
             </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="navigateToOrders()">
                  Orders
             </button>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;">
@@ -64,6 +64,10 @@
         function closeModal() {
             var modal = document.getElementById('takeawayModal');
             modal.style.display = 'none';
+        }
+
+        function navigateToOrders(){
+            window.location.href = "../Frontend/pages/orders/orders.html";
         }
 
         function submitCustomerName() {

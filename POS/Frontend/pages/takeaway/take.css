@@ -1,33 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Define the style for the scrollbar */
 ::-webkit-scrollbar {
-    width: 8px; /* Set width of the scrollbar */
-    height: 8px; /* Set height of the scrollbar */
+    width: 8px; 
+    height: 8px; 
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #010f55;
 }
 
-/* Handle on scrollbar drag */
 ::-webkit-scrollbar-thumb:active {
     background: #0b0c11;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #000000;
     border-radius: 10px;
 }
 
-/* Add corner radius to the scrollbar */
 ::-webkit-scrollbar-corner {
     background: #33374b;
     border-radius: 10px;

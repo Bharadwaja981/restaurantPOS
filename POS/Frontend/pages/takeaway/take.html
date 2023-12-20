@@ -211,7 +211,6 @@
                                         spicyValue : data.spicyValue,
                                         typeValue: data.typeValue
                                     };
-                    console.log(itemDetails);
                     openItem(itemDetails);
                 }
 
@@ -287,7 +286,6 @@
                     
                     document.getElementById('spicyLevel').style.display = 'block';
 
-                    
                     document.getElementById('typeid').style.display = 'none';
                 }
             }
@@ -368,13 +366,12 @@
         function handlePay(){
             var check = document.getElementById('item-div');
             if (check.children.length != 0){
-                window.location.href = '../../pay/pay.html';
+                window.location.href = '../pay/pay.html';
             }
             else{
                 alert('Please add items to cart');
             }
         }
-
     </script>
 
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+
+:root{
+    --color-primary: #6C9BCF;
+    --color-danger: #FF0060;
+    --color-success: #1B9C85;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #010f55;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #0b0c11;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+    background: #33374b;
+    border-radius: 10px;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.rectangle {
+    width: 100vw;
+    height: 100vh;
+    background-color: #317cad;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-bar {
+    background-color: #1e8729;
+    width: 100vw;
+    height: 5vh;
+}
+
+.main-bar{
+    background-color: #c6c6c7;
+    height: 95vh;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-bar{
+    background-color: #944747;
+    height: auto;
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-bar:hover{
+    background-color: #b36767;
+    width: 30vw;
+}
+
+.bar-txt{
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.dine-in-orders-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-left:15px;
+    gap: 10px;
+    overflow: auto;
+}
+
+.take-away-orders-list{
+    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 15px;
+    margin-left:
+    15px; gap: 15px;
+    overflow: auto;
+
+}
+
+.bar-chkd{
+    font-weight: 600;
+}
+
+.order-block{
+    width: 300px;
+    height: 400px;
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: 1.0rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.order-block:hover{
+    box-shadow: none;
+    background-color: #9190c7;
+    width: 305px;
+    height: 405px;
+}
