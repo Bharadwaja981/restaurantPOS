@@ -624,6 +624,11 @@ main .new-items .item-list .item img{
     align-items:center;
 }
 
+.viewmodal-content .detail-con h2 {
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
 .viewmodal-content .element-con{
     display: flex;
     flex-direction: row;
@@ -641,7 +646,7 @@ main .new-items .item-list .item img{
     border-radius: 15px;
     transition: all 0.3s ease;
     padding: var(--card-padding);
-    max-height: 65vh;
+    max-height: 60vh;
 }
 
 .item-edit-con{
@@ -781,7 +786,7 @@ main .recent-orders h2{
 
 main .recent-orders table{
     background-color: var(--color-white);
-    width: 100%;
+    width: 130%;
     padding: var(--card-padding);
     text-align: center;
     box-shadow: var(--box-shadow);
@@ -1162,7 +1167,7 @@ main .current-items a{
 
     .viewmodal-content {
         max-width: 58%;
-        max-height: 70%;
+        max-height: 93%;
     }
 
     .viewmodal-content .detail-con{

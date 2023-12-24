@@ -337,10 +337,12 @@ export function viewModal(module, type){
     detailCon.appendChild(detailConRow1);
 
     const orderIdElement = document.createElement('h2');
+    orderIdElement.className = 'detail-con-row-text';
     orderIdElement.textContent = 'Order ID : '+module.OrderID;
     detailConRow1.appendChild(orderIdElement);
 
     const tableNoElement = document.createElement('h2');
+    tableNoElement.className = 'detail-con-row-text';
     tableNoElement.textContent = 'Table No : '+module.TableNumber;
     detailConRow1.appendChild(tableNoElement);
     
@@ -349,15 +351,19 @@ export function viewModal(module, type){
     detailCon.appendChild(detailConRow2);
 
     const custNameElement = document.createElement('h2');
+    custNameElement.className = 'detail-con-row-text';
     custNameElement.textContent = 'Customer Name : '+module.CustomerName;
     detailConRow2.appendChild(custNameElement);
 
     const orderDateElement = document.createElement('h2');
+    orderDateElement.className = 'detail-con-row-text';
     const rawDateStringFromDatabase = module.OrderDate;
     const formattedDate = formatDatabaseDate(rawDateStringFromDatabase); 
     orderDateElement.textContent = 'OrderDate : '+formattedDate;
     detailConRow2.appendChild(orderDateElement);
+    
     const orderTypeElement = document.createElement('h2');
+    orderTypeElement.className = 'detail-con-row-text';
     orderTypeElement.textContent = 'Order Type : '+module.OrderType;
     detailConRow2.appendChild(orderTypeElement);
 
