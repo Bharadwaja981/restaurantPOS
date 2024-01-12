@@ -68,8 +68,18 @@ body, html {
     background-color: #1e8729;
     width: 100vw;
     height: 5vh;
+    display: flex;
+    justify-content: space-between;
 }
 
+.dpicker input[type="date"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    margin-right: 5px; 
+    display: flex;
+    flex-direction: row-reverse;
+}
 .main-bar{
     background-color: #c6c6c7;
     height: 95vh;
@@ -93,7 +103,7 @@ body, html {
 }
 
 .btn-bar:hover{
-    background-color: #b36767;
+    background-color: #cfb9b9;
     width: 30vw;
 }
 

@@ -1,33 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Define the style for the scrollbar */
+
 ::-webkit-scrollbar {
-    width: 8px; /* Set width of the scrollbar */
-    height: 8px; /* Set height of the scrollbar */
+    width: 8px;
+    height: 8px; 
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #010f55;
 }
 
-/* Handle on scrollbar drag */
 ::-webkit-scrollbar-thumb:active {
     background: #0b0c11;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #000000;
     border-radius: 10px;
 }
 
-/* Add corner radius to the scrollbar */
+
 ::-webkit-scrollbar-corner {
     background: #33374b;
     border-radius: 10px;
@@ -60,16 +56,26 @@
 
 }
 
+.top-style{
+    margin-right: 100px;
+    font-size: xx-large;
+    font-weight: bolder;
+    color: #1b1436;
+}
+
 .bottom-con {
     display: flex;
     height: 100%;
 }
 
+.container-expanded {
+    flex-direction: row-reverse;
+}
 
-.left-content {
+.container-expanded .left-content {
     background-color: #070c19;
     border: 0.1px solid rgb(56, 56, 56);
-    width: 80vw;
+    width: 100vw;
     overflow: auto;
     display: flex;
     flex-wrap: wrap;
@@ -91,15 +97,15 @@
 }
 
 .orange-text {
-    color: #000000; /* Set the text color to white or another contrasting color */
+    color: #000000; 
     font-size: 20px;
     font-weight: bold;
 }
 
 .orange-button {
     background-color: #070d20;
-    color: white; /* Set the button text color to white or another contrasting color */
-    font-size: 20px; /* Set the desired font size */
+    color: white; 
+    font-size: 20px; 
 }
 
 .category-names{
@@ -119,13 +125,33 @@
     background-color: #5340bb;
 }
 
-.right-content {
-    width: 25vw;
-    background-color: #7b86c3;
-    border: 0.1px solid rgb(56, 56, 56);
-    overflow: auto;
-    flex-wrap: wrap;
+.container-expanded .right-content {
+    
+    display: block;
+}
 
+.right-content {
+    background-color: #b3aeae;
+    display: none;
+}
+
+.cart-logo{
+    visibility: visible;
+    background-color: transparent !important;
+    border: none;
+    font-size: 35px;
+    position: relative;
+}
+    
+.items-number {
+    position: absolute;
+    top: 7px;
+    right: -3px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(245, 12, 12);
+    font-size: 16px;
+    border-radius: 50%;
+    padding: 1px 8px;
 }
 
 .right-top, .tab-div{
@@ -135,25 +161,22 @@
 }
 
 .void-button {
-    background-color: #4CAF50; /* Green background color */
-    color: white; /* White text color */
-    text-align: center; /* Center text */
-    text-decoration: none; /* Remove underline from text */
-    font-size: 19px; /* Font size of text */
-    cursor: pointer; /* Add cursor pointer on hover */
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    background-color: #4CAF50; 
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 19px;
+    cursor: pointer; 
+    border-radius: 5px;
 }
 
 
-/* Hover effect for buttons */
 .void-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
 
-
-/* Hover effect for buttons */
 .act-button:active {
-    background-color: #070c19; /* Darker green on hover */
+    background-color: #070c19;
 }
 
 .right-info{
@@ -296,24 +319,23 @@
 }
 
 
-/* Custom styles for buttons */
+
 .act-button {
-    background-color: #4CAF50; /* Green background color */
-    color: white; /* White text color */
-    padding: 15px 30px; /* Padding for button size */
-    margin: 10px; /* Margin between buttons */
-    text-align: center; /* Center text */
-    text-decoration: none; /* Remove underline from text */
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
-    font-size: 16px; /* Font size of text */
-    cursor: pointer; /* Add cursor pointer on hover */
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
     height: 4rem;
 }
 
-/* Hover effect for buttons */
 .act-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
 
 
@@ -335,13 +357,13 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(3, 3, 3, 0.575);
-    justify-content: flex-start; /* Align content at the top */
-    padding-top: 0px; /* Add padding at the top */
+    justify-content: flex-start;
+    padding-top: 0px;
 }
 
 .modal-content {
     background-color: #c6d1c3;
-    margin: 15px auto; /* Adjust margin */
+    margin: 15px auto;
     padding: 20px;
     margin-top: 0px;
     border: 1px solid #380000;
@@ -367,11 +389,11 @@
 }
 
 .item-name {
-    flex-grow: 1; /* Takes available space */
+    flex-grow: 1;
 }
 
 .item-price {
-    margin-left: 10px; /* Add some space between name and price */
+    margin-left: 10px; 
 }
 .cname{
     font-size: 40px;
@@ -437,8 +459,8 @@
     margin-left: 20px;
     border: 1px solid #ffffff;
     border-radius: 4px;
-    appearance: none; /* Remove default arrow in Firefox */
-    background-color: #3b3b3b; /* Default background color for "Medium" */
+    appearance: none;
+    background-color: #3b3b3b; 
 }
 
 .spicy-level-option, .type-option {
@@ -475,7 +497,7 @@
     color: #fff;
 }
 .txt-area-container {
-    width: calc(100% - 20px); /* 100% width minus 20px padding (10px on each side) */
+    width: calc(100% - 20px); 
     padding: 10px;
 }
 
@@ -521,11 +543,11 @@ input {
 .modbtn {
     background-color: #070c19;
     color: rgb(255, 255, 255);
-    padding: 15px 20px; /* Adjust padding to increase button size */
+    padding: 15px 20px; 
     margin-top: 5px;
     border-radius: 5px;
-    width: 200px; /* Adjust width to increase button size */
-    height: 75px !important; /* Add height to adjust button height */
+    width: 200px; 
+    height: 75px !important; 
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -536,15 +558,13 @@ input {
 .modbtn:hover{
     background-color: #12399e;
 }
-/* Add a new class for spacing between buttons */
+
 .button-container {
     align-items: center;    
     justify-content: center;
     display: flex;
-    gap: 10px; /* Adjust the gap as needed */
+    gap: 10px;
 }
-
-/* individual item modal css */
 
 .itemclose {
     color: #000000;
@@ -564,8 +584,8 @@ input {
 
 .itemmodal {
     position: fixed;
-    top: 50%;  /* Adjust this value to position vertically */
-    left: 50%; /* Adjust this value to position horizontally */
+    top: 50%;  
+    left: 50%; 
     transform: translate(-50%, -50%);
     display: none;
     z-index: 1000;
@@ -574,11 +594,11 @@ input {
     height: 100%;
     overflow: auto;
     background-color: rgba(3, 3, 3, 0.575);
-    padding-top: 0px; /* Add padding at the top */
+    padding-top: 0px;
 }
 
 .itemmodal-content {
-    margin: 15px auto; /* Adjust margin */
+    margin: 15px auto;
     padding: 20px;
     margin-top: 80px;
     width: 60%;
@@ -587,3 +607,43 @@ input {
     border: 1px solid #380000;
 }
 
+@media screen  and (max-width: 1200px){
+    .right-content{
+        z-index: 100;
+        display: none;
+    }
+    .left-content{
+        width: 100%;
+    }
+    .cart-logo{
+        visibility: visible;
+        background-color: transparent !important;
+        border: none;
+        font-size: 35px;
+    }
+}
+
+@media screen  and (max-width: 720px){
+    .top-style{
+        display: flex;
+        font-size: 13px;
+    }
+    .right-content{
+        z-index: 100;
+        display: none;
+    }
+    .left-content{
+        width: 100%;
+    }
+
+    .top-style{
+        visibility: hidden;
+    }
+
+    .cart-logo{
+        visibility: visible;
+        background-color: transparent !important;
+        border: none;
+        font-size: 35px;
+    }
+}
