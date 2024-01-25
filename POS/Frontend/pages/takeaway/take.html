@@ -79,8 +79,14 @@
                 <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect orange-button" href="../../Index.html" target="_top" style="color: aliceblue;">
                     <span class="material-icons">arrow_back</span> Back
                 </a>
-                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#1b1436"> Order Id: 00001</div>
-                <div style="margin-right: 100px; font-size: xx-large; font-weight: bolder; color:#070d20"> TakeAway</div>
+                <div class="top-style"> Order Id: 00001</div>
+                <div class="top-style"> TakeAway</div>
+                <button class="cart-logo" onclick="sideView()">
+                    <span class="material-icons cart-logo">
+                        shopping_cart
+                    </span>
+                    <div class="items-number" id="totalItems"></div>
+                </button>
             </div>
             
         </div>
@@ -128,7 +134,7 @@
                     <div class="i-t">
                         <div class="iname-item">Total items</div>
                         <div class="name-space">
-                            <div class="total-text" id="totalItems"></div>
+                            <div class="total-text" id="totalItems1"></div>
                             <div class="total-text">Total Price</div>
                             <div class="total-text" id="totalprice"></div>
                         </div>
@@ -163,6 +169,22 @@
             }
         });
 
+        function sideView() {
+            var cartButton = document.querySelector('.cart-logo.cart');
+            var rightContent  = document.querySelector('.right-content');
+
+            rightContent.style.display = rightContent.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.querySelector('.bottom-con');
+            const cartButton = document.querySelector('.cart-logo');
+
+            cartButton.addEventListener('click', function () {
+                container.classList.toggle('container-expanded');
+            });
+        });
+        
         function createNewDiv(data) {
             if (data && data.itemName && data.quantity && data.price && data.totalPrice) {
                 var itemDivContainer = document.getElementById('item-div');
@@ -214,8 +236,12 @@
                     openItem(itemDetails);
                 }
 
+                
                 var totalItemsDiv = document.getElementById('totalItems');
                 totalItemsDiv.textContent = itemDivContainer.children.length;
+
+                var totalItems1Div = document.getElementById('totalItems1');
+                totalItems1Div.textContent = itemDivContainer.children.length;
 
                 var priceDiv = document.getElementById('totalprice');
                 var totalItemsPrice = Array.from(itemDivContainer.children).reduce(function (total, item) {
@@ -342,8 +368,8 @@
             itemDiv.innerHTML = '';
             var priceDiv = document.getElementById('totalprice');
             priceDiv.innerHTML = '';
-            var totalItemsDiv = document.getElementById('totalItems');
-            totalItemsDiv.innerHTML = '';
+            var totalItems1Div = document.getElementById('totalItems1');
+            totalItems1Div.innerHTML = '';
         }
 
 
@@ -351,10 +377,17 @@
         function updateTotalItemsAndPrice() {
             var itemDivContainer = document.getElementById('item-div');
             var totalItemsDiv = document.getElementById('totalItems');
+            totalItemsDiv.innerHTML = '';
+            var totalItems1Div = document.getElementById('totalItems1');
             var priceDiv = document.getElementById('totalprice');
+            var itemsNumberSpan = document.querySelector('.items-number');
 
             totalItemsDiv.textContent = itemDivContainer.children.length;
+            itemsNumberSpan.textContent = itemDivContainer.children.length; 
 
+            totalItems1Div.textContent = itemDivContainer.children.length;
+            itemsNumberSpan.textContent = itemDivContainer.children.length;
+            
             var totalItemsPrice = Array.from(itemDivContainer.children).reduce(function (total, item) {
                 var itemPrice = parseFloat(item.querySelector('.name-text#price').textContent.replace('£', ''));
                 return total + itemPrice;
