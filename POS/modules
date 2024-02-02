@@ -1,0 +1,6 @@
+flask
+psycopg2
+CORS
+flask_cors
+sql
+datetime
