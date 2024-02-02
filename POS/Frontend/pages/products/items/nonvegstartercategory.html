@@ -58,6 +58,8 @@
             <!-- Buttons will be dynamically added here -->
         </div>
     </div>
+    <script type="module" src="../../admin/data.js"></script>
+    <script type="module" src="../items/itemscript.js"></script>
 
     <script>
         
@@ -109,21 +111,19 @@
             updateQuantityDisplay();
         }
 
-        function openModal(itemDetails) {
+        function openModal(itemname, price) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
             
             var itemDetailsContainer = document.getElementById('item-details');
             itemDetailsContainer.innerHTML = '';
 
-            var [itemName, itemPrice] = itemDetails.split("£");
-
             var itemNameDiv = document.createElement("div");
             itemNameDiv.className = "item-name cname txt";
-            itemNameDiv.textContent = itemName.trim();
+            itemNameDiv.textContent = itemname;
             var priceDiv = document.createElement("div");
             priceDiv.className = "item-price cname";
-            priceDiv.textContent =  "£" + itemPrice.trim();
+            priceDiv.textContent = "£" + price;
 
             itemDetailsContainer.appendChild(itemNameDiv);
             itemDetailsContainer.appendChild(priceDiv);
@@ -153,83 +153,7 @@
             var quantityDisplay = document.getElementById('quantityValue');
             quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
         }
-        // Create buttons using the DOM API
-        var categoryButtonsContainer = document.getElementById("vegstartercontainer");
-
-        var items = [
-            "Chicken Samosa",
-            "Lamb Samosa",
-            "Chicken Kebab",
-            "Tikka Roll",
-            "Chicken Tandoori (Half)",
-            "Karmos Chicken (Reg)",
-            "Chicken Tikka (Reg)",
-            "Chicken Lollipop (Reg)",
-            "Kebab Roll",
-            "Chicken Pakora",
-            "Chicken Niblets (Jeera)",
-            "Chicken Niblets (Chilli)",
-            "Chicken Niblets (Mari)",
-            "Chicken Wings (Jeera)",
-            "Chicken Wings (Chilli)",
-            "Chicken Wings (Mari)",
-            "Boneless Chicken (Jeera)",
-            "Boneless Chicken (Mari)",
-            "Lamb Kebab",
-            "Crispy Chicken (Reg)",
-            "Meatballs (Lamb)",
-            "Lamb Chops (Reg)",
-            "Crispy Chicken (Large)",
-            "Lamb Fry",
-            "Mix Sizzler (reg)",
-            "Mix Sizzler Boneless (reg)",
-            "Crispy Chicken (Large)",
-            "Chicken Lollipop (Large)",
-            "Chicken Tandoori (Full)",
-            "Karmos Chicken (Large)",
-            "Mix Sizzler (Large)",
-            "Mix Sizzler Boneless (Large)",
-            "Lamb Chops (Large)",
-            "Chef's Special Sizzler"
-        ];
-
-        var price = ["£4.50", "£4.50", "£6.50", "£6.50", "£7.00",
-                    "£7.00", "£7.00", "£7.00", "£7.00", "£7.00",
-                    "£7.00", "£7.00", "£7.00", "£7.00", "£7.00",
-                    "£7.00", "£7.00", "£7.00", "£7.50", "£7.50",
-                    "£7.50", "£9.00", "£10.00", "£10.00", "£11.00",
-                    "£11.00", "£11.00", "£11.00", "£11.00", "£12.00",
-                    "£12.00", "£15.00", "£15.00", "£15.00", "£25.00"
-                ];
-
-        for (let i = 0; i < items.length; i++) {
-            var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "12.375rem";
-            button.style.height = "7.375rem";
-            var itemNameDiv = document.createElement("div");
-            itemNameDiv.className = "item-name";
-            itemNameDiv.textContent = items[i];
-
-            // Create a div for the price
-            var priceDiv = document.createElement("div");
-            priceDiv.className = "item-price";
-            priceDiv.textContent = price[i];
-
-            // Append the item name and price divs to the button
-            button.appendChild(itemNameDiv);
-            button.appendChild(priceDiv);
-
-            // Manually control the spacing between buttons
-            button.style.marginRight = "10px";
-            button.style.marginBottom = "10px";
-            button.onclick = function () {
-                    openModal(items[i] + price[i]);
-                };
-
-            categoryButtonsContainer.appendChild(button);
-            
-        }
+        
     </script>
 
     <!-- Include MDL JS -->

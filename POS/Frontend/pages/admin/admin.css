@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
 
 :root{
     --color-primary: #6C9BCF;
@@ -48,7 +48,7 @@ html{
 body{
     width: 100vw;
     height: 100vh;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Jura', sans-serif;
     font-size: 0.88rem;
     user-select: none;
     overflow-x: hidden;
@@ -386,7 +386,7 @@ main .new-items .item-list .item img{
     height: 30px;
     font-weight: 600;
     font-size: 1.4rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Jura', sans-serif;
     padding: var(--card-padding);
     border-radius:  1rem;
     border: 1px solid;
@@ -398,7 +398,7 @@ main .new-items .item-list .item img{
     height: 30px;
     font-weight: 600;
     font-size: 1.4rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Jura', sans-serif;
 }
 
 .close {
@@ -486,7 +486,7 @@ main .new-items .item-list .item img{
     height: 30px;
     font-weight: 600;
     font-size: 1.4rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Jura', sans-serif;
     padding: var(--card-padding);
     border-radius:  1rem;
     border: 1px solid;

@@ -84,6 +84,8 @@
         </div>
     </div>
 
+    <script type="module" src="../../admin/data.js"></script>
+    <script type="module" src="../items/itemscript.js"></script>
     <script>
          function submitItem() {
             var spicyselect = document.getElementById("spicyLevel");
@@ -154,21 +156,19 @@
             updateQuantityDisplay();
         }
 
-        function openModal(itemDetails) {
+        function openModal(itemname, price) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
             
             var itemDetailsContainer = document.getElementById('item-details');
             itemDetailsContainer.innerHTML = '';
 
-            var [itemName, itemPrice] = itemDetails.split("£");
-
             var itemNameDiv = document.createElement("div");
             itemNameDiv.className = "item-name cname txt";
-            itemNameDiv.textContent = itemName.trim();
+            itemNameDiv.textContent = itemname;
             var priceDiv = document.createElement("div");
             priceDiv.className = "item-price cname";
-            priceDiv.textContent = "£" + itemPrice.trim(); 
+            priceDiv.textContent = "£" + price; 
 
             itemDetailsContainer.appendChild(itemNameDiv);
             itemDetailsContainer.appendChild(priceDiv);
@@ -210,69 +210,6 @@
         function updateQuantityDisplay() {
             var quantityDisplay = document.getElementById('quantityValue');
             quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
-        }
-        // Create buttons using the DOM API
-        var categoryButtonsContainer = document.getElementById("vegstartercontainer");
-
-        var items = [
-            "Egg Curry",
-            "Mix Veg",
-            "Veg Methi (Soya) Kheema Tawa",
-            "Tarka Dal",
-            "Dal Makhani",
-            "Bombay Aloo",
-            "Bhindi Masala",
-            "Sweet Corn Methi",
-            "Rajma Curry",
-            "Aloo Mutter",
-            "Channa Masala",
-            "Aloo Palak",
-            "Aloo Methi",
-            "Sag Aloo",
-            "Paneer",
-            "Paneer Tikka Masala",
-            "Paneer Butter Masala",
-            "Mutter Paneer",
-            "Paneer Shaslik Kadai",
-            "Garlic Chilli Paneer",
-            "Vegetable Tikka (Soya)",
-            "Egg Burji"
-        ];
-        
-        var price = ["£8.00", "£8.00", "£8.00", "£8.00", "£8.00", 
-                    "£8.00", "£8.00", "£8.00", "£8.00", "£8.00", 
-                    "£8.00", "£8.00", "£8.00", "£8.00", "£8.50", 
-                    "£8.50", "£8.50", "£8.50", "£8.50", "£8.50", 
-                    "£9.00", "£9.00"
-                ]
-
-            for (let i = 0; i < items.length; i++) {
-            var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "12.375rem";
-            button.style.height = "7.375rem";
-            var itemNameDiv = document.createElement("div");
-            itemNameDiv.className = "item-name";
-            itemNameDiv.textContent = items[i];
-
-            // Create a div for the price
-            var priceDiv = document.createElement("div");
-            priceDiv.className = "item-price";
-            priceDiv.textContent = price[i];
-
-            // Append the item name and price divs to the button
-            button.appendChild(itemNameDiv);
-            button.appendChild(priceDiv);
-
-            // Manually control the spacing between buttons
-            button.style.marginRight = "10px";
-            button.style.marginBottom = "10px";
-            button.onclick = function () {
-                    openModal(items[i] + price[i]);
-                };
-
-            categoryButtonsContainer.appendChild(button);
-            
         }
     </script>
 

@@ -14,20 +14,20 @@
 </head>
 <body>
     <div class="rectangle">
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" href="../Frontend/pages/admin/admin.html">
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="font-family: 'Jura', sans-serif;" href="../Frontend/pages/admin/admin.html">
             admin
        </a>
         <div class="d-flex flex-column align-items-center">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="navigateToTables()">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px; font-family: 'Jura', sans-serif;" onclick="navigateToTables()">
                  Dine-In
             </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="openModal()">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px; font-family: 'Jura', sans-serif;" onclick="openModal()">
                 Takeaway
             </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;" onclick="navigateToOrders()">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px; font-family: 'Jura', sans-serif;" onclick="navigateToOrders()">
                  Orders
             </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px;">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect btn btn-lg mb-5" style="width: 550px; height: 150px; font-family: 'Jura', sans-serif;">
                  Open & Close Till
             </button>
         </div>
@@ -77,8 +77,9 @@
 
             if (currentCustomerName !== null && currentCustomerName !== "") {
                 localStorage.setItem("takeawaycustomerName", currentCustomerName);
+                localStorage.setItem("orderType", "Takeaway");
                 closeModal();
-                window.location.href = "../frontend/pages/takeaway/take.html";
+                window.location.href = "../frontend/pages/products/category/cat.html";
             } else {
                 // Show error message and make the label red
                 errorMessageLabel.textContent = 'Please provide customer name.';

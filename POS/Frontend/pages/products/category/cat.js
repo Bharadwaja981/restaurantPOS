@@ -16,6 +16,11 @@ import { Categories, loadCategoryData, loadOrdersData, Orders } from "../../admi
   loadNameDiv.appendChild(tabNumber);
  }
 
+ window.selectedCategory = {
+    index: null,
+    name: null,
+  };
+
 (async () => {
     await loadCategoryData();
   
@@ -43,6 +48,7 @@ import { Categories, loadCategoryData, loadOrdersData, Orders } from "../../admi
                      "../items/curryadongategory.html" 
                     ]
     function openCategoryPage(category, name) {
+    localStorage.setItem('selectedCategory', JSON.stringify({ index: category+1, name: name }));
     var iframe = document.getElementById("itemlist");
     iframe.setAttribute("src", iframe_pages[category]);
     iframe.style.width = '100%';
@@ -88,3 +94,4 @@ import { Categories, loadCategoryData, loadOrdersData, Orders } from "../../admi
         };
     }
 })();
+

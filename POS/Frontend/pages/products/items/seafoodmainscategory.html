@@ -1,4 +1,4 @@
-<!-- category.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +25,6 @@
                 <div>
                     <div class="container-group">
                         <div class="spicy-level-container">
-                            <!-- Spicy Level -->
                             <label class="spicy-level txt">Spicy Level:</label>
                             <select id="spicyLevel" class="mdl-textfield__input" required>
                                 <option value="select" class="spicy-level-option" selected>Select</option>
@@ -33,15 +32,6 @@
                                 <option value="medium" class="spicy-level-option">Medium</option>
                                 <option value="spicy" class="spicy-level-option">Spicy</option>
                                 <option value="extra-spicy" class="spicy-level-option">Extra Spicy</option>
-                            </select>
-                        </div>
-                        <div class="portion-container" id="portionid">
-                            <!-- Portion -->
-                            <label class="portion txt">Portion:</label>
-                            <select id="portion" class="mdl-textfield__input" required>
-                                <option value="select" class="spicy-level-option" selected>Select</option>
-                                <option value="regular" class="spicy-level-option">Regular</option>
-                                <option value="large" class="spicy-level-option">Large</option>
                             </select>
                         </div>
                         <div class="type-container" id="typeid">
@@ -73,17 +63,14 @@
                 </div>
     
             </div>
-            <!-- Your existing modal script and other content here -->
         </div>
     </div>
     <div id="newContent" style=" height: 100vh;">
-        <!-- Content for the new left-content -->
-        <!-- Category div with buttons -->
         <div class="items" id="vegstartercontainer">
-            <!-- Buttons will be dynamically added here -->
         </div>
     </div>
-
+    <script type="module" src="../../admin/data.js"></script>
+    <script type="module" src="../items/itemscript.js"></script>
     <script>
         
         function submitItem() {
@@ -103,11 +90,9 @@
                 var typeId = document.getElementById('type');
                 var typeValue = typeId.value;
 
-                 // If Mix Veg or Paneer and a type is selected, append the type to the item name
                 if ((itemName == "Garlic Butter Prawns") && typeValue !== "select") {
                     itemName += " ( " + typeValue +" ) ";
                 }
-                // Calculate total price
                 var totalPrice ='£' + (parseFloat(price.replace('£', '')) * parseInt(quantity)).toFixed(2);
 
                 var data = {
@@ -119,64 +104,49 @@
                     typeValue: typeValue
                 };
 
-                // Send a message to the parent window
                 window.parent.postMessage(data, '*');
 
-                // Close the modal
                 closeModal();
             }
         }
         
         function resetSelects() {
             var spicySelect = document.getElementById("spicyLevel");
-            var portionSelect = document.getElementById("portion");
             var typeSelect = document.getElementById("type");
             var notesTextArea = document.getElementById("notes");
 
-            // Reset the background color
             spicySelect.style.backgroundColor = '#3b3b3b';
-            portionSelect.style.backgroundColor = '#3b3b3b';
             typeSelect.style.backgroundColor = '#3b3b3b';
 
-            // Reset the selected options
             spicySelect.selectedIndex = 0;
-            portionSelect.selectedIndex = 0;
             typeSelect.selectedIndex = 0;
             notesTextArea.value = '';
             quantityValue = 1;
             updateQuantityDisplay();
         }
 
-        function openModal(itemDetails) {
+        function openModal(itemname, price) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
             
             var itemDetailsContainer = document.getElementById('item-details');
             itemDetailsContainer.innerHTML = '';
 
-            var [itemName, itemPrice] = itemDetails.split("£");
-
             var itemNameDiv = document.createElement("div");
             itemNameDiv.className = "item-name cname txt";
-            itemNameDiv.textContent = itemName.trim();
+            itemNameDiv.textContent = itemname;
             var priceDiv = document.createElement("div");
             priceDiv.className = "item-price cname";
-            priceDiv.textContent =  "£" + itemPrice.trim();
+            priceDiv.textContent = "£" + price;
 
             itemDetailsContainer.appendChild(itemNameDiv);
             itemDetailsContainer.appendChild(priceDiv);
-             // Show/hide select boxes based on the selected item
             var typeContainer = document.getElementById("typeid");
-            var portionContainer = document.getElementById("portionid");
-
-            if (itemName == "Garlic Butter Prawns") {
-                // If the item name includes "Curry", show the type select and hide the portion select
+            
+            if (itemname == 'Garlic Butter Prawns') {
                 typeContainer.style.display = 'visible';
-                portionContainer.style.display = 'none';
             } else {
-                // Otherwise, hide the type container
                 typeContainer.style.display = 'none';
-                portionContainer.style.display = 'none';
             }
         }
 
@@ -204,49 +174,8 @@
             var quantityDisplay = document.getElementById('quantityValue');
             quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
         }
-        // Create buttons using the DOM API
-        var categoryButtonsContainer = document.getElementById("vegstartercontainer");
-
-        var items = [
-            "Garlic Chilli Prawns",
-            "Garlic Butter Prawns",
-            "King Prawn Curry",
-            "Fish Curry"
-        ];
-
-        var price = [ "£10.50", "£10.50", "£10.50", "£9.00"];
-
-        for (let i = 0; i < items.length; i++) {
-            var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "12.375rem";
-            button.style.height = "7.375rem";
-            var itemNameDiv = document.createElement("div");
-            itemNameDiv.className = "item-name";
-            itemNameDiv.textContent = items[i];
-
-            // Create a div for the price
-            var priceDiv = document.createElement("div");
-            priceDiv.className = "item-price";
-            priceDiv.textContent = price[i];
-
-            // Append the item name and price divs to the button
-            button.appendChild(itemNameDiv);
-            button.appendChild(priceDiv);
-
-            // Manually control the spacing between buttons
-            button.style.marginRight = "10px";
-            button.style.marginBottom = "10px";
-            button.onclick = function () {
-                    openModal(items[i] + price[i]);
-                };
-
-            categoryButtonsContainer.appendChild(button);
-            
-        }
     </script>
 
-    <!-- Include MDL JS -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 </html>

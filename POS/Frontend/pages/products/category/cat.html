@@ -74,11 +74,11 @@
     <div class="main-con">
         <div class="top-header">
             <div class="top-style" style="display: flex; flex-direction: row; justify-content: space-between;">
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" href="../../tabels/tabels.html" target="_top">
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="font-family: 'Jura', sans-serif;" onclick="goBack()">
                     <span class="material-icons">arrow_back</span>
                 </a>
                 <div class="top-style"> Order Id: 00001</div>
-                <div class="top-style"> Dine-In</div>
+                <div class="top-style" id='orderType'> Dine-In</div>
                 <button class="cart-logo" onclick="sideView()">
                     <span class="material-icons cart-logo">
                         shopping_cart
@@ -162,11 +162,14 @@
         function sideView() {
             var cartButton = document.querySelector('.cart-logo.cart');
             var rightContent  = document.querySelector('.right-content');
-
             rightContent.style.display = rightContent.style.display === 'none' ? 'block' : 'none';
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+            if (localStorage.getItem("orderType")) {
+                // Update the text content based on the order type
+                document.getElementById('orderType').textContent = localStorage.getItem("orderType");
+            }
             const container = document.querySelector('.bottom-con');
             const cartButton = document.querySelector('.cart-logo');
 
@@ -216,6 +219,7 @@
                 newItemDiv.appendChild(nameSpaceDiv);
 
                 itemDivContainer.appendChild(newItemDiv);
+                console.log("item added into table");
                 newItemDiv.onclick = function(){
                     var itemDetails = { name: itemNameDiv.textContent,
                                         price: unitPriceDiv.textContent,
@@ -223,7 +227,6 @@
                                         spicyValue : data.spicyValue,
                                         typeValue: data.typeValue
                                     };
-                    console.log(itemDetails);
                     openItem(itemDetails);
                 }
 
@@ -254,16 +257,17 @@
 
             if(type){
                 var selectedTypeValue = document.getElementById("type").value;
-                console.log(selectedTypeValue)
+                
             }
 
-            console.log("Selected Option: ", selectedSpicyValue);
+            console.log("Update item in database table...");
             updateTotalItemsAndPrice();
             closeItemModal();
         }
         
         
         function openItem(itemDetails) {
+            console.log("clicked on Item to edit");
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
 
@@ -309,8 +313,6 @@
             quantityDisplay.textContent = itemDetails.quantity;
         }
 
-
-
         function closeItemModal() {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'none';
@@ -326,7 +328,7 @@
 
 
                 itemDivContainer.removeChild(lastItem);
-
+                console.log("Item Removed from database");
 
                 updateTotalItemsAndPrice();
                 closeItemModal();
@@ -394,6 +396,11 @@
             else{
                 alert('Please add items to cart');
             }
+        }
+
+        function goBack() {
+            // Use browser's built-in history navigation to go back
+            window.history.back();
         }
 
     </script>

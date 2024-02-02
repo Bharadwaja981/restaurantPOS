@@ -165,13 +165,23 @@ def get_category_list():
 
     return jsonify(category_list)
 
+@app.route('/add_order_item', methods=['POST'])
+def add_order_item():
+    conn = create_connection()
+    data = request.get_json()
+    cursor = conn.cursor()
+    insert_string = "INSERT INTO orderitems VALUES(' "" ')"
+    cursor.execute(insert_string)
+    commit_and_close(conn,cursor)
+    return 'new category inserted successfully'
+
 @app.route('/add_category', methods=['POST'])
 def add_category():
     conn = create_connection()
     data = request.get_json()
     cursor = conn.cursor()
     insert_string = "INSERT INTO category (categoryname) VALUES(' "+data.get('categoryname')+" ')"
-    cursor.execute(insert_string);
+    cursor.execute(insert_string)
     commit_and_close(conn,cursor)
     return 'new category inserted successfully'
 

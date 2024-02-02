@@ -58,6 +58,8 @@
             <!-- Buttons will be dynamically added here -->
         </div>
     </div>
+    <script type="module" src="../../admin/data.js"></script>
+    <script type="module" src="../items/itemscript.js"></script>
 
     <script>
         
@@ -111,21 +113,19 @@
             updateQuantityDisplay();
         }
 
-        function openModal(itemDetails) {
+        function openModal(itemName, price) {
             var modal = document.getElementById('itemModal');
             modal.style.display = 'block';
             
             var itemDetailsContainer = document.getElementById('item-details');
             itemDetailsContainer.innerHTML = '';
 
-            var [itemName, itemPrice] = itemDetails.split("£");
-
             var itemNameDiv = document.createElement("div");
             itemNameDiv.className = "item-name cname txt";
-            itemNameDiv.textContent = itemName.trim();
+            itemNameDiv.textContent = itemname;
             var priceDiv = document.createElement("div");
             priceDiv.className = "item-price cname";
-            priceDiv.textContent =  "£" + itemPrice.trim(); 
+            priceDiv.textContent = "£" + price;
 
             itemDetailsContainer.appendChild(itemNameDiv);
             itemDetailsContainer.appendChild(priceDiv);
@@ -155,54 +155,7 @@
             var quantityDisplay = document.getElementById('quantityValue');
             quantityDisplay.textContent = quantityValue.toString().padStart(2, '0');
         }
-        // Create buttons using the DOM API
-        var categoryButtonsContainer = document.getElementById("vegstartercontainer");
-
-        var items = [
-            "Butter Lamb",
-            "Lamb Tikka Masala",
-            "Garlic Chilli Lamb",
-            "Lamb Rogan Josh",
-            "Kheema Curry",
-            "Kheema Tawa",
-            "Dhaba Lamb (off the bone)",
-            "Dhaba Lamb (on the bone)",
-            "Lamb Machusi (off the bone)",
-            "Lamb Machusi (on the bone)"
-        ];
-
-        var price = ["£10.00", "£10.00", "£10.00", "£10.00", "£10.00", "£10.00", "£10.00", "£10.00", "£11.00", "£11.00"]
-
-        for (let i = 0; i < items.length; i++) {
-            var button = document.createElement("button");
-            button.className = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect btn btn-lg mb-1 custom-button";
-            button.style.width = "12.375rem";
-            button.style.height = "7.375rem";
-            var itemNameDiv = document.createElement("div");
-            itemNameDiv.className = "item-name";
-            itemNameDiv.textContent = items[i];
-
-            // Create a div for the price
-            var priceDiv = document.createElement("div");
-            priceDiv.className = "item-price";
-            priceDiv.textContent = price[i];
-
-            // Append the item name and price divs to the button
-            button.appendChild(itemNameDiv);
-            button.appendChild(priceDiv);
-
-            // Manually control the spacing between buttons
-            button.style.marginRight = "10px";
-            button.style.marginBottom = "10px";
-            button.onclick = function () {
-                    openModal(items[i] + price[i]);
-                };
-
-            categoryButtonsContainer.appendChild(button);
-            
-        }
-
-    </script>
+   </script>
 
     <!-- Include MDL JS -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>

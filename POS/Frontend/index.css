@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
 body, html {
     height: 100%;
     margin: 0;
@@ -43,6 +45,7 @@ body, html {
     color: #aaa;
     float: right;
     font-size: 28px;
+    font-family: 'Jura', sans-serif;
     font-weight: bold;
 }
 
@@ -54,7 +57,7 @@ body, html {
 }
 
 label{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Jura', sans-serif;
     font-size: x-large;
     color: #070c19;
 }
